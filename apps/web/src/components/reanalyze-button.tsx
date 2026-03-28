@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:3001";
 
-export function ReanalyzeButton({ siteUrl, resultId }: { siteUrl: string; resultId: string }) {
+export function ReanalyzeButton({ siteUrl }: { siteUrl: string }) {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -92,7 +92,6 @@ export function ReanalyzeButton({ siteUrl, resultId }: { siteUrl: string; result
         ) : null}
       </div>
       {error ? <p className="text-xs text-danger">{error}</p> : null}
-      {!error ? <p className="text-[11px] text-zinc-500">当前结果 ID：{resultId}</p> : null}
     </div>
   );
 }

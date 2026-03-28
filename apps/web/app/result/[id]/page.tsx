@@ -6,6 +6,60 @@ import { ReanalyzeButton } from "@/src/components/reanalyze-button";
 import { Card, PageShell, Pill, SectionTitle } from "@/src/components/ui";
 import { getAllResearch, getAnalysisResult } from "@/src/lib/api";
 
+function UserGroupIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M7.5 10.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" />
+      <path d="M16.5 10.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" />
+      <path d="M12 8.75a2.75 2.75 0 1 0 0-5.5 2.75 2.75 0 0 0 0 5.5Z" />
+      <path d="M3.75 17.75c0-2.1 2.02-3.8 4.5-3.8s4.5 1.7 4.5 3.8" />
+      <path d="M11.25 17.75c0-2.55 2.35-4.6 5.25-4.6s5.25 2.05 5.25 4.6" />
+    </svg>
+  );
+}
+
+function CodeIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
+      <path d="m9 8-4 4 4 4" />
+      <path d="m15 8 4 4-4 4" />
+    </svg>
+  );
+}
+
+function ScreenIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <rect x="3.5" y="5" width="17" height="11" rx="2" />
+      <path d="M8 19h8" />
+      <path d="M12 16v3" />
+      <path d="m7.5 9 2.5 2.5L7.5 14" />
+    </svg>
+  );
+}
+
+function RocketIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className} aria-hidden="true">
+      <path d="M14 4c3.5 0 6 2.5 6 6-3.5 0-6-2.5-6-6Z" />
+      <path d="M13 5 7 11c-1.5 1.5-1.5 4 0 5.5L7.5 17c1.5 1.5 4 1.5 5.5 0l6-6" />
+      <path d="m6 18-2 2" />
+      <path d="m8 20-1 1" />
+      <circle cx="14.5" cy="9.5" r="1.2" />
+    </svg>
+  );
+}
+
+function compactTargetUserLabel(user: string) {
+  return user
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(/[，,:：]/)[0]
+    ?.replace(/\s*\/\s*/g, "和")
+    .replace(/^需要/, "")
+    .trim() ?? user;
+}
+
 export default async function ResultPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const [data, allResearch] = await Promise.all([getAnalysisResult(id), getAllResearch()]);
@@ -39,6 +93,12 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
     : data.pricing.billingCycle !== "页面未明确"
       ? `起步价 / ${data.pricing.billingCycle}`
       : "起步价";
+  const compactTargetUsers = data.targetUsers.slice(0, 3).map(compactTargetUserLabel);
+  const targetUserIcons = [
+    <CodeIcon key="code" className="h-5 w-5" />,
+    <ScreenIcon key="screen" className="h-5 w-5" />,
+    <RocketIcon key="rocket" className="h-5 w-5" />
+  ];
 
   return (
     <PageShell currentPath="/results">
@@ -68,6 +128,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
               ) : null}
             </div>
             <div className="flex flex-col items-end gap-3">
+              <p className="text-[11px] text-zinc-500">当前结果 ID：{data.id}</p>
               <div className="flex flex-wrap justify-end gap-3">
                 <Link
                   href={`/result/${data.id}/input`}
@@ -75,7 +136,6 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
                 >
                   查看原始抓取
                 </Link>
-                <ReanalyzeButton siteUrl={data.siteUrl} resultId={data.id} />
                 <BookmarkButton result={data} />
                 <Link
                   href={exportHref}
@@ -84,6 +144,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
                 >
                   导出完整报告
                 </Link>
+                <ReanalyzeButton siteUrl={data.siteUrl} />
               </div>
             </div>
           </div>
@@ -166,16 +227,35 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
             </div>
           </Card>
 
-          <Card className="bg-primary p-8 text-white md:col-span-4">
-            <h3 className="mb-6 font-display text-xl font-bold">目标用户分析</h3>
-            <div className="space-y-4">
-              {data.targetUsers.map((user) => (
-                <div key={user} className="rounded-2xl bg-white/10 px-4 py-3 text-sm font-medium">
-                  {user}
+          <div className="md:col-span-4">
+            <section className="rounded-[2rem] bg-primary px-10 py-10 text-white shadow-soft">
+              <div className="mb-8 flex items-center gap-4">
+                <div className="inline-flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full bg-white/18 text-[#dcfff5]">
+                  <UserGroupIcon className="h-8 w-8" />
                 </div>
-              ))}
-            </div>
-          </Card>
+                <h3 className="font-display text-[2rem] font-bold tracking-tight text-white">目标用户分析</h3>
+              </div>
+              {compactTargetUsers.length > 0 ? (
+                <div className="space-y-4">
+                  {compactTargetUsers.map((user, index) => (
+                    <div
+                      key={`${user}-${index}`}
+                      className="flex min-h-[4.3rem] items-center gap-4 rounded-[1.2rem] bg-[rgba(103,162,145,0.5)] px-6 py-3.5"
+                    >
+                      <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center text-[#8ef6da]">
+                        {targetUserIcons[index] ?? <CodeIcon className="h-5 w-5" />}
+                      </span>
+                      <span className="text-[0.95rem] font-semibold leading-tight text-white">{user}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="rounded-[1.55rem] bg-[rgba(103,162,145,0.5)] px-7 py-6 text-base leading-relaxed text-white/85">
+                  当前没有提取到明确的目标用户信息。
+                </div>
+              )}
+            </section>
+          </div>
 
           <Card className="bg-surfaceAlt p-8 md:col-span-6">
             <h3 className="mb-8 font-display text-xl font-bold">市场机会判断</h3>
