@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 网站商业分析工具 - 首页</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f8f9fa",
+              "surface-container": "#edeeef",
+              "on-tertiary-fixed": "#3f0300",
+              "outline": "#6d7a74",
+              "primary-fixed-dim": "#5fdbb8",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "on-background": "#191c1d",
+              "on-primary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "primary-container": "#008469",
+              "on-surface-variant": "#3d4944",
+              "secondary-fixed-dim": "#b8c9d3",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e1e3e4",
+              "inverse-primary": "#5fdbb8",
+              "surface-tint": "#006b55",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d9dadb",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f0f1f2",
+              "secondary-container": "#d1e2ec",
+              "surface": "#f8f9fa",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#b85846",
+              "tertiary": "#994030",
+              "outline-variant": "#bccac3",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-fixed-variant": "#7d2c1e",
+              "surface-container-low": "#f3f4f5",
+              "on-primary-fixed-variant": "#005140",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-container": "#f5fff9",
+              "primary-fixed": "#7df8d3",
+              "on-surface": "#191c1d",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-fixed": "#002018",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed-variant": "#394951",
+              "inverse-surface": "#2e3132",
+              "secondary-fixed": "#d4e5ef",
+              "on-secondary-fixed": "#0d1e25",
+              "primary": "#006953",
+              "on-secondary-container": "#55656d",
+              "secondary": "#506169",
+              "tertiary-fixed-dim": "#ffb4a6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(24px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 105, 83, 0.08) 0%, rgba(248, 249, 250, 0) 60%);
+        }
+        .ai-insight-border {
+            border-left: 4px solid #006953;
+            background: linear-gradient(90deg, rgba(0, 105, 83, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/20 selection:text-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-16">
+<div class="text-xl font-bold tracking-tighter text-teal-800 dark:text-teal-400 font-headline">AI Website Analyzer</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-teal-700 dark:text-teal-400 border-b-2 border-teal-600 pb-1 font-headline font-medium text-sm tracking-tight" href="#">探索</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-teal-600 transition-colors font-headline font-medium text-sm tracking-tight" href="#">灵感</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-teal-600 transition-colors font-headline font-medium text-sm tracking-tight" href="#">定价</a>
+</div>
+<div class="flex items-center gap-4">
+<!-- Language Toggle -->
+<div class="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-1 gap-1">
+<button class="px-2 py-1 text-[10px] font-bold rounded-full bg-white dark:bg-zinc-700 text-primary shadow-sm">
+    中
+  </button>
+<button class="px-2 py-1 text-[10px] font-bold rounded-full text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 transition-colors">
+    EN
+  </button>
+</div>
+<button class="px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:text-teal-600 transition-all duration-200 font-headline font-medium text-sm">登录</button>
+<button class="px-5 py-2.5 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-lg font-headline font-medium text-sm shadow-sm hover:opacity-90 transition-transform active:scale-95">开始使用</button>
+</div>
+</div>
+<div class="bg-zinc-100 dark:bg-zinc-800 h-[1px] w-full absolute bottom-0 opacity-20"></div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="hero-gradient px-6 py-20 md:py-28 flex flex-col items-center text-center overflow-hidden">
+<div class="max-w-4xl mx-auto">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-xs font-semibold mb-6 tracking-wide">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                V2.0 版本已上线
+            </span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-background tracking-tighter leading-[1.1] mb-8">
+<span class="text-primary italic">秒级理解</span>任何网站的业务逻辑
+            </h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-3xl mx-auto mb-12 leading-relaxed font-body">
+                输入一个网址，马上看懂它卖什么、卖给谁、怎么收费、为什么有人付费。帮你把陌生网站快速翻译成创业判断，而不是一堆看不懂的页面信息。
+            </p>
+<!-- URL Input Container -->
+<div class="w-full max-w-2xl mx-auto p-2 bg-surface-container-lowest rounded-2xl shadow-[0px_20px_40px_rgba(25,28,29,0.06)] flex flex-col md:flex-row gap-2 mb-8">
+<div class="flex-1 flex items-center px-4 gap-3">
+<span class="material-symbols-outlined text-outline">language</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-background font-body text-base placeholder:text-outline/50" placeholder="输入网站 URL (例如 stripe.com)" type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-headline font-bold px-8 py-4 rounded-xl transition-all flex items-center justify-center gap-2 group">
+                    立即分析 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<!-- What You Will Get Section -->
+<div class="max-w-3xl mx-auto">
+<p class="text-sm font-bold text-primary mb-6 flex items-center justify-center gap-2">
+<span class="h-px w-8 bg-primary/30"></span>
+                    你会得到什么
+                    <span class="h-px w-8 bg-primary/30"></span>
+</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">search_insights</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">一句话看懂这个网站做什么</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">groups</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">看清目标用户和核心痛点</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">payments</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">识别收费方式和付费理由</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">gavel</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">判断这个方向值不值得做</span>
+</div>
+</div>
+</div>
+<div class="mt-10 flex flex-wrap justify-center gap-4 text-xs font-label text-outline">
+<span>试试这些：</span>
+<button class="hover:text-primary underline decoration-primary/20">gumroad.com</button>
+<button class="hover:text-primary underline decoration-primary/20">notion.so</button>
+<button class="hover:text-primary underline decoration-primary/20">linear.app</button>
+</div>
+</div>
+</section>
+<!-- Value Proposition -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gap-6 group hover:translate-y-[-4px] transition-all">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">analytics</span>
+</div>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-background">商业拆解</h3>
+<p class="text-on-surface-variant leading-relaxed">看懂它卖什么、卖给谁、靠什么赚钱。</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gap-6 group hover:translate-y-[-4px] transition-all">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+</div>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-background">创业判断</h3>
+<p class="text-on-surface-variant leading-relaxed">不只总结网站内容，还告诉你这个方向还能不能做。</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-[2rem] flex flex-col gap-6 group hover:translate-y-[-4px] transition-all">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">bookmarks</span>
+</div>
+<h3 class="font-headline text-2xl font-bold tracking-tight text-on-background">收藏沉淀</h3>
+<p class="text-on-surface-variant leading-relaxed">把值得研究的网站存进灵感库，后面统一回看和筛选。</p>
+</div>
+</div>
+</section>
+<!-- Recent Research & Favorites -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-6 space-y-24">
+<!-- Recent Research -->
+<div>
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight mb-2">最近研究</h2>
+<p class="text-on-surface-variant">你最近分析过的网站，方便继续判断和复盘</p>
+</div>
+<button class="text-primary font-headline font-bold flex items-center gap-1 hover:underline">
+                        查看完整历史 <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-zinc-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">public</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm">cal.com</h4>
+<p class="text-[10px] text-outline font-label uppercase tracking-wider">生产力</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">开源日程管理基础设施，旨在简化全球范围内的预订操作。</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">PLG 模型</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold">SaaS</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-zinc-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">public</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm">framer.com</h4>
+<p class="text-[10px] text-outline font-label uppercase tracking-wider">设计工具</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">专业的网站构建工具，专注于高保真动画和极致速度。</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">订阅制</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold">创意类</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-zinc-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">public</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm">reflect.app</h4>
+<p class="text-[10px] text-outline font-label uppercase tracking-wider">笔记应用</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">网络化思考与笔记工具，优先考虑隐私保护和响应速度。</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">高级付费</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold">工具类</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-zinc-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-zinc-400">public</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-sm">raycast.com</h4>
+<p class="text-[10px] text-outline font-label uppercase tracking-wider">开发工具</p>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4">适用于 macOS 的可扩展启动器，通过快捷键大幅提升效率。</p>
+<div class="flex gap-2">
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">Freemium</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant text-[10px] font-bold">MacOS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Favorites -->
+<div>
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight mb-2">最近收藏</h2>
+<p class="text-on-surface-variant">被你标记为高价值的灵感库内容</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Favorite Card 1 -->
+<div class="bg-surface-container-lowest border border-primary/10 p-6 rounded-2xl relative">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-primary fill-1" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1">Stripe</h4>
+<p class="text-sm text-on-surface-variant mb-4">全球在线支付基础设施。</p>
+<div class="space-y-3 mb-4 border-t border-zinc-50 pt-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">机会等级</span>
+<span class="text-primary font-bold bg-primary/5 px-2 py-0.5 rounded">高潜力</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">收费模式</span>
+<span class="font-medium">交易抽成 (Usage-based)</span>
+</div>
+</div>
+<p class="text-[10px] text-outline text-right">收藏于 2024-03-20</p>
+</div>
+<!-- Favorite Card 2 -->
+<div class="bg-surface-container-lowest border border-primary/10 p-6 rounded-2xl relative">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1">Cursor</h4>
+<p class="text-sm text-on-surface-variant mb-4">基于 AI 的现代代码编辑器。</p>
+<div class="space-y-3 mb-4 border-t border-zinc-50 pt-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">机会等级</span>
+<span class="text-primary font-bold bg-primary/5 px-2 py-0.5 rounded">爆发式</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">收费模式</span>
+<span class="font-medium">SaaS (订阅制)</span>
+</div>
+</div>
+<p class="text-[10px] text-outline text-right">收藏于 2024-03-18</p>
+</div>
+<!-- Favorite Card 3 -->
+<div class="bg-surface-container-lowest border border-primary/10 p-6 rounded-2xl relative">
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1">Linear</h4>
+<p class="text-sm text-on-surface-variant mb-4">极致体验的项目管理工具。</p>
+<div class="space-y-3 mb-4 border-t border-zinc-50 pt-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">机会等级</span>
+<span class="text-primary font-bold bg-primary/5 px-2 py-0.5 rounded">稳健型</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-outline">收费模式</span>
+<span class="font-medium">Freemium</span>
+</div>
+</div>
+<p class="text-[10px] text-outline text-right">收藏于 2024-03-15</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Highlights -->
+<section class="max-w-7xl mx-auto px-6 py-32">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center mb-32">
+<div class="order-2 lg:order-1 relative">
+<!-- Analysis Preview Card -->
+<div class="absolute -top-10 -right-10 z-20 w-72 bg-white rounded-2xl shadow-2xl p-6 border border-primary/5 animate-bounce-slow">
+<div class="flex items-center gap-2 mb-4 border-b border-zinc-50 pb-2">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="font-headline font-bold text-sm">分析结果预览</span>
+</div>
+<div class="space-y-3">
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">做什么</p>
+<p class="text-xs font-medium">开发者优先的日历 API</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">用户是谁</p>
+<p class="text-xs font-medium">B2B SaaS 开发者与初创团队</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">怎么收费</p>
+<p class="text-xs font-medium">按活跃端点数量阶梯订阅</p>
+</div>
+<div>
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">为什么付费</p>
+<p class="text-xs font-medium">节省 3 个月的日历系统开发周期</p>
+</div>
+<div class="pt-2 border-t border-zinc-50">
+<p class="text-[10px] text-outline uppercase font-bold tracking-wider">是否值得做</p>
+<div class="flex items-center gap-1 mt-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<p class="text-xs font-bold text-primary">推荐关注，存在垂直行业空白</p>
+</div>
+</div>
+</div>
+</div>
+<img alt="定价提取界面" class="rounded-[2.5rem] shadow-2xl w-full object-cover aspect-video relative z-10" data-alt="现代极简仪表板显示复杂的数据可视化，白色背景上有干净的青色图表和分析指标" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY98oWh9Ffsxdd9U0sECgpfHv84dE1JAWxdrPVGy34jNb10z9e72N9A3CmtBthSzFM1yubH5CxV7VD2K6C3HR99BWcAse8YvMnLC7pSsxPC9wHmbiBIjV3rPb0vVfSj9j-MMi6ctBE8dBfjle4Xl9KKzoSGnsxg42CGliFuFJUBSCD_lfDGNWSk30n9ncCj3QmHCoxIWQs11bgoghy4ok0d-5KPIMh7P1Bq4iCnPpmgiB07w30verEsEJctOcrjIPU_Y8VgG3wgs_E"/>
+</div>
+<div class="order-1 lg:order-2">
+<div class="ai-insight-border p-8 mb-6">
+<p class="font-label text-primary font-bold text-sm tracking-widest uppercase mb-4">AI 洞察引擎</p>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-background mb-6">定价提取与策略分析</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        我们不仅仅是寻找价格。我们的 AI 还会分析市场领导者使用的分层结构、扩张收入路径以及定价心理学。
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-background font-medium">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            自动定价层级拆解
+                        </li>
+<li class="flex items-center gap-3 text-on-background font-medium">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                            核心价值维度识别
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<div class="ai-insight-border p-8 mb-6">
+<p class="font-label text-primary font-bold text-sm tracking-widest uppercase mb-4">市场情报</p>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight text-on-background mb-6">用户画像与市场切入点</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                        准确理解谁在购买以及购买原因。我们的引擎根据文案分析、证言模式和功能优先级构建理想用户画像（ICP）。
+                    </p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-sm font-medium">ICP 定义</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-sm font-medium">痛点映射</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-sm font-medium">GTM 策略</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -left-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+<img alt="市场分析界面" class="rounded-[2.5rem] shadow-2xl w-full object-cover aspect-video relative z-10" data-alt="高清笔记本电脑屏幕特写，显示明亮办公室中复杂的市场研究数据和角色画像" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKvpoTyDi9rMQpAlFfyeY_8o8oukNkCS9R-cIbLRlJ4Xk8bZl3HWpGzPvBdXRCUU3eDOBAfWfUL6HWHuhCDOBjEI9e5_rrmNuc9fiBEq99nMVd2kOPvi0Hs-Pi2iB1LlxfXKuaBaUhDCHeC8M9pjNJBaNSH3VHhVwKJ3wsPNK_XARCbku0gHI6mR1KgZp9NgQnlVofQsd3YOUChrBIYhr96yNda3ft72TvjpR57dLhmpMDyXCldbsWN3RWdFoqLOUTTuukV06fN4nE"/>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-6 mb-24">
+<div class="bg-primary rounded-[3rem] px-8 py-20 text-center text-on-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container to-primary opacity-50"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">带着深度洞察，开始您的下一个项目。</h2>
+<p class="text-on-primary-container/80 text-lg mb-10 leading-relaxed">
+                    不要在黑暗中盲目构建。利用数据驱动的情报来验证您的想法，并发现现有市场中的空白点。
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-surface-container-lowest text-primary font-headline font-bold px-10 py-4 rounded-2xl hover:bg-surface transition-all active:scale-95 shadow-xl">
+                        免费分析第一个站点
+                    </button>
+<button class="bg-primary-container border border-on-primary/20 text-on-primary font-headline font-bold px-10 py-4 rounded-2xl hover:bg-primary-container/80 transition-all active:scale-95">
+                        联系销售
+                    </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-6 py-12">
+<div class="flex flex-col gap-4">
+<div class="text-lg font-bold text-teal-800 dark:text-teal-500 font-headline">AI Website Analyzer</div>
+<p class="font-['Inter'] text-xs text-zinc-500 max-w-xs leading-relaxed">
+                © 2024 AI Website Analyzer. 追求极致性能。利用智能自动化加速独立开发者的市场调研。
+            </p>
+</div>
+<div class="flex flex-col md:items-end gap-6">
+<div class="flex gap-6">
+<a class="font-['Inter'] text-xs text-zinc-400 hover:text-teal-500 underline decoration-teal-500/30 transition-opacity duration-300" href="#">隐私政策</a>
+<a class="font-['Inter'] text-xs text-zinc-400 hover:text-teal-500 underline decoration-teal-500/30 transition-opacity duration-300" href="#">服务条款</a>
+<a class="font-['Inter'] text-xs text-zinc-400 hover:text-teal-500 underline decoration-teal-500/30 transition-opacity duration-300" href="#">联系支持</a>
+</div>
+<div class="flex gap-4">
+<span class="w-8 h-8 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-400 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">brand_awareness</span>
+</span>
+<span class="w-8 h-8 rounded-full bg-zinc-50 flex items-center justify-center text-zinc-400 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-lg">share</span>
+</span>
+</div>
+</div>
+</div>
+</footer>
+<style>
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 4s ease-in-out infinite;
+    }
+</style>
+</body></html>

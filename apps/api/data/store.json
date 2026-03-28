@@ -1,0 +1,1758 @@
+{
+  "analysisResults": {
+    "runable": {
+      "id": "runable",
+      "siteName": "runable.com",
+      "siteUrl": "https://runable.com/",
+      "statusLabel": "LLM 深度分析",
+      "meta": {
+        "analyzedAt": "2026-03-27T16:24:35.712Z",
+        "pageCount": 1,
+        "pageTypes": [
+          "home"
+        ],
+        "missingPageTypes": [
+          "pricing",
+          "about",
+          "features",
+          "faq"
+        ],
+        "coverageLevel": "low",
+        "analysisMode": "llm"
+      },
+      "summary": "Runable 是一个通用 AI Agent 平台，能够自主思考、规划并端到端执行复杂任务，产出包括 PPT、网站、报告、视频等多种内容形式；主要面向希望用 AI 替代自己动手完成一整套工作流的个人用户和小团队。",
+      "categories": [
+        "通用 AI Agent",
+        "内容生成与创作",
+        "生产力自动化",
+        "多模态输出工具",
+        "AI 工作流平台"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "需要进一步验证，但已有明确需求信号",
+          "tone": "positive"
+        },
+        {
+          "label": "竞争强度",
+          "value": "中等，建议先找垂直切口",
+          "tone": "warning"
+        },
+        {
+          "label": "是否建议做",
+          "value": "建议先从细分用户或工作流切入",
+          "tone": "positive"
+        }
+      ],
+      "coreFeatures": [
+        "端到端任务自动执行：从理解需求到交付成品，不需要用户自己一步步操作",
+        "生成 PPT 幻灯片：可直接输出可用的演示文稿",
+        "生成完整网站：AI 直接产出可部署的网站页面",
+        "生成综合报告：能做信息收集、整理、撰写的完整闭环",
+        "生成视频内容：支持视频形式的内容输出"
+      ],
+      "coreValue": "帮用户把原本需要自己拆解、逐步执行的一整条工作链路交给 AI 自动完成，省去中间每一个手动环节，直接拿到最终成品。",
+      "targetUsers": [
+        "职场人士 / 打工人：需要频繁做 PPT、写报告、做调研",
+        "内容创作者：想批量生产图文、视频、网站等内容",
+        "独立开发者：需要快速搭建 landing page 或产品介绍页",
+        "小团队负责人：希望用少量人力完成原本需要多人协作的内容工作",
+        "学生 / 研究者：需要快速整理资料并输出报告或演示文稿"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "市场规模：通用 AI Agent 是当前 AI 赛道最热方向之一，全球市场预期快速膨胀，需求真实且增长快"
+        },
+        {
+          "title": "竞争强度",
+          "content": "竞争强度：极强，Manus、OpenAI Operator、Google Mariner、Coze、Dify 等都在抢这个位置，头部玩家资源雄厚"
+        },
+        {
+          "title": "细分机会",
+          "content": "细分机会：在'一键生成可交付成品'这个具体场景上仍有差异化空间，尤其是 PPT+网站+视频多格式一体化输出"
+        },
+        {
+          "title": "风险提示",
+          "content": "风险提示：大厂随时可能把类似能力内嵌进自家产品（如 Microsoft 365 Copilot），独立平台护城河难建"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "未明确",
+        "billingCycle": "页面未明确",
+        "trial": "未明确看到试用",
+        "model": "订阅制",
+        "whyPricingWorks": "用户愿意付费是因为节省的是真实时间成本——原本做一份报告或一个网站要几小时甚至几天，AI 几分钟搞定，时间价值远超订阅费用。"
+      },
+      "growthInsights": [
+        {
+          "title": "在 GAIA、DRACO、Bro",
+          "content": "在 GAIA、DRACO、BrowserComp 等 benchmark 上做到头部是很好的信任背书，可以重点用于获取技术型早期用户"
+        },
+        {
+          "title": "多格式输出（PPT/网站/视频/",
+          "content": "多格式输出（PPT/网站/视频/报告）是差异化卖点，适合做对比类内容营销吸引自然流量"
+        },
+        {
+          "title": "可以通过模板库和案例展示降低用户",
+          "content": "可以通过模板库和案例展示降低用户上手门槛，提升首次转化率"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "优先打磨一种输出格式到极致（比如",
+          "content": "优先打磨一种输出格式到极致（比如 PPT），做到用户觉得'比自己做的还好'，再横向扩展"
+        },
+        {
+          "title": "把 benchmark 成绩转化",
+          "content": "把 benchmark 成绩转化成用户能感知的实际演示（如 30 秒生成一个完整网站），比数字更有说服力"
+        },
+        {
+          "title": "尽早建立用户案例库和使用场景模板",
+          "content": "尽早建立用户案例库和使用场景模板，让新用户能快速复刻成功路径，降低流失率"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Runable - Best way to work with AI"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：知识工作者 / 运营人员、独立开发者 / 个人创作者、小团队负责人"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks."
+        }
+      ]
+    },
+    "stripe-com": {
+      "id": "stripe-com",
+      "siteName": "stripe.com",
+      "siteUrl": "https://stripe.com/",
+      "statusLabel": "已完成分析",
+      "meta": {
+        "analyzedAt": "2026-03-27T14:47:43.749Z",
+        "pageCount": 4,
+        "pageTypes": [
+          "home",
+          "pricing",
+          "features",
+          "faq"
+        ],
+        "missingPageTypes": [
+          "about"
+        ],
+        "coverageLevel": "high",
+        "analysisMode": "rules"
+      },
+      "summary": "这是一个面向商家或企业的支付与金融基础设施产品，核心是在收款、计费、资金流转或金融能力集成上替代复杂人工流程。",
+      "categories": [
+        "金融科技",
+        "B2B",
+        "AI"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "需要进一步验证，但已有明确需求信号",
+          "tone": "positive"
+        },
+        {
+          "label": "竞争强度",
+          "value": "中等，建议先找垂直切口",
+          "tone": "warning"
+        },
+        {
+          "label": "是否建议做",
+          "value": "建议先从细分用户或工作流切入",
+          "tone": "positive"
+        }
+      ],
+      "coreFeatures": [
+        "事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。",
+        "ビジネスの形態を問わない、柔軟なプラットフォーム。",
+        "オンライン決済・対面決済をグローバルに展開"
+      ],
+      "coreValue": "帮目标用户更快完成关键任务，并降低原有流程中的时间、人力或复杂度成本",
+      "targetUsers": [
+        "支付团队 / 金融团队",
+        "开发者 / 工程团队",
+        "企业管理者"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "大，但门槛高，适合从更窄更具体的流程切入"
+        },
+        {
+          "title": "竞争强度",
+          "content": "中等偏高，已经有成熟玩家"
+        },
+        {
+          "title": "红海/细分机会",
+          "content": "建议优先找垂直场景、特定人群、特定工作流切口"
+        },
+        {
+          "title": "风险提示",
+          "content": "合规、支付网络和信任门槛很高，不能只靠页面体验切入"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "$10.00",
+        "billingCycle": "页面未明确",
+        "trial": "存在免费试用",
+        "model": "按交易 / 支付规模收费",
+        "whyPricingWorks": "如果这个工具能直接省时间、省人力或缩短关键流程，它就具备稳定收费基础。"
+      },
+      "growthInsights": [
+        {
+          "title": "为什么用户付费？",
+          "content": "用户通常不会为“技术本身”付费，而是为省时间、省人工、降低门槛、或者更稳定地拿到结果付费。"
+        },
+        {
+          "title": "市场切入点建议",
+          "content": "优先观察它是不是在解决一个高频、刚需、重复出现的问题。如果是，就优先找更小的人群和更深的场景切入。"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "先切一个更窄的人群",
+          "content": "不要直接和大盘工具正面打，先把某个更具体的用户群和工作流吃透。"
+        },
+        {
+          "title": "先做高频动作，不做大而全",
+          "content": "围绕用户最常执行、最痛的一步做成轻量工具，更容易验证是否真的有人愿意买。"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Stripe | 収益向上のための金融インフラ"
+            },
+            {
+              "title": "pricing 页面",
+              "detail": "料金体系 & 手数料 | Stripe"
+            },
+            {
+              "title": "features 页面",
+              "detail": "Stripe Billing | サブスクリプション・定期課金・月額課金の機能一覧"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：支付团队 / 金融团队、开发者 / 工程团队、企业管理者"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "決済から金融サービスまで、必要なツールを自由に組み合わせて使える包括的なソリューションが、ビジネスの成長を支え続けます。"
+        },
+        {
+          "title": "pricing 快照",
+          "detail": "オンライン決済、対面支払い、継続請求、埋め込み型決済ほか、多数ご用意しております。"
+        },
+        {
+          "title": "features 快照",
+          "detail": "サブスクリプション事業者が重視している機能とはどのようなものでしょうか。当社のレポート「請求システムが成長の妨げとなっていませんか？」でご確認いただけます。ご利用に追加費用がかかる機能は、アスタリスク (*) で示されています。"
+        }
+      ]
+    },
+    "freevideogenerator-io": {
+      "id": "freevideogenerator-io",
+      "siteName": "freevideogenerator.io",
+      "siteUrl": "https://freevideogenerator.io/",
+      "statusLabel": "LLM 深度分析",
+      "meta": {
+        "analyzedAt": "2026-03-28T14:48:37.289Z",
+        "pageCount": 2,
+        "pageTypes": [
+          "home",
+          "pricing"
+        ],
+        "missingPageTypes": [
+          "about",
+          "features",
+          "faq"
+        ],
+        "coverageLevel": "medium",
+        "analysisMode": "llm"
+      },
+      "summary": "freevideogenerator.io 是一个以\"Van Gogh\"品牌运营的 AI 视频生成平台，用文字或图片就能生成带场景切换和角色一致性的视频，主打 UGC 广告和多分钟连贯视频故事。已有超过 10 万用户，面向需要快速产出视频内容的创作者和营销人群。",
+      "categories": [
+        "AI 视频生成工具",
+        "UGC 广告制作",
+        "内容营销 SaaS",
+        "文生视频 / 图生视频",
+        "创意内容工具"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "AI 视频 + UGC 广告是真实高频需求，电商卖家和内容创作者都在找低成本出片方案，10 万用户基数证明需求存在"
+        },
+        {
+          "label": "竞争强度",
+          "value": "头部对手多且资金雄厚，但专注 UGC 广告和角色一致性的垂直切入有差异化空间，价格战风险高"
+        },
+        {
+          "label": "是否建议做",
+          "value": "可以做，但要死守 UGC 广告这个垂直场景，别跟通用视频生成工具正面竞争，核心壁垒要建在场景模板和投放效果数据上"
+        }
+      ],
+      "coreFeatures": [
+        "文本转视频：输入一段描述直接生成完整视频",
+        "图片转视频：把静态图片变成动态视频片段",
+        "角色一致性保持：多个场景里同一角色形象不跑偏",
+        "多场景连续视频故事：支持生成多分钟的连贯叙事视频",
+        "UGC 广告模式：专门针对电商和社媒广告场景优化输出"
+      ],
+      "coreValue": "让没有拍摄团队和剪辑技能的人，只靠文字或图片就能快速生成可以直接投放的广告视频或内容视频，省掉从策划到制作的整个人工流程。",
+      "targetUsers": [
+        "电商卖家和独立站运营者，需要低成本批量产出产品广告",
+        "社媒内容创作者，需要持续输出短视频但没有拍摄条件",
+        "中小型营销团队，需要快速测试不同视频素材",
+        "个人品牌运营者，想把图文内容升级成视频格式",
+        "初创公司市场岗，预算有限但需要视频宣传物料"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "市场规模：AI 视频生成赛道 2024 年已是十亿美元级，UGC 广告需求随电商增长持续扩大"
+        },
+        {
+          "title": "竞争强度",
+          "content": "竞争强度：Runway、Kling、Pika、Sora 等玩家已存在，但多数门槛高或价格贵，平价易用的工具仍有空间"
+        },
+        {
+          "title": "细分机会",
+          "content": "细分机会：专做 UGC 广告场景 + 角色一致性是差异化方向，电商卖家对这类工具付费意愿强"
+        },
+        {
+          "title": "风险提示",
+          "content": "风险提示：AI 视频模型迭代极快，底层能力随时可能被更大厂商平价复制，护城河主要靠产品体验和用户积累"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "$49.9",
+        "pricePoints": [
+          "$49.9",
+          "$89.4/yr",
+          "$299.4/yr",
+          "$2.45",
+          "$7.45",
+          "$24.95",
+          "$20/month",
+          "$10/month",
+          "$29/month",
+          "$200/month",
+          "$9.99/month",
+          "$19.99/month"
+        ],
+        "plans": [],
+        "billingCycle": "月付 / 年付",
+        "trial": "存在免费额度 / 试用入口",
+        "model": "按用量收费",
+        "whyPricingWorks": "免费额度降低了用户试用门槛，付费计划提供无水印输出，对需要对外投放广告视频的电商卖家来说，去水印是刚需，转化路径清晰。"
+      },
+      "growthInsights": [
+        {
+          "title": "免费额度是最有效的拉新钩子，重点",
+          "content": "免费额度是最有效的拉新钩子，重点把免费用户转化为付费的漏斗做顺，而不是靠买量"
+        },
+        {
+          "title": "UGC 广告场景可以联动 Tik",
+          "content": "UGC 广告场景可以联动 TikTok Shop、独立站卖家社群做定向推广，这类用户 LTV 高且口碑传播快"
+        },
+        {
+          "title": "做视频效果案例库（before/",
+          "content": "做视频效果案例库（before/after），让潜在用户看到真实产出质量，比功能描述更有说服力"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "把角色一致性和场景连续性做到行业",
+          "content": "把角色一致性和场景连续性做到行业领先水平，这是当前竞品最难解决的痛点，也是留住重度用户的核心"
+        },
+        {
+          "title": "上线广告模板库，按电商品类（服装",
+          "content": "上线广告模板库，按电商品类（服装、美妆、3C 等）分类，让卖家开箱即用，降低使用门槛"
+        },
+        {
+          "title": "建立用户生成内容的展示社区，让成",
+          "content": "建立用户生成内容的展示社区，让成功案例自己帮你做口碑，同时积累训练数据反哺模型效果"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Van Gogh Free AI Video Generator – Turn Text or Images into Stunning, Scene-Based Videos with Advanced AI Video Generation Models",
+              "snippet": "Create Image"
+            },
+            {
+              "title": "pricing 页面",
+              "detail": "Pricing Plans - AI Video Generator | Free Credits to Start",
+              "snippet": "Start-to-End Frame AI Video"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：重度视频创作者、广告投放与社媒团队、电商卖家 / 独立站运营者、需要反复测试不同模型效果的个人用户"
+            },
+            {
+              "title": "产品形态推断",
+              "detail": "当前更像“多模型聚合平台”而不是单点工具，核心卖点是：把多个视频生成模型整合进一个统一工作台，让用户不用来回切平台、重复买订阅或分别研究每个模型的使用方式。"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "Trusted by 100,000+ users at top companies"
+        },
+        {
+          "title": "pricing 快照",
+          "detail": "Create stunning AI videos with our free video generator using advanced technology. Transform your ideas into beautiful videos in seconds—whether from text, images, or full stories."
+        }
+      ]
+    },
+    "runable-com": {
+      "id": "runable-com",
+      "siteName": "runable.com",
+      "siteUrl": "https://runable.com/",
+      "statusLabel": "已完成分析",
+      "summary": "这是一个以“Runable is the world's best AI general a”为核心卖点的网站，主打提升效率或降低现有流程中的复杂度。",
+      "categories": [
+        "工具型产品"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "需要进一步验证，但已有明确需求信号",
+          "tone": "positive"
+        },
+        {
+          "label": "竞争强度",
+          "value": "中等，建议先找垂直切口",
+          "tone": "warning"
+        },
+        {
+          "label": "是否建议做",
+          "value": "建议先从细分用户或工作流切入",
+          "tone": "positive"
+        }
+      ],
+      "coreFeatures": [],
+      "coreValue": "帮目标用户更快完成关键任务，并降低原有流程中的时间、人力或复杂度成本",
+      "targetUsers": [
+        "创作者 / 内容团队",
+        "营销与增长团队",
+        "独立开发者 / 个人创作者"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "大，但门槛高，适合从更窄更具体的流程切入"
+        },
+        {
+          "title": "竞争强度",
+          "content": "中等，可进一步验证"
+        },
+        {
+          "title": "红海/细分机会",
+          "content": "建议优先找垂直场景、特定人群、特定工作流切口"
+        },
+        {
+          "title": "风险提示",
+          "content": "合规、支付网络和信任门槛很高，不能只靠页面体验切入"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "未明确",
+        "billingCycle": "页面未明确",
+        "trial": "未明确看到试用",
+        "model": "订阅制",
+        "whyPricingWorks": "如果这个工具能直接省时间、省人力或缩短关键流程，它就具备稳定收费基础。"
+      },
+      "growthInsights": [
+        {
+          "title": "为什么用户付费？",
+          "content": "用户通常不会为“技术本身”付费，而是为省时间、省人工、降低门槛、或者更稳定地拿到结果付费。"
+        },
+        {
+          "title": "市场切入点建议",
+          "content": "优先观察它是不是在解决一个高频、刚需、重复出现的问题。如果是，就优先找更小的人群和更深的场景切入。"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "先切一个更窄的人群",
+          "content": "不要直接和大盘工具正面打，先把某个更具体的用户群和工作流吃透。"
+        },
+        {
+          "title": "先做高频动作，不做大而全",
+          "content": "围绕用户最常执行、最痛的一步做成轻量工具，更容易验证是否真的有人愿意买。"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Runable - Best way to work with AI"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：创作者 / 内容团队、营销与增长团队、独立开发者 / 个人创作者"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks."
+        }
+      ]
+    },
+    "kumoo-ai": {
+      "id": "kumoo-ai",
+      "siteName": "kumoo.ai",
+      "siteUrl": "https://kumoo.ai/",
+      "statusLabel": "LLM 深度分析",
+      "meta": {
+        "analyzedAt": "2026-03-28T04:15:31.948Z",
+        "pageCount": 3,
+        "pageTypes": [
+          "home",
+          "pricing",
+          "about"
+        ],
+        "missingPageTypes": [
+          "features",
+          "faq"
+        ],
+        "coverageLevel": "medium",
+        "analysisMode": "llm"
+      },
+      "summary": "kumoo.ai 是美图旗下的 AI 人像修图和抠图平台，主打批量处理商业人像、电商产品图和背景替换，支持网页版和桌面客户端。摄影师、电商卖家、广告公司等需要批量出图的专业用户是核心买家。",
+      "categories": [
+        "AI 图像处理",
+        "电商视觉工具",
+        "批量修图 SaaS",
+        "人像/产品抠图",
+        "桌面+网页双端工具"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "电商和商业摄影的批量修图需求真实且持续，全球市场够大，值得切入"
+        },
+        {
+          "label": "竞争强度",
+          "value": "中等偏强，头部有 Adobe/Canva，但专注批量商业人像的垂直产品空间仍在"
+        },
+        {
+          "label": "是否建议做",
+          "value": "有美图技术背书值得做，但需要在海外营销和品牌认知上额外投入，纯靠产品力不够"
+        }
+      ],
+      "coreFeatures": [
+        "AI 批量人像精修，一次处理多张商业级照片",
+        "智能抠图/去背景，支持人物和产品",
+        "高清导出，满足商业印刷和电商上架标准",
+        "桌面客户端+网页端双端支持",
+        "按量计费套餐，处理量越大折扣越高"
+      ],
+      "coreValue": "把原来需要 PS 熟练工几小时的批量修图工作，用 AI 压缩到几分钟完成，大幅降低人力和时间成本。",
+      "targetUsers": [
+        "电商卖家/运营，需要批量处理商品主图和模特图",
+        "商业摄影师，需要快速交付大量精修人像",
+        "广告公司/内容团队，频繁制作品牌视觉物料",
+        "独立设计师，接外包修图单子",
+        "跨境电商从业者，需要符合平台规范的产品图"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "电商视觉需求持续爆发，全球电商卖家都需要高质量产品图，市场规模大"
+        },
+        {
+          "title": "竞争强度",
+          "content": "竞争中等偏强，remove.bg、Canva、Adobe Firefly 等都有抠图/修图能力，但专注批量商业人像的垂直玩家相对少"
+        },
+        {
+          "title": "细分机会",
+          "content": "细分机会在于「批量+高清+商业级」的组合，普通消费级 App 做不到这个精度和效率"
+        },
+        {
+          "title": "风险提示",
+          "content": "风险：美图本身是大公司背书，但品牌知名度在海外需要重新建立，且 AI 修图赛道迭代很快"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "$9.9",
+        "pricePoints": [
+          "$9.9",
+          "$23.22/month",
+          "$0.13",
+          "$0.058",
+          "$0.044",
+          "$0.038",
+          "$0.035",
+          "$0.03"
+        ],
+        "plans": [
+          {
+            "label": "月度计划",
+            "price": "$0.13"
+          },
+          {
+            "label": "年度计划 A",
+            "price": "$0.058"
+          },
+          {
+            "label": "年度计划 B",
+            "price": "$0.044"
+          },
+          {
+            "label": "年度计划 C",
+            "price": "$0.038"
+          },
+          {
+            "label": "年度计划 D",
+            "price": "$0.035"
+          },
+          {
+            "label": "年度计划 E",
+            "price": "$0.03"
+          }
+        ],
+        "billingCycle": "月付 / 年付",
+        "trial": "存在免费试用",
+        "model": "按用量收费",
+        "whyPricingWorks": "按处理量阶梯定价，量越大越便宜，和电商卖家的实际采购逻辑完全契合，买的越多省的越多，复购动力强。"
+      },
+      "growthInsights": [
+        {
+          "title": "主攻跨境电商社群和摄影师社区做口",
+          "content": "主攻跨境电商社群和摄影师社区做口碑，这类用户愿意分享提效工具"
+        },
+        {
+          "title": "和电商平台（如 Shopify",
+          "content": "和电商平台（如 Shopify 插件市场）做分发合作，直接触达目标买家"
+        },
+        {
+          "title": "做对比内容营销（before/a",
+          "content": "做对比内容营销（before/after 图），视觉类产品最容易病毒传播"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "优先打磨批量处理的稳定性和速度，",
+          "content": "优先打磨批量处理的稳定性和速度，这是差异化核心，不能出现批量失败或质量不稳定"
+        },
+        {
+          "title": "开放 API 接口，让有技术能力",
+          "content": "开放 API 接口，让有技术能力的电商团队直接集成进自己的工作流，提高黏性"
+        },
+        {
+          "title": "定价策略上考虑出「月度订阅+不限",
+          "content": "定价策略上考虑出「月度订阅+不限量」套餐吸引高频用户，减少按量计费的心理负担"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Professional AI Portrait Retouching",
+              "snippet": "Try Now"
+            },
+            {
+              "title": "pricing 页面",
+              "detail": "Kumoo Pricing Plans for Desktop Pro",
+              "snippet": "Try Now"
+            },
+            {
+              "title": "about 页面",
+              "detail": "Overview-Meitu Inc.",
+              "snippet": "Contact Us"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：创作者 / 内容团队、营销与增长团队、独立开发者 / 个人创作者"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "Designed to remove backgrounds from professional photos, commercial portraits, and high-end product photos. Create stunning visuals for e-commerce, advertisements, and branded content in just a few steps! Supports HD exports and batch processing, and effortlessly handles product photo retouching, model cutouts, and creative composites."
+        },
+        {
+          "title": "pricing 快照",
+          "detail": "Download Kumoo and enjoy a free trial of our professional, easy-to-use AI photo retouching and batch editing tools. Perfect your photos with speed, precision, and style."
+        },
+        {
+          "title": "about 快照",
+          "detail": "Founded in 2008, Meitu is an AI-driven technology company that regards \"beauty\" as its core ideal. Guided by our mission to \"Uniting Art and Technology\", Meitu is committed to creating world-class imaging products that simplify the creation of images, videos, designs, and other visual content."
+        }
+      ]
+    },
+    "lovart-ai": {
+      "id": "lovart-ai",
+      "siteName": "lovart.ai",
+      "siteUrl": "https://www.lovart.ai/",
+      "statusLabel": "LLM 深度分析",
+      "meta": {
+        "analyzedAt": "2026-03-28T05:44:25.331Z",
+        "pageCount": 4,
+        "pageTypes": [
+          "home",
+          "pricing",
+          "about",
+          "features"
+        ],
+        "missingPageTypes": [
+          "faq"
+        ],
+        "coverageLevel": "high",
+        "analysisMode": "llm"
+      },
+      "summary": "Lovart 是一个 AI 设计 Agent 平台，用对话方式自动生成 Logo、社交媒体图、营销活动全套素材，主要卖给不懂设计却需要持续出图的内容创作者、电商卖家和营销团队。",
+      "categories": [
+        "AI 设计工具",
+        "图像生成 SaaS",
+        "营销素材自动化",
+        "创意工作流平台",
+        "内容生产工具"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "AI 设计自动化需求真实且庞大，电商和内容营销场景每天都在产生海量出图需求，市场窗口现在是开着的"
+        },
+        {
+          "label": "竞争强度",
+          "value": "高，Canva、Adobe、Midjourney 都是直接对手，但「营销套装自动生成」这个细分点目前还没有绝对王者"
+        },
+        {
+          "label": "是否建议做",
+          "value": "可以做，但必须死守一个垂直场景（比如只做电商主图或只做小红书套图），别想着做通用设计工具，否则打不过大厂"
+        }
+      ],
+      "coreFeatures": [
+        "输入文字描述即可一键生成完整视觉素材，包括 Hero 图、产品细节图、场景图",
+        "支持从单张图到整套营销活动物料的批量自动生成",
+        "提供免费入门计划，Pro 计划当前限时 5 折促销，主打低门槛上手",
+        "定位为「世界首个 AI 设计 Agent」，强调 Agent 自主完成设计而非仅辅助",
+        "支持商业项目授权，Pro 计划包含商用权限"
+      ],
+      "coreValue": "让完全不懂 PS 或设计软件的人，也能在几分钟内产出专业级视觉素材，彻底跳过雇设计师或学设计的门槛。",
+      "targetUsers": [
+        "电商卖家和独立站运营，需要持续产出产品主图和场景图",
+        "社交媒体运营，每周要出大量平台配图和封面",
+        "中小企业市场部，预算有限但需要完整品牌营销物料",
+        "独立创作者和自媒体人，自己没设计能力但内容要好看",
+        "初创公司创始人，需要低成本快速搭建品牌视觉体系"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "全球 AI 图像生成市场正在爆发，2024 年已超百亿美元规模且增速极快"
+        },
+        {
+          "title": "竞争强度",
+          "content": "竞争激烈，Canva AI、Adobe Firefly、Midjourney 等都在抢这个赛道，但真正做「全流程 Agent 自动化」的玩家仍少"
+        },
+        {
+          "title": "细分机会",
+          "content": "细分机会在于电商产品图和营销活动套装这类高频刚需场景，纯生成工具满足不了「一套出齐」的需求"
+        },
+        {
+          "title": "风险提示",
+          "content": "风险在于大厂随时可以把 Agent 功能集成进现有产品，独立产品护城河需要靠工作流深度和垂直场景数据来建"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "$1",
+        "pricePoints": [
+          "$1",
+          "$0",
+          "$13",
+          "$16",
+          "$27",
+          "$2"
+        ],
+        "plans": [],
+        "billingCycle": "月付 / 年付",
+        "trial": "存在免费额度 / 试用入口",
+        "model": "按席位 / 团队定价",
+        "whyPricingWorks": "对于月均要出几十张图的运营或卖家来说，Pro 计划的成本远低于外包一张图的设计费，5 折促销更是让试错成本趋近于零。"
+      },
+      "growthInsights": [
+        {
+          "title": "限时 5 折的定价策略能有效拉低",
+          "content": "限时 5 折的定价策略能有效拉低首次付费门槛，适合快速积累付费用户数据验证留存"
+        },
+        {
+          "title": "「世界首个 AI 设计 Agen",
+          "content": "「世界首个 AI 设计 Agent」这个定位有 PR 价值，早期可以靠媒体和 KOL 背书建立认知"
+        },
+        {
+          "title": "电商卖家社群和内容创作者社区是最",
+          "content": "电商卖家社群和内容创作者社区是最高效的冷启动渠道，口碑传播快且精准"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "先做一个极窄的场景闭环，比如专门",
+          "content": "先做一个极窄的场景闭环，比如专门生成电商主图+白底图+场景图三件套，做到行业最好再扩"
+        },
+        {
+          "title": "把「Agent 自主完成」真正做",
+          "content": "把「Agent 自主完成」真正做实，用户最痛的不是生成慢而是生成出来还要自己改半天"
+        },
+        {
+          "title": "定价设计要留住高频用户，考虑按月",
+          "content": "定价设计要留住高频用户，考虑按月订阅加量的模式，而不只是靠次数限制推升级"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Lovart: The World's First AI Design Agent | Automated Graphic Design Platform"
+            },
+            {
+              "title": "pricing 页面",
+              "detail": "Lovart AI Pricing Plans 2026 | Free & Pro AI Design Agent"
+            },
+            {
+              "title": "about 页面",
+              "detail": "Lovart AI | LinkedIn",
+              "snippet": "Join now"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：创作者 / 内容团队、营销与增长团队、独立开发者 / 个人创作者"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "Design visual assets for a running shoe product page, including a hero image, product close-ups, and athlete-on-foot shots that highlight performance and materials."
+        },
+        {
+          "title": "pricing 快照",
+          "detail": "⚡️  Last Chance:  Lock in 50% OFF Unlimited Gens"
+        },
+        {
+          "title": "about 快照",
+          "detail": "Design your masterpieces with Lovart today."
+        }
+      ]
+    },
+    "toolify-ai": {
+      "id": "toolify-ai",
+      "siteName": "toolify.ai",
+      "siteUrl": "https://www.toolify.ai/",
+      "statusLabel": "LLM 深度分析",
+      "meta": {
+        "analyzedAt": "2026-03-28T10:23:49.681Z",
+        "pageCount": 2,
+        "pageTypes": [
+          "home",
+          "features"
+        ],
+        "missingPageTypes": [
+          "pricing",
+          "about",
+          "faq"
+        ],
+        "coverageLevel": "medium",
+        "analysisMode": "llm"
+      },
+      "summary": "Toolify.ai 是一个收录了 2.8 万+ AI 工具的导航目录站，同时聚合了 GPT Store 应用列表，按月访问量排行展示各类 AI 产品。会买单的是想快速找到合适 AI 工具的普通用户，以及想在目录里曝光自家产品的 AI 开发者和创业团队。",
+      "categories": [
+        "AI 工具目录站",
+        "GPT Store 聚合平台",
+        "流量分发平台",
+        "AI 产品榜单",
+        "导航站"
+      ],
+      "decisionCards": [
+        {
+          "label": "市场机会",
+          "value": "AI 工具爆发期，用户找工具的需求是真实高频的，目录站作为流量中转站有稳定的存在价值"
+        },
+        {
+          "label": "竞争强度",
+          "value": "赛道已有多个有规模的对手，单靠收录数量很难拉开差距，需要在数据维度或垂直场景上建立壁垒"
+        },
+        {
+          "label": "是否建议做",
+          "value": "不建议从零做同类通用目录站，但可以做垂直细分方向的小型目录站，或者给现有目录站做差异化数据层（如真实流量榜单、用户评分）"
+        }
+      ],
+      "coreFeatures": [
+        "收录 28500+ AI 工具和网站，覆盖面极广",
+        "GPT Store 应用列表同步收录，自动更新",
+        "按月访问量排行，让用户快速找到头部工具",
+        "工具列表由 ChatGPT 自动更新维护",
+        "支持分类浏览，帮用户按场景筛选工具"
+      ],
+      "coreValue": "全网最大 AI 工具目录之一，帮用户省去逐个搜索的时间，也帮 AI 产品获得曝光入口。",
+      "targetUsers": [
+        "想找某类 AI 工具但不知道用哪个的普通用户",
+        "AI 创业者或独立开发者，想把自己产品提交收录获得曝光",
+        "投资人或分析师，想了解哪些 AI 产品流量最高",
+        "内容创作者，想了解当前最热门的 AI 工具趋势",
+        "企业采购或选型人员，想横向对比同类 AI 工具"
+      ],
+      "marketOpportunity": [
+        {
+          "title": "市场大小",
+          "content": "AI 工具数量爆炸式增长，用户严重依赖导航站做决策，市场需求真实存在"
+        },
+        {
+          "title": "竞争强度",
+          "content": "竞争不算轻松，There's An AI For That、Futurepedia 等对手也有相当体量，但 Toolify 收录数量是明显优势"
+        },
+        {
+          "title": "细分机会",
+          "content": "细分机会在于垂直榜单、流量数据透明化、以及给开发者提供付费推广位"
+        },
+        {
+          "title": "风险提示",
+          "content": "最大风险是 Google 算法更新可能直接打垮流量，目录站 SEO 依赖性极强"
+        }
+      ],
+      "pricing": {
+        "startingPrice": "$40",
+        "pricePoints": [
+          "$40",
+          "$14",
+          "$30",
+          "$60",
+          "$10",
+          "$8",
+          "$500",
+          "$0.01"
+        ],
+        "plans": [],
+        "billingCycle": "月付 / 年付",
+        "trial": "存在免费试用",
+        "model": "按交易 / 支付规模收费",
+        "whyPricingWorks": "对开发者来说，花钱买一个在 2.8 万+ 工具里靠前展示的推广位，是最低成本的冷启动曝光方式，ROI 算得过来。"
+      },
+      "growthInsights": [
+        {
+          "title": "流量核心靠 SEO，每个工具页都",
+          "content": "流量核心靠 SEO，每个工具页都是一个长尾关键词落地页，收录越多、内容越丰富，搜索流量越稳"
+        },
+        {
+          "title": "开发者提交收录的付费推广是天然的",
+          "content": "开发者提交收录的付费推广是天然的商业化路径，不需要 to C 转化就能赚钱"
+        },
+        {
+          "title": "可以做 newsletter 或",
+          "content": "可以做 newsletter 或周榜把用户拉回来，降低对 Google 的单一依赖"
+        }
+      ],
+      "buildAdvice": [
+        {
+          "title": "不要做大而全的复制品，选一个垂直",
+          "content": "不要做大而全的复制品，选一个垂直方向（比如只做 AI 写作工具目录）更容易做出差异化"
+        },
+        {
+          "title": "核心壁垒不是收录数量，而是数据质",
+          "content": "核心壁垒不是收录数量，而是数据质量，真实流量、用户评价、更新频率才是护城河"
+        },
+        {
+          "title": "商业化要从第一天设计好推广位产品",
+          "content": "商业化要从第一天设计好推广位产品，别等到流量起来再想怎么赚钱"
+        }
+      ],
+      "similarProducts": [
+        {
+          "name": "同类竞品待补充",
+          "status": "planned"
+        },
+        {
+          "name": "替代方案待补充",
+          "status": "planned"
+        },
+        {
+          "name": "上下游工具待补充",
+          "status": "planned"
+        },
+        {
+          "name": "垂直切口案例待补充",
+          "status": "planned"
+        }
+      ],
+      "evidenceGroups": [
+        {
+          "level": "explicit",
+          "title": "明确可见",
+          "items": [
+            {
+              "title": "home 页面",
+              "detail": "Best AI Tools Directory & AI Tools List - Toolify"
+            },
+            {
+              "title": "features 页面",
+              "detail": "Best AI Tools Directory & AI Tools List - Toolify"
+            }
+          ]
+        },
+        {
+          "level": "inferred",
+          "title": "高概率判断",
+          "items": [
+            {
+              "title": "用户与场景推断",
+              "detail": "从页面文案、导航结构和 CTA 推断，这个网站主要面向：重度视频创作者、广告投放与社媒团队、电商卖家 / 独立站运营者、需要反复测试不同模型效果的个人用户"
+            },
+            {
+              "title": "产品形态推断",
+              "detail": "当前更像“多模型聚合平台”而不是单点工具，核心卖点是：把多个视频生成模型整合进一个统一工作台，让用户不用来回切平台、重复买订阅或分别研究每个模型的使用方式。"
+            }
+          ]
+        },
+        {
+          "level": "strategy",
+          "title": "策略建议",
+          "items": [
+            {
+              "title": "切入建议",
+              "detail": "系统建议优先从垂直用户、垂直行业或单一高频动作切入。"
+            }
+          ]
+        }
+      ],
+      "evidenceSnapshots": [
+        {
+          "title": "home 快照",
+          "detail": "AIs with the highest website traffic (monthly visits)"
+        },
+        {
+          "title": "features 快照",
+          "detail": "AIs with the highest website traffic (monthly visits)"
+        }
+      ]
+    }
+  },
+  "analysisInputs": {
+    "stripe-com": {
+      "siteUrl": "https://stripe.com/",
+      "siteName": "stripe.com",
+      "pages": [
+        {
+          "url": "https://stripe.com/",
+          "pageType": "home",
+          "title": "Stripe | 収益向上のための金融インフラ",
+          "description": "Stripe は、あらゆる規模や業種のビジネスにおける決済の受け入れ、柔軟な請求モデルの構築、および資金移動の管理を支援する、金融サービスプラットフォームです。",
+          "headings": [
+            "事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。",
+            "事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。",
+            "ビジネスの形態を問わない、柔軟なプラットフォーム。",
+            "オンライン決済・対面決済をグローバルに展開",
+            "あらゆるサブスク・課金モデルに対応",
+            "エージェンティックコマースを導入"
+          ],
+          "ctas": [],
+          "excerpt": "決済から金融サービスまで、必要なツールを自由に組み合わせて使える包括的なソリューションが、ビジネスの成長を支え続けます。"
+        },
+        {
+          "url": "https://stripe.com/jp/pricing",
+          "pageType": "pricing",
+          "title": "料金体系 & 手数料 | Stripe",
+          "description": "Stripeの手数料や費用詳細をご確認いただけます。製品や決済方法別に料金を比較し、最適なプランを見つけましょう。",
+          "headings": [
+            "支払い",
+            "収益",
+            "資金管理",
+            "プラットフォームとマーケットプレイス",
+            "その他",
+            "支払い"
+          ],
+          "ctas": [],
+          "excerpt": "オンライン決済、対面支払い、継続請求、埋め込み型決済ほか、多数ご用意しております。"
+        },
+        {
+          "url": "https://stripe.com/billing/features",
+          "pageType": "features",
+          "title": "Stripe Billing | サブスクリプション・定期課金・月額課金の機能一覧",
+          "description": "サブスクリプションサービス、継続課金や月額請求など、簡単に導入することができる Stripe Billing の各種機能の一覧をご覧いただけます。",
+          "headings": [
+            "支払い",
+            "収益",
+            "資金管理",
+            "プラットフォームとマーケットプレイス",
+            "その他",
+            "支払い"
+          ],
+          "ctas": [],
+          "excerpt": "サブスクリプション事業者が重視している機能とはどのようなものでしょうか。当社のレポート「請求システムが成長の妨げとなっていませんか？」でご確認いただけます。ご利用に追加費用がかかる機能は、アスタリスク (*) で示されています。"
+        },
+        {
+          "url": "https://stripe.com/legal/dpa/faqs",
+          "pageType": "faq",
+          "title": "Data Processing Agreement - FAQS",
+          "description": "",
+          "headings": [
+            "Stripe Privacy Policy & Privacy Center",
+            "Data Processing Agreement - FAQS",
+            "What is a Data Processing Agreement or “DPA”?",
+            "Does Stripe offer a DPA?",
+            "What are the Standard Contractual Clauses?",
+            "Does Stripe offer the Standard Contractual Clauses?"
+          ],
+          "ctas": [
+            "contact us"
+          ],
+          "excerpt": "A Data Processing Agreement or “DPA” is a contract between a data controller and a data processor that describes the roles and responsibilities of the parties when personal data is processed. A DPA must satisfy a number of requirements in order to be compliant with data privacy laws, including the EU General Data Protection Regulation (“GDPR”)."
+        }
+      ],
+      "combinedText": "Stripe | 収益向上のための金融インフラ Stripe は、あらゆる規模や業種のビジネスにおける決済の受け入れ、柔軟な請求モデルの構築、および資金移動の管理を支援する、金融サービスプラットフォームです。 事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。 事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。 ビジネスの形態を問わない、柔軟なプラットフォーム。 オンライン決済・対面決済をグローバルに展開 あらゆるサブスク・課金モデルに対応 エージェンティックコマースを導入 カード発行プログラムを自在に展開 ステーブルコインと暗号資産で越境決済に対応 プラットフォームに決済機能を統合 グローバルなコマースを 支える基盤 あらゆるビジネスに対応。 機動力のある金融インフラで、大企業の基盤を刷新 決済から金融サービスまで、必要なツールを自由に組み合わせて使える包括的なソリューションが、ビジネスの成長を支え続けます。 Fortune 100 企業のうち 50% が、グローバル展開や顧客体験の再構築など、ビジネスの成長を支える基盤として Stripe を採用しています。 Stripe ソリューションの導入から展開までを代行する、コンサルティングパートナーを活用いただけます。 ステーブルコインの先駆的企業から Forbes AI 50 選出企業の 78% まで、Stripe は導入しやすい金融基盤で、スタートアップの次世代の価値創出を支えています。 2 営業日以内に、資金調達、銀行口座の開設、決済の受け付けに必要なすべての環境が整います。 Fortune 100 から Forbes Cloud 100 まで、多くの垂直型 SaaS が Stripe を活用し、組込み型決済・金融サービスを備えたプロダクトを展開しています。 埋め込みコンポーネントやノーコードツールを活用し、運用負荷を抑えながら、決済プロダクトの市場投入と拡大を加速します。 決済、カードインターチェンジ、融資手数料などを通じて、プラットフォーム上の取引を収益化します。 サービスソリューション開発者リソース料金体系サインイン今すぐ始める営業にお問い合わせ戻る営業にお問い合わせサインイン営業にお問い合わせStripe 上の決済額が全世界の GDP に占める割合: 事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。事業成長を支える金融インフラ。 決済から組込み型金融、エージェンティックコマースまで、企業の収益最大化を支援。始めるGoogle で登録ビジネスの形態を問わない、柔軟なプラットフォーム。決済から金融サービスまで、必要なツールを自由に組み合わせて使える包括的なソリューションが、ビジネスの成長を支え続けます。最も包括的な決済・金融ツールでビジネスを成長させましょう。オンライン決済・対面決済をグローバルに展開あらゆるサブスク・課金モデルに対応Pro プラン月次請求トークン1,000ユニットごとに ￥2.00使用量過去 30 日間に使用されたトークンエージェンティックコマースを導入カード発行プログラムを自在に展開ステーブルコインと暗号資産で越境決済に対応プラットフォームに決済機能を統合インターネット経済の未来を拓くカンファレンスStripe Sessions について4 月 29 ～ 30 日、4 月 29 日〜30 日Moscone West、モスコーニ・ウェストグローバルなコマースを 支える基盤135 +対応通貨と決済手段$1.9兆2025 年の決済処理総額。99.999%Stripe サービスの稼働率2億 +Stripe Billing 上のサブスクリプション数135 +対応通貨と決済手段$1.9兆2025 年の決済処理総額。99.999%Stripe サービスの稼働率2億 +Stripe Billing 上のサブスクリプション数あらゆるビジネスに対応。ニーズに応える柔軟性と信頼性を兼ね備えたプラットフォーム。機動力のある金融インフラで、大企業の基盤を刷新Fortune 100 企業のうち 50% が、グローバル展開や顧客体験の再構築など、ビジネスの成長を支える基盤として Stripe を採用しています。大企業向けソリューションHertz、コマース体験の統合を実現事例を表示160 カ国以上1.1万 を超える世界各地の拠点Payments、Terminal、Connect、Radar、Stripe Sigma を導入済み事例を表示URBN、50 億米ドルのオンライン・店舗売上を Stripe へ事例を表示小売業者ポートフォリオにおける5 以上の の消費者向けブランド700 を超える店舗Payments、Terminal、Connect、Stripe Sigma、Radar を導入済み事例を表示Instacart、Stripe を活用してオンライン食料品配送サービスを運営。事例を表示60万 を超える顧客1800 件の小売業パートナーが約 10万 店舗を展開Payments、Connect、Data Pipeline、Issuing を導入済み事例を表示Le Monde、デジタル版と紙面版の国内外の決済を改善事例を表示100% Stripe 上のデジタル版と紙版の決済割合実装と本番環境への移行まで 3 カ月未満Payments、Stripe Sigma、Radar を導入済み事例を表示専任エキスパートとの協業で、価値創出をスピーディにプロフェッショナルサービス。導入・複雑な実装・大規模な移行まで、Stripe のエキスパートが支援します。サービスを表示 Stripe 認定エキスパート。Stripe ソリューションの導入から展開までを代行する、コンサルティングパートナーを活用いただけます。パートナーを表示 サポートプラン。ニーズに応じた段階別プランで、技術的な質問から日々の運用まで継続的に支援します。プランを表示 強固なビジネス基盤で、スタートアップの成長を加速ステーブルコインの先駆的企業から Forbes AI 50 選出企業の 78% まで、Stripe は導入しやすい金融基盤で、スタートアップの次世代の価値創出を支えています。スタートアップ向けソリューションみんなのマーケット、Stripe と提携してオンラインマーケットプレイスでカード決済を導入。みんなのマーケットの事例を表示 Runway、Stripe のノーコードソリューションの活用により開発者の時間を節約。Runwayの事例を表示 Lovable、Stripe を活用しバイブコーディングの分野で圧倒的な存在へと成長。Lovableの事例を表示 Supabase、Stripe 活用により 150 カ国でバックエンドサービスを提供。Supabaseの事例を表示 Linear、請求と決済業務の管理において Stripe と提携。Linearの事例を表示 ElevenLabs、Stripe と共に $30億 規模の AI オーディオ分野のリーダーへと成長。動画を見る Stripe Startups プログラム。各種特典、専用コミュニティ、エキスパートによるリソースをご活用ください。詳細を表示 Stripe Atlas。2 営業日以内に、資金調達、銀行口座の開設、決済の受け付けに必要なすべての環境が整います。詳細を表示 SaaS プラットフォームを「金融オペレーティングシステム」へFortune 100 から Forbes Cloud 100 まで、多くの垂直型 SaaS が Stripe を活用し、組込み型決済・金融サービスを備えたプロダクトを展開しています。プラットフォーム向けソリューション市場投入を加速。埋め込みコンポーネントやノーコードツールを活用し、運用負荷を抑えながら、決済プロダクトの市場投入と拡大を加速します。ガイドを読む 金融を起点に、新たな収益源を拡大：決済、カードインターチェンジ、融資手数料などを通じて、プラットフォーム上の取引を収益化します。ガイドを読む プラットフォームのリスクを管理。コンプライアンスから不正利用防止、アカウントのセキュリティまで、グローバルな規制に対応します。ガイドを読む Stripe というグローバルなテクノロジーパートナーとともに、カナダのヨガスタジオからイギリスのボクシング教室まで、ウェルネス分野の事業者の成長と進化を支援しています。カーティス・モイヤー 氏、Mindbody 決済部門リードプロダクトマネージャー事例を表示 Stripe を利用しなければ、このようなリソースを顧客に提供するのに相当な時間とエンジニアリング作業が必要だったでしょう。Stripe の金融インフラストラクチャは Jobber にとって非常に有益なものであり、今後の展開にも期待しています。ローラ・コリンズン 氏、Jobber フィンテック担当ディレクター事例を表示 Stripe の導入により、サブスクリプションや決済のプロセスが関係者全員にとって極めて容易になります。これにより、ライターやクリエイターは Substack で本来の創作活動に専念し、その対価を円滑に受け取ることが可能になります。セス・マクミラン 氏、Substack エンジニアリングマネージャー事例を表示 導入から運用までのサポートが手厚く、安心して開発、運用できています。新しいサービスに挑戦するときは、またサポートをお願いできればと思います。天野 悠史 氏、株式会社アダストリア ソリューション開発部アシスタントマネージャー事例を表示 あらゆる技術スタックに、信頼と拡張性を。ビジネスのニーズに合わせて、Stripe を柔軟にカスタマイズできます。開発者ドキュメントを参照Stripe の GitHub を表示既存のシステムと接続。複数の決済代行業者をまたぐ決済のオーケストレーションや、カスタムワークフローの構築、API・パートナーアプリ・既存インテグレーションを通じたサードパーティ連携が可能です。事業規模を確実に拡大。ピーク時でも、毎秒数千件のトランザクションを安定した速度と高い信頼性で処理します。5億 +API リクエスト数 (毎日)1万 +API リクエスト数 (毎秒)15万 +取引数 (毎分)インテグレーションの方法を選択。AI を活用したサポート、充実したドキュメント、組み込みのデバッグツールにより、ビジネスに最適な方法で導入を開始できます。ノーコードで利用開始。請求の設定、対面決済、決済用リンクの共有を、コード不要で Stripe ダッシュボードから行うことができます。ノーコードで始める 連携プラットフォームを活用。ウェブサイト構築ツールと Stripe の連携に対応したプラットフォームをご覧ください。プラットフォーム一覧を表示 独自の実装を構築。SDK、API、MCP サーバー、AI 開発者ツールを活用し、Stripe との独自の連携を構築・運用できます。詳細を表示 Stripe の最前線Stripe の最新情報はこちらをご覧ください。Stripe を利用するビジネスが 2025 年に生み出す$1.9兆。Stripe の年次報告書では、インターネット経済を特徴づける動向について調査しています。新規ビジネスの成長の加速、国際展開の加速、ステーブルコインの進展、エージェンティックコマースなどを解析しています挙げられます。レターを読む15万 +のユーザーが過去最高の 1 日を達成。2025 年のブラックフライデーからサイバーマンデーにかけて、Stripe は企業向けに$400億 以上を処理し、99.9999%の稼働率を維持しました。詳細を表示Tidemark によるバーティカル / 中小企業 SaaS ベンチマークレポート。2025 年のバーティカル SaaS の成長を牽引する要因である、マルチプロダクト化、フィンテックの組み込み、プロダクト中核への AI 統合について解説します。詳細を表示Shopify CEO のトビ・リュトケ氏と、Stripe 共同創業者兼 CEO のジョン・コリソンが対談。Shopify と Stripe を形作った意思決定、コマースの未来、そして創業者へのアドバイスについて、彼らの話を聞いてみましょう。動画を見るアプリストア外決済のための新ツール。規制の変化をビジネスチャンスに変え、Stripe を活用して iOS や Android アプリでの決済の自由度と収益性を高める方法をご紹介します。詳細を表示Crypto.com × Stripe: 暗号資産決済をより身近に。この提携により、顧客はチェックアウト時に暗号資産残高で直接支払いが可能になります。事業者は既存の決済フローを維持したまま、新たなグローバル顧客を獲得できます。詳細を表示AI プラットフォームを通じた商品購入を可能に。Agentic Commerce Protocol (ACP) を活用することで、大規模な技術変更を行うことなく、あらゆるビジネスで AI プラットフォームからの決済を受け付けられます。詳細を表示大手小売業者が顧客体験を統合し、成長を促進する方法。他のブランドがオンラインと実店舗の体験をどのように統合し、決済フローを最適化してシームレスなショッピング体験を実現したかについて事例を紹介します。詳細を表示アイテム 1 の 8: Stripe を利用するビジネスが 2025 年に生み出す$1.9兆。Stripe を利用するビジネスが 2025 年に生み出す$1.9兆。Stripe の年次報告書では、インターネット経済を特徴づける動向について調査しています。新規ビジネスの成長の加速、国際展開の加速、ステーブルコインの進展、エージェンティックコマースなどを解析しています挙げられます。レターを読む15万 +のユーザーが過去最高の 1 日を達成。2025 年のブラックフライデーからサイバーマンデーにかけて、Stripe は企業向けに$400億 以上を処理し、99.9999%の稼働率を維持しました。詳細を表示Tidemark によるバーティカル / 中小企業 SaaS ベンチマークレポート。2025 年のバーティカル SaaS の成長を牽引する要因である、マルチプロダクト化、フィンテックの組み込み、プロダクト中核への AI 統合について解説します。詳細を表示Shopify CEO のトビ・リュトケ氏と、Stripe 共同創業者兼 CEO のジョン・コリソンが対談。Shopify と Stripe を形作った意思決定、コマースの未来、そして創業者へのアドバイスについて、彼らの話を聞いてみましょう。動画を見るアプリストア外決済のための新ツール。規制の変化をビジネスチャンスに変え、Stripe を活用して iOS や Android アプリでの決済の自由度と収益性を高める方法をご紹介します。詳細を表示Crypto.com × Stripe: 暗号資産決済をより身近に。この提携により、顧客はチェックアウト時に暗号資産残高で直接支払いが可能になります。事業者は既存の決済フローを維持したまま、新たなグローバル顧客を獲得できます。詳細を表示AI プラットフォームを通じた商品購入を可能に。Agentic Commerce Protocol (ACP) を活用することで、大規模な技術変更を行うことなく、あらゆるビジネスで AI プラットフォームからの決済を受け付けられます。詳細を表示大手小売業者が顧客体験を統合し、成長を促進する方法。他のブランドがオンラインと実店舗の体験をどのように統合し、決済フローを最適化してシームレスなショッピング体験を実現したかについて事例を紹介します。詳細を表示今週注目の本起業の原点は、常に一つの着想にあります。建物はいかに学ぶかStewart Brand建物のコア構造、外皮、設備、内装は異なる速度で老朽化します。これらの層を独立させること (例えば、設備配管をアクセス可能なシャフトに通し、機器を交換可能な設計にすること) で、建物全体を取り壊すことなく、配線や屋根、レイアウトを更新できます。この本は、最初からすべてを完璧にしようとするのではなく、長期的に更新コストとリスクを抑えた建物設計を提唱しています。経済の発展と技術の進歩に関するその他のアイデアについては、Stripe 発行の資料をご覧ください。Stripe PressWorks in Progress今すぐ始める今すぐアカウントを作成するか、貴社のビジネスに最適なカスタムパッケージについてはお問い合わせください。今すぐ始める営業にお問い合わせお支払い額をご確認ください手数料によるわかりやすくシンプルな料金。初期費用や月額費用の固定費はありません。料金の詳細 構築を開始するわずか 10 分程度で Stripe に登録し、利用開始できます。実装オプション プロダクト・料金体系料金体系AtlasAuthorization BoostBillingCapitalCapital for platformsCheckoutClimateConnectData PipelineElementsFinancial AccountsFinancial Accounts for platformsFinancial ConnectionsGlobal PayoutsIdentityInvoicingIssuingLinkManaged PaymentsPaymentsPayment Links決済手段RadarRevenue RecognitionStripe SigmaTaxTerminal従量課金ソリューション大企業スタートアップエージェンティックコマースE コマース組込み型金融財務の自動化グローバルビジネスアプリ内決済マーケットプレイスプラットフォームSaaSAI 企業クリエイターエコノミー接客・旅行・レジャー保険メディア・エンターテインメント非営利団体小売業開発者ドキュメントStripe の API はこちらAPI ステータスAPI の変更ログライブラリーと SDK開発者ブログ統合とカスタムソリューションStripe App MarketplaceStripe パートナーエコシステムプロフェッショナルサービスリソースガイド導入事例ブログSessions 年次カンファレンスプライバシー・利用規約禁止業種・制限付き業種ライセンスサイトマップクッキー設定その他リソース会社情報採用情報ニュースルームStripe Press営業にお問い合わせサポートサポートにお問い合わせ管理対象サポートプランサインイン 日本(日本語)© 2026 Stripe, LLC. 料金体系 & 手数料 | Stripe Stripeの手数料や費用詳細をご確認いただけます。製品や決済方法別に料金を比較し、最適なプランを見つけましょう。 支払い 収益 資金管理 プラットフォームとマーケットプレイス その他 支払い 収益 資金管理 プラットフォームとマーケットプレイス その他 あらゆる規模のビジネスに対応する料金体系 標準 オンライン決済、対面支払い、継続請求、埋め込み型決済ほか、多数ご用意しております。 広く普及しているクレジットカード、デビットカード、プリペイドカード、デジタルウォレットによるオンライン決済を受け付けられます。 一度の導入で、ファミリーマート、ローソン、ミニストップ、セイコーマートなど、日本中のコンビニ (3 万 4,000 店舗以上) での決済が可能になります。 オンラインでのカード払いの際、認証方法として 3D セキュアを使って顧客の本人確認を実施。 Adaptive Acceptance、自動カード更新機能、ネットワークトークンなど、AI を活用した決済最適化により、承認率を高め、カード処理コストを削減します。 Adaptive Acceptance、自動カード更新機能、およびネットワークトークンには 個別価格 が適用されます。 カード取引の不正請求の申し立て (チャージバック) について、ガイダンスが提供され、効果的に対応可能。 一部の不正請求の申し立ての対処には、ネットワーク手数料が発生する場合があります。詳細を表示 製品 ソリューション 開発者 リソース 料金体系 ダッシュボード サインイン サインイン 営業にお問い合わせ 戻る 商品 ソリューション 開発者 リソース 料金体系 ダッシュボード サインイン サインイン 支払い Payments オンライン決済 Managed Payments マーチャントオブレコードソリューション Payment Links コーディング不要の決済ページ Checkout 構築済みの決済フォーム Elements 柔軟な UI コンポーネント 決済手段 100 以上に対応 Terminal 対面支払い Radar 不正防止 Authorization Boost 決済成功率の最適化 Link スピーディーな決済 収益 Billing サブスクリプションの管理 Usage-based billing 従量課金ベースの請求 Invoicing 1 回限りまたは継続 Tax 消費税と VAT の自動計算 Revenue Recognition 会計管理の自動化 Stripe Sigma カスタムレポート Data Pipeline データの同期 資金管理 Global Payouts 第三者への入金 プラットフォームとマーケットプレイス Connect プラットフォーム決済の構築 その他 Atlas スタートアップの企業設立 Climate カーボンリムーバル Identity オンライン本人確認 Stripe Sessions について 4 月 29～30 日にサンフランシスコで開催される、Stripe の年次カンファレンスにご登録ください。 今すぐ登録 企業規模別 大企業向け スタートアップ向け ユースケース別 エージェンティックコマース E コマース / ECサイト 埋込型金融 財務処理の自動化 グローバルビジネス アプリ内決済 マーケットプレイス プラットフォーム SaaS 業種別 AI 企業 クリエイターエコノミ― ホスピタリティ、旅行、レジャー 保険 メディアおよびエンターテインメント 非営利団体 小売業 エコシステム パートナー Stripe App Marketplace ドキュメント Stripe のドキュメント API リファレンス ライブラリと SDK Stripe Apps ガイド オンライン決済を受け付け 構築済みの決済を実装 プラットフォームまたはマーケットプレイスを構築する サブスクリプションを管理 従量課金請求を提供 ステーブルコイン担保型のカードを発行 リソース アプリへの導入 コードサンプル 開発者のブログ API ステータス 学ぶ ブログ 導入事例 ガイド サポート サポートに問い合わせる 管理サポートプラン プロフェッショナルサービス 会社 Sessions 年次カンファレンス 採用情報 ニュースルーム Stripe Press お問い合わせ 営業にお問い合わせ パートナーになる 今すぐ試す 営業にお問い合わせ 支払い Payments オンライン決済 Managed Payments マーチャントオブレコードソリューション Payment Links コーディング不要の決済ページ Checkout 構築済みの決済フォーム Elements 柔軟な UI コンポーネント 決済手段 100 以上に対応 Terminal 対面支払い Radar 不正防止 Authorization Boost 決済成功率の最適化 Link スピーディーな決済 収益 Billing サブスクリプションの管理 Usage-based billing 従量課金ベースの請求 Invoicing 1 回限りまたは継続 Tax 消費税と VAT の自動計算 Revenue Recognition 会計管理の自動化 Stripe Sigma カスタムレポート Data Pipeline データの同期 資金管理 Global Payouts 第三者への入金 プラットフォームとマーケットプレイス Connect プラットフォーム決済の構築 その他 Atlas スタートアップの企業設立 Climate カーボンリムーバル Identity オンライン本人確認 Stripe Sessions について 4 月 29～30 日にサンフランシスコで開催される、Stripe の年次カンファレンスにご登録ください。 今すぐ登録 企業規模別 大企業向け スタートアップ向け ユースケース別 エージェンティックコマース E コマース / ECサイト 埋込型金融 請求・財務関連 グローバルビジネス アプリ内決済 マーケットプレイス プラットフォーム SaaS 業種別 AI 企業 クリエイターエコノミ― ホスピタリティ、旅行、レジャー 保険 メディアおよびエンターテインメント 非営利団体 小売業 エコシステム パートナー Stripe App Marketplace ドキュメント Stripe のドキュメント API リファレンス ライブラリと SDK Stripe Apps ガイド オンライン決済を受け付け 構築済みの決済を実装 プラットフォームまたはマーケットプレイスを構築する サブスクリプションを管理 従量課金請求を提供 ステーブルコイン担保型のカードを発行 リソース アプリへの導入 コードサンプル 開発者のブログ API ステータス 学ぶ ブログ 導入事例 ガイド サポート サポートに問い合わせる 管理サポートプラン プロフェッショナルサービス 会社 Sessions 年次カンファレンス 採用情報 ニュースルーム Stripe Press お問い合わせ 営業にお問い合わせ パートナーになる あらゆる規模のビジネスに対応する料金体系 標準 使った分だけのシンプルな料金体系であらゆる機能を備えた決済プラットフォームを利用可能。初期費用は無料、月額費または追加手数料はありません。 始める 3.6% 国内カードでの成功した取引 1 件あたり カスタム 取引額が多い場合や特殊なビジネスモデルには、カスタムパッケージをご用意しています。 営業にお問い合わせ 取引量に応じた割引 複数製品購入時の割引 国別の手数料 標準の料金体系 カスタム料金体系 よくあるご質問 すぐに利用可能な機能: グローバルアクセス 195 カ国 135 種類以上の通貨 100 種類以上の決済手段 1 回の連携 不正利用防止を標準装備 強力な機械学習 新しい不正利用パターンに適応 連携の必要なし 不正利用分析 決済フローの最適化ツール 柔軟性の高い UI コンポーネント 事前構築済みの決済フォーム スピーディーな決済 ノーコード決済 決済の最適化で売上を促進 リアルタイムの再試行 カードの自動更新 顧客認証 プラットフォームとマーケットプレイス向けの埋め込み型決済機能 即時のユーザー登録 プラットフォームの管理 埋め込みコンポーネント リスク管理ツール 銀行口座へのスピーディーかつ計画的な入金 柔軟性の高い決済オプション 同一条件での売上処理 透明性の高い入金 電話、チャット、メールによるサポート 24 時間年中無休のサポート 業界トップレベルのドキュメント Discord でのテクニカルサポート セキュリティ、信頼性、法令遵守 過去の平均稼働時間: 99.999% PCI 準拠 各国の規制に対応 標準の料金体系 カスタム料金体系 よくあるご質問 営業にお問い合わせ すべてのプロダクトの標準料金体系 Stripe プラットフォーム全体の料金体系のご案内 オンライン決済、対面支払い、継続請求、埋め込み型決済ほか、多数ご用意しております。 グローバルな決済 Payments Payment Links Checkout Managed Payments Radar Terminal 資金管理 Connect 収益・財務オートメーション Billing Invoicing Tax Stripe Sigma Data Pipeline Revenue Recognition その他の機能 Identity Atlas Climate カスタム料金体系 グローバルな決済 購入完了率の最適化、現地の決済手段への対応、支払い成功率の向上を実現します。 Payments 事業"
+    },
+    "freevideogenerator-io": {
+      "siteUrl": "https://freevideogenerator.io/",
+      "siteName": "freevideogenerator.io",
+      "pages": [
+        {
+          "url": "https://freevideogenerator.io/",
+          "pageType": "home",
+          "title": "Van Gogh Free AI Video Generator – Turn Text or Images into Stunning, Scene-Based Videos with Advanced AI Video Generation Models",
+          "description": "Transform simple text or images into high-quality, character-consistent videos with Van Gogh Free AI Video Generator. Create UGC ads and multi-minute Video Stories using advanced AI video generation models and video effects. Start with free credits and enjoy no watermark on paid plans.",
+          "headings": [
+            "Effortlessly Create Stunning, High-Quality Videos with Consistent Characters from Simple Ideas.",
+            "Endless Creative Possibilities",
+            "Text to Video",
+            "Image to Video",
+            "Long Video",
+            "From Ideas to Complete Long Videos, One Click Away"
+          ],
+          "ctas": [
+            "Create Image",
+            "Try Now",
+            "Start Creating Free",
+            "Start-to-End Frame AI Video"
+          ],
+          "excerpt": "Trusted by 100,000+ users at top companies"
+        },
+        {
+          "url": "https://freevideogenerator.io/pricing",
+          "pageType": "pricing",
+          "title": "Pricing Plans - AI Video Generator | Free Credits to Start",
+          "description": "Flexible pricing for AI video generation. Start with free credits, choose pay-as-you-go or subscription plans. Create unlimited videos with advanced AI models.",
+          "headings": [
+            "Choose Your Plan",
+            "Starter Yearly Plan",
+            "Pro Yearly Plan",
+            "Max Yearly Plan",
+            "Frequently Asked Questions",
+            "How are credits used?"
+          ],
+          "ctas": [
+            "Start-to-End Frame AI Video"
+          ],
+          "excerpt": "Create stunning AI videos with our free video generator using advanced technology. Transform your ideas into beautiful videos in seconds—whether from text, images, or full stories."
+        }
+      ],
+      "combinedText": "Van Gogh Free AI Video Generator – Turn Text or Images into Stunning, Scene-Based Videos with Advanced AI Video Generation Models Transform simple text or images into high-quality, character-consistent videos with Van Gogh Free AI Video Generator. Create UGC ads and multi-minute Video Stories using advanced AI video generation models and video effects. Start with free credits and enjoy no watermark on paid plans. Effortlessly Create Stunning, High-Quality Videos with Consistent Characters from Simple Ideas. Endless Creative Possibilities Text to Video Image to Video Long Video From Ideas to Complete Long Videos, One Click Away Reference Image to Video Start-End Image to Video UGC Ad Video AI Avatar Video Discover Amazing Videos from Our Community Explore Creative Effects Trusted by 100,000+ users at top companies Complete the verification above to generate See what creators around the world are making — pick a style and start generating in seconds. Create emotionally resonant short films with cinematic lighting and depth. A weary man trudges at dawn, golden sunlight through mist, cinematic slow motion... A tiny astronaut walking on the surface of a coffee bean, macro lens, cinematic lighting Transform your text descriptions into stunning, high-quality videos with advanced AI models. Simply describe your vision and watch it come to life. Bring your static images to life by converting them into dynamic, animated videos. Perfect for creating engaging content from photos. Van GoghFree Video GeneratorVideo AIAI Image GeneratorUnlimitedEarn CreditsPricingStart for FreeEnglishSign InVan GoghFree Video GeneratorEffortlessly Create Stunning, High-Quality Videos withConsistent Characters from Simple Ideas.Create VideoCreate ImageTrusted by 100,000+ users at top companies/to VideoLong VideoNEWUGC Ad VideoAdd imageVan Gogh Free Quality0 / 2500Public VisiblePROCopyright ProtectionPRO⚡Generate100✦You are currently using free mode. Upgrade to a paid plan for higher video quality and unlimited generation.Upgrade NowComplete the verification above to generateWhat You Can CreateEndless Creative PossibilitiesSee what creators around the world are making — pick a style and start generating in seconds.Try It Free🎬Cinematic FilmCreate emotionally resonant short films with cinematic lighting and depth.A weary man trudges at dawn, golden sunlight through mist, cinematic slow motion...CopyVEO3 Fast1 / 16🎬Cinematic Film😂Comedy & Viral🛍️Brand Advertising🔥ASMR & Relaxing🌊Surreal Art✨Animation🚀Sci-Fi & Epic💎Luxury Fashion🎓Education & Explainer🌺Photo Comes Alive🎞️Multi-Scene Film🛒Product Showcase🐱Cute Animals🍣Food & ASMR⚡Anime Action🌿Nature POVTry It FreeA tiny astronaut walking on the surface of a coffee bean, macro lens, cinematic lightingText to VideoTransform your text descriptions into stunning, high-quality videos with advanced AI models. Simply describe your vision and watch it come to life.Try NowImage to VideoBring your static images to life by converting them into dynamic, animated videos. Perfect for creating engaging content from photos.Try NowImageA gorgeous blonde western woman dancing energetically, confident hip hop dance moves, rhythmic hip movement, playful smile, looking at camera, natural hair movement while dancing, summer sunset lighting, tropical beach background with palm trees, cinematic lighting, dynamic camera tracking shot, ultra realistic skin texture, high detail, 4k video, smooth motion, consistent character, stable faceVideoLong VideoCreate extended, multi-minute videos with interactive story generation. Perfect for storytelling, tutorials, and comprehensive content creation.Try NowFrom Ideas to Complete Long Videos, One Click AwayTransform your creative ideas into full-length long videos with ease. AI automatically generates stories, characters, scripts, and videos, with interactive conversational adjustments to bring your vision to life.Start Creating Long VideosLonely ManMagical Forest CatAdventures on the MoonReference Image to VideoGenerate videos that match the style and composition of your reference images. Maintain visual consistency across your creations.Try Now3 Images+Prompt\"A romantic scene inside a medieval European castle, featuring a beautiful blonde woman and a handsome man embracing passionately and sharing a heated kiss. The castle has grand stone walls, flickering candle chandeliers, and a majestic hall. Cinematic, realistic, highly detailed, soft romantic atmosphere, gentle camera movement, slow motion, 4K resolution, warm natural lighting, cinematic color grading.\"VideoVideoStart-End Image to VideoCreate smooth video transitions between two images. Define your start and end frames, and AI will generate the perfect transition.Try NowStartEndStart Frame+End Frame\"A cinematic scientific visualization of the Big Bang, transitioning from the cosmic singularity to the explosive birth of the universe. The video begins with an infinitely dense, brilliant white-gold sphere of pure energy at the center of absolute darkness, surrounded by distorted spacetime grid lines showing gravitational warping. The singularity pulses and vibrates with increasing intensity, growing brighter and more unstable. Waves of energy ripple outward, and the spacetime fabric around it begins to tear and distort violently. Suddenly, the singularity reaches critical mass and explodes in a massive, universe-creating detonation. The explosion releases tremendous energy in all directions - brilliant streams of white-hot plasma, orange, red, blue, and violet energy burst outward in a spectacular expanding sphere.\"VideoStartEndVideoUGC Ad VideoGenerate authentic user-generated content style advertisements. Perfect for social media marketing and brand campaigns.Try NowProductImage+Prompt“promote the product”VideoAI Avatar VideoCreate personalized AI avatars and character videos. Perfect for virtual presenters, animated characters, and unique content.Try NowPhotoPhoto+Script“Hello everyone! Welcome to Van Gogh Free Video Generator!”VideoDiscover Amazing Videos from Our CommunityExplore stunning AI-generated videos created by our community. Find inspiration for your next creative project.View More Community Videos✨AI Effect TemplatesExplore Creative EffectsExplore a wide variety of creative effects—from Halloween transformations to magical animations—and apply them instantly to bring your videos to life with just one click!🏃 MotionTry Now →Multiple MeSee yourself multiply — one becomes many🏃 MotionTry Now →Become Royal Vampire — Blood AwakeningAwaken your thirst for power🏃 MotionTry Now →Dance with GhostWhen spirits join your steps🏃 MotionTry Now →Multiple MeSee yourself multiply — one becomes many🏃 MotionTry Now →Become Royal Vampire — Blood AwakeningAwaken your thirst for power🏃 MotionTry Now →Dance with GhostWhen spirits join your stepsView More EffectsFree Video Generator Key FeaturesExperience cutting-edge AI technology that helps you transform ideas into stunning video artworks in minutes.Text to VideoTransform your text descriptions into dynamic, high-quality video artworks. Just describe your idea, and watch AI turn it into stunning visuals.Image to VideoUpload your images, and AI will bring them to life by adding dynamic effects and animations to create stunning video content.High Quality OutputThanks to our advanced AI models, every video is crafted with stunning visuals and artistic effects, delivering professional-grade quality with every creation.Rich Effect TemplatesExplore a variety of creative effect templates, including Halloween, dance, transformation, and other artistic styles, to instantly enhance your videos.Amazing Long VideoCreate multi-minute, fully interactive long videos from ideas to script to visuals. Adjust character designs, scripts, and video sequences interactively, all with conversational flexibility.All-in-One ModelChoose from multiple video generation AI models and customize rich generation parameters for the ultimate video creation experience.Free to UseStart creating for free with 21 credits on signup. No credit card required to begin your creative journey.Fast GenerationGenerate your videos in just 2-5 minutes, making the process quick and efficient.What Our Users Are SayingJoin thousands of creators, marketers, and businesses already transforming their content with AI-powered video generation.“As a full-time creator, I'm always looking for ways to speed up my workflow without sacrificing quality. FreeVideoGenerator.io has been an absolute game-changer. The fact that I can switch between different top-tier AI models like Kling and Sora 2 in one platform is incredible — no more juggling multiple subscriptions. The text-to-video feature understands exactly what I want, and the outputs are consistently stunning and cinematic. It has saved me hours of editing time every single week.”Sarah JenkinsYouTube Content Creator“Running ad campaigns requires constant fresh content, which used to drain our budget and our team's energy. Since discovering the UGC Ad Video feature on FreeVideoGenerator.io, our entire workflow has transformed. I just upload a product image, type a quick prompt, and within minutes I have an authentic-looking, highly engaging video ad ready for social media. Our ad engagement rates have climbed significantly since we started using this tool, and the cost savings have been remarkable.”Marcus ThorneDigital Marketing Director“I was initially intimidated by AI video generation, thinking I needed a technical background or design experience. I couldn't have been more wrong. The interface of FreeVideoGenerator.io is incredibly intuitive — if you can type a sentence, you can create a professional video. The Long Video feature is my absolute favorite. It helps me create multi-minute educational narratives that keep my students genuinely engaged. My course completion rates have improved noticeably since I started adding these videos.”Emily ChenOnline Course Instructor“The Image to Video capabilities here are simply mind-blowing. I regularly receive static product photos and lifestyle images from clients and need to bring them to life quickly. The dynamic effects and smooth animations this platform generates are genuinely professional-grade — my clients are always impressed. What really sold me was the pricing structure. Starting with free credits allowed me to test everything thoroughly before committing, and upgrading to the Pro plan was a complete no-brainer.”Jake PetersonFreelance Video Editor“As a full-time creator, I'm always looking for ways to speed up my workflow without sacrificing quality. FreeVideoGenerator.io has been an absolute game-changer. The fact that I can switch between different top-tier AI models like Kling and Sora 2 in one platform is incredible — no more juggling multiple subscriptions. The text-to-video feature understands exactly what I want, and the outputs are consistently stunning and cinematic. It has saved me hours of editing time every single week.”Sarah JenkinsYouTube Content Creator“Running ad campaigns requires constant fresh content, which used to drain our budget and our team's energy. Since discovering the UGC Ad Video feature on FreeVideoGenerator.io, our entire workflow has transformed. I just upload a product image, type a quick prompt, and within minutes I have an authentic-looking, highly engaging video ad ready for social media. Our ad engagement rates have climbed significantly since we started using this tool, and the cost savings have been remarkable.”Marcus ThorneDigital Marketing Director“I was initially intimidated by AI video generation, thinking I needed a technical background or design experience. I couldn't have been more wrong. The interface of FreeVideoGenerator.io is incredibly intuitive — if you can type a sentence, you can create a professional video. The Long Video feature is my absolute favorite. It helps me create multi-minute educational narratives that keep my stude"
+    },
+    "runable-com": {
+      "siteUrl": "https://runable.com/",
+      "siteName": "runable.com",
+      "pages": [
+        {
+          "url": "https://runable.com/",
+          "pageType": "home",
+          "title": "Runable - Best way to work with AI",
+          "description": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks.",
+          "headings": [],
+          "ctas": [],
+          "excerpt": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks."
+        }
+      ],
+      "combinedText": "RUNABLE"
+    },
+    "runable": {
+      "siteUrl": "https://runable.com/",
+      "siteName": "runable.com",
+      "pages": [
+        {
+          "url": "https://runable.com/",
+          "pageType": "home",
+          "title": "Runable - Best way to work with AI",
+          "description": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks.",
+          "headings": [],
+          "ctas": [],
+          "excerpt": "Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks."
+        }
+      ],
+      "combinedText": "Runable - Best way to work with AI Runable is the world's best AI general agent that can think, plan, and execute end-to-end tasks. Create stunning slides, beautiful websites, comprehensive reports, engaging videos, and more with top performance on GAIA, DRACO, BrowserComp, and other leading benchmarks. RUNABLE"
+    },
+    "kumoo-ai": {
+      "siteUrl": "https://kumoo.ai/",
+      "siteName": "kumoo.ai",
+      "pages": [
+        {
+          "url": "https://kumoo.ai/",
+          "pageType": "home",
+          "title": "Professional AI Portrait Retouching",
+          "description": "AI-powered photo editing platform for fast batch portrait retouching and background processing on both web and desktop.",
+          "headings": [
+            "AI Tools",
+            "Desktop Plans",
+            "Features",
+            "Desktop Plans",
+            "Scenarios",
+            "Kumoo Blog"
+          ],
+          "ctas": [
+            "Try Now",
+            "Get Started for Free",
+            "Try for Free",
+            "Contact Us"
+          ],
+          "excerpt": "Designed to remove backgrounds from professional photos, commercial portraits, and high-end product photos. Create stunning visuals for e-commerce, advertisements, and branded content in just a few steps! Supports HD exports and batch processing, and effortlessly handles product photo retouching, model cutouts, and creative composites."
+        },
+        {
+          "url": "https://kumoo.ai/pricing-for-pro",
+          "pageType": "pricing",
+          "title": "Kumoo Pricing Plans for Desktop Pro",
+          "description": "Kumoo offers flexible photo editing packages—the more photos you process, the bigger the discount. Choose a plan that fits your workload for the best value.",
+          "headings": [
+            "AI Tools",
+            "Desktop Plans",
+            "Features",
+            "Desktop Plans",
+            "Scenarios",
+            "Kumoo Blog"
+          ],
+          "ctas": [
+            "Try Now",
+            "Contact Us"
+          ],
+          "excerpt": "Download Kumoo and enjoy a free trial of our professional, easy-to-use AI photo retouching and batch editing tools. Perfect your photos with speed, precision, and style."
+        },
+        {
+          "url": "https://www.meitu.com/en/introduction",
+          "pageType": "about",
+          "title": "Overview-Meitu Inc.",
+          "description": "",
+          "headings": [
+            "About Meitu",
+            "Company History",
+            "The golden decade of mobile Internet",
+            "The age of rapid AI development",
+            "Our Team",
+            "Xinhong Wu"
+          ],
+          "ctas": [
+            "Contact Us",
+            "Join Us"
+          ],
+          "excerpt": "Founded in 2008, Meitu is an AI-driven technology company that regards \"beauty\" as its core ideal. Guided by our mission to \"Uniting Art and Technology\", Meitu is committed to creating world-class imaging products that simplify the creation of images, videos, designs, and other visual content."
+        }
+      ],
+      "combinedText": "Professional AI Portrait Retouching AI-powered photo editing platform for fast batch portrait retouching and background processing on both web and desktop. AI Tools Desktop Plans Features Desktop Plans Scenarios Kumoo Blog Pricing Professional AI Portrait Retouching Professional AI Background Removal Try for Free Premium Cutout Background Replacement Designed to remove backgrounds from professional photos, commercial portraits, and high-end product photos. Create stunning visuals for e-commerce, advertisements, and branded content in just a few steps! Supports HD exports and batch processing, and effortlessly handles product photo retouching, model cutouts, and creative composites. Kumoo's Background Removal delivers hair-level precision, accurately preserving fine details - even with messy backgrounds, stray hairs, or intricate subjects. Get professional, transparent elements with just one click. Designed for photo editing, e-commerce product images, and other demanding use cases. A perfect combination of Background Removal and Background Replacement. With just a few clicks, replace your background with a solid color to create stunning visuals that meet professional product display standards. Kumoo supports RAW file import for background removal, ensuring high-quality, lossless images for professional photography, commercial portraits, and high-end product images. Kumoo's online background remover supports batch processing. You can remove or replace backgrounds from entire photo sets in seconds, increasing efficiency while ensuring visual consistency across all images. Keep customers focused on what matters - your products. Copyright © 2026 Xiamen Meitu Technology Co., Ltd. AI ToolsRemove BackgroundPremium CutoutAI White BackgroundImage EnhancerAI RemovalClothing Wrinkle RemovalClothing Edge SmoothingClothing Color ChangeClothes Hanger RemovalDesktop PlansFeaturesDesktop PlansAI HD PortraitSkin RetouchingBody ShapeChange BackgroundSky ReplacementRemove Clothing WrinklesScenariosWeddingsArtisticE-commerceID PhotosKumoo BlogPricingTry NowProfessional AI Portrait RetouchingGet Started for FreeRemove BackgroundHOTAI White BackgroundAI RemovalClothing Wrinkle RemovalClothing Edge SmoothingClothes Hanger RemovalKumoo WebProfessional AI Background RemovalDesigned to remove backgrounds from professional photos, commercial portraits, and high-end product photos. Create stunning visuals for e-commerce, advertisements, and branded content in just a few steps! Supports HD exports and batch processing, and effortlessly handles product photo retouching, model cutouts, and creative composites.Try for FreeBeforeAfterBeforeAfterBeforeAfterBeforeAfterPortraitClothingAccessoryObjectsPremium CutoutKumoo's Background Removal delivers hair-level precision, accurately preserving fine details - even with messy backgrounds, stray hairs, or intricate subjects. Get professional, transparent elements with just one click. Designed for photo editing, e-commerce product images, and other demanding use cases.Get Started for FreeBeforeAfterBackground ReplacementA perfect combination of Background Removal and Background Replacement. With just a few clicks, replace your background with a solid color to create stunning visuals that meet professional product display standards.Get Started for FreeProfessional RAW Format ImportKumoo supports RAW file import for background removal, ensuring high-quality, lossless images for professional photography, commercial portraits, and high-end product images.Get Started for FreeBatch Background RemovalKumoo's online background remover supports batch processing. You can remove or replace backgrounds from entire photo sets in seconds, increasing efficiency while ensuring visual consistency across all images. Keep customers focused on what matters - your products.Get Started for FreeWhy choose Kumoo for removing image background?As a global leader in portrait beautification, image recognition, and processing, Meitu's advanced AI algorithms streamline your editing workflow and deliver professional results faster and more efficiently.Leading Portrait Retouch TechnologyCVPR NTIRE Image Enhancement Competition ChampionCVPR NTIRE Image Dehazing Competition Champion ICCV DeepFashion2 Challenge ChampionPrecise Image Segmentation CapabilitiesInternational image processing award-winning image detection and segmentation that excels at complex scenes.Powerful Image Processing EngineExtensive algorithms make batch processing of professional RAW files simple while delivering high-quality results.AI Model with Advanced Aesthetic ComprehensionWith years of expertise in commercial photography, we understand industry trends and seamlessly blend aesthetics with professional photo retouching.What Our Users Are SayingRonnix photographyphotography instructorThe software is very nice and quick and solves most issues encountered in the daily life of photographers and photo editing in general. The fact that you can summarize all the edits and save it in a preset makes Kumoo a quick solution for batch editing and timely deliveries of photos to clients. It helps me and my group of students save time in our work, improve efficiency, and satisfy more clients.Picturedisphotography studioThe software has helped with the tedious backdrop cleaning and skin tone retouching. It has saved me tons of hours editing and cleaning clients’ skin at a very affordable rate. More clients are satisfied with my services, which has allowed me to take on many more retouching orders. I’m really grateful for this software.Photografix AcademyDigital Creator Training InstituteKumoo has completely transformed my photo editing workflow! As a member of the Photografix Academy creative team, I’ve experienced firsthand the power of its AI retouching and batch editing capabilities. The results are stunning, and the interface is user-friendly and very easy to use. Highly recommended! It has also allowed more of our training students to use this software, helping everyone work faster and better!Grapexelstutor and graphic designerAs a tutor and graphic designer, Kumoo has saved me countless hours. The intuitive tools make editing fast, and the AI features bring out professional-quality results with ease. I especially love how smooth the workflow is—perfect for both teaching and creative projects.Kaelindividual KOLKumoo เป็นโปรแกรมที่ใช้งานง่ายและเร็วมากๆเหมาะสำหรับทุกคน ถึงแม้ไม่มีพื้นฐานการแต่งรูป ก็ใช้งานได้ออกมาเหมือนมืออาชีพ ผมชอบการที่เราสามารถแต่งหลายๆรูปพร้อมกันได้ บางรูปจะมีการปรับเพิ่มเติม แต่ก็ยังคุ้มค่าเวลา ดีกว่านั่งแต่งรูปทีละรูปแน่นอนZwe HtetMammamia.portfolio Team leaderဒီ Kumoo Professional AI Portrait Retouching ဆော့ဖ်ဝဲလ်ကို စတင်အသုံးပြုချိန်ကစပြီး ဓာတ်ပုံများကို တည်းဖြတ်ရာမှာ အချိန်ကုန် အများကြီးသက်သာခဲ့ပါတယ်။ အသားအရေကို Ai ဖြင့်အလိုအလျောက် ချောမွေ့စေကာ အသားအရေ၏ အရေးအကြောင်းများကို သဘာဝအတိုင်း ချိန်ညှိနိုင်ပါတယ်။ Professional ဆန်တဲ့ Quality ရလဒ်ကြောင့် စိတ်ကျေနပ်ရပါတယ်။Ronnix photographyphotography instructorThe software is very nice and quick and solves most issues encountered in the daily life of photographers and photo editing in general. The fact that you can summarize all the edits and save it in a preset makes Kumoo a quick solution for batch editing and timely deliveries of photos to clients. It helps me and my group of students save time in our work, improve efficiency, and satisfy more clients.Picturedisphotography studioThe software has helped with the tedious backdrop cleaning and skin tone retouching. It has saved me tons of hours editing and cleaning clients’ skin at a very affordable rate. More clients are satisfied with my services, which has allowed me to take on many more retouching orders. I’m really grateful for this software.Photografix AcademyDigital Creator Training InstituteKumoo has completely transformed my photo editing workflow! As a member of the Photografix Academy creative team, I’ve experienced firsthand the power of its AI retouching and batch editing capabilities. The results are stunning, and the interface is user-friendly and very easy to use. Highly recommended! It has also allowed more of our training students to use this software, helping everyone work faster and better!Grapexelstutor and graphic designerAs a tutor and graphic designer, Kumoo has saved me countless hours. The intuitive tools make editing fast, and the AI features bring out professional-quality results with ease. I especially love how smooth the workflow is—perfect for both teaching and creative projects.Kaelindividual KOLKumoo เป็นโปรแกรมที่ใช้งานง่ายและเร็วมากๆเหมาะสำหรับทุกคน ถึงแม้ไม่มีพื้นฐานการแต่งรูป ก็ใช้งานได้ออกมาเหมือนมืออาชีพ ผมชอบการที่เราสามารถแต่งหลายๆรูปพร้อมกันได้ บางรูปจะมีการปรับเพิ่มเติม แต่ก็ยังคุ้มค่าเวลา ดีกว่านั่งแต่งรูปทีละรูปแน่นอนZwe HtetMammamia.portfolio Team leaderဒီ Kumoo Professional AI Portrait Retouching ဆော့ဖ်ဝဲလ်ကို စတင်အသုံးပြုချိန်ကစပြီး ဓာတ်ပုံများကို တည်းဖြတ်ရာမှာ အချိန်ကုန် အများကြီးသက်သာခဲ့ပါတယ်။ အသားအရေကို Ai ဖြင့်အလိုအလျောက် ချောမွေ့စေကာ အသားအရေ၏ အရေးအကြောင်းများကို သဘာဝအတိုင်း ချိန်ညှိနိုင်ပါတယ်။ Professional ဆန်တဲ့ Quality ရလဒ်ကြောင့် စိတ်ကျေနပ်ရပါတယ်။Frequently Asked Questions1. What is Kumoo designed for?Kumoo(formerly Meitu Yunxiu) is an AI photo editing tool designed for batch portrait retouching and background processing, available on both web and Desktop platforms. Utilizing advanced AI technology, it allows you to automatically batch process images, improving efficiency and quality. This application is ideal for scenarios requiring fast processing of large volumes of images, especially for commercial purposes such as product displays in online stores.2. About Kumoo3. Kumoo's relationship with Meitu4. Is it easy for beginners to use?5. Is it possible to remove backgrounds from images with complex edges or details?6. Can Kumoo batch process images?7. What formats does Kumoo support?8. What formats does Kumoo export?9. Will the processed image have lower clarity?10. Do I need to download or install software to use Kumoo?MoreEnglishDesktop PlansAI HD PortraitSkin EnhancerBody ReshapeChange BackgroundSky ReplacementRemove Clothing WrinklesLinksMeitu Inc.MiracleVisionMeitu AppX-DesignWHEEWinkMitotoAbout UsAbout MeituTerms of ServicePrivacy PolicyContact UsDownloadWindowsmacOSCopyright © 2026 Xiamen Meitu Technology Co., Ltd. Kumoo Pricing Plans for Desktop Pro Kumoo offers flexible photo editing packages—the more photos you process, the bigger the discount. Choose a plan that fits your workload for the best value. AI Tools Desktop Plans Features Desktop Plans Scenarios Kumoo Blog Pricing Kumoo Desktop Frequently Asked Questions Download Kumoo and enjoy a free trial of our professional, easy-to-use AI photo retouching and batch editing tools. Perfect your photos with speed, precision, and style. Copyright © 2026 Xiamen Meitu Technology Co., Ltd. AI ToolsRemove BackgroundPremium CutoutAI White BackgroundImage EnhancerAI RemovalClothing Wrinkle RemovalClothing Edge SmoothingClothing Color ChangeClothes Hanger RemovalDesktop PlansFeaturesDesktop PlansAI HD PortraitSkin RetouchingBody ShapeChange BackgroundSky ReplacementRemove Clothing WrinklesScenariosWeddingsArtisticE-commerceID PhotosKumoo BlogPricingTry NowKumoo DesktopSubscription plans are only available on version 7.5.0 or above. If you’re using an older version, please update now.Frequently Asked QuestionsMoreStart editing smarter todayDownload Kumoo and enjoy a free trial of our professional, easy-to-use AI photo retouching and batch editing tools. Perfect your photos with speed, precision, and style.DownloadEnglishDesktop PlansAI HD PortraitSkin EnhancerBody ReshapeChange BackgroundSky ReplacementRemove Clothing WrinklesLinksMeitu Inc.MiracleVisionMeitu AppX-DesignWHEEWinkMitotoAbout UsAbout MeituTerms of ServicePrivacy PolicyContact UsDownloadWindowsmacOSCopyright © 2026 Xiamen Meitu Technology Co., Ltd. Overview-Meitu Inc. About Meitu Company History The golden decade of mobile Internet The age of rapid A"
+    },
+    "lovart-ai": {
+      "siteUrl": "https://www.lovart.ai/",
+      "siteName": "lovart.ai",
+      "pages": [
+        {
+          "url": "https://www.lovart.ai/",
+          "pageType": "home",
+          "title": "Lovart: The World's First AI Design Agent | Automated Graphic Design Platform",
+          "description": "Lovart is the leading AI design agent. Automate your entire creative workflow—from logos & social media graphics to full marketing campaigns. Create professional designs instantly with AI.",
+          "headings": [
+            "Design a Product Page(1)",
+            "for a Next-Gen Running Brand",
+            "Thinking, in Systems",
+            "Design, beyond generation.",
+            "Editing that knowswhat matters.",
+            "Results that carry your signature, every time."
+          ],
+          "ctas": [],
+          "excerpt": "Design visual assets for a running shoe product page, including a hero image, product close-ups, and athlete-on-foot shots that highlight performance and materials."
+        },
+        {
+          "url": "https://www.lovart.ai/pricing",
+          "pageType": "pricing",
+          "title": "Lovart AI Pricing Plans 2026 | Free & Pro AI Design Agent",
+          "description": "Explore Lovart AI's transparent pricing. Start with a free AI design agent plan or upgrade to Pro for advanced features, higher volume, and commercial projects. No hidden fees.",
+          "headings": [
+            "Scale your ideas. Choose your plan.",
+            "Frequently Asked Questions",
+            "Design with Lovart"
+          ],
+          "ctas": [],
+          "excerpt": "⚡️  Last Chance:  Lock in 50% OFF Unlimited Gens"
+        },
+        {
+          "url": "https://www.linkedin.com/company/lovart-ai",
+          "pageType": "about",
+          "title": "Lovart AI | LinkedIn",
+          "description": "Lovart AI | 4,920 followers on LinkedIn. The design agent. Imagination to Design, Instantly Unleashed. | Design your masterpieces with Lovart today.",
+          "headings": [
+            "Lovart AI",
+            "Technology, Information and Internet",
+            "About us",
+            "Locations",
+            "Employees at Lovart AI",
+            "Lulin Li"
+          ],
+          "ctas": [
+            "Join now",
+            "Sign in",
+            "See jobs",
+            "Get directions",
+            "See all employees"
+          ],
+          "excerpt": "Design your masterpieces with Lovart today."
+        },
+        {
+          "url": "https://www.lovart.ai/features/nano-banana-digital-art-creation",
+          "pageType": "features",
+          "title": "Nano Banana AI Art Generator - Create Professional Digital Paintings & Streamline Your Creative Workflow",
+          "description": "Transform ideas into stunning digital art with Nano Banana AI provided by Lovart AI Design Agent. Our ai design agent streamline the creative workflow for artists of all levels, enabling professional-grade digital painting, composition, and color mastery，beyond usual generator and intelligent tools",
+          "headings": [
+            "Master Nano Banana Digital Art Creation with Professional AI Tools",
+            "How to Create Digital Art with Nano Banana Digital Art Creation",
+            "Plan Your Vision",
+            "Generate & Iterate",
+            "Perfect & Export",
+            "Advanced Nano Banana Digital Art Creation Features"
+          ],
+          "ctas": [],
+          "excerpt": "Transform your artistic vision into stunning digital masterpieces using nano banana digital art creation techniques. Our advanced nano banana art generator empowers artists of all skill levels to create professional-quality digital paintings through an intuitive nano banana creative workflow that streamlines the entire artistic process."
+        }
+      ],
+      "combinedText": "Lovart: The World's First AI Design Agent | Automated Graphic Design Platform Lovart is the leading AI design agent. Automate your entire creative workflow—from logos & social media graphics to full marketing campaigns. Create professional designs instantly with AI. Design a Product Page(1) for a Next-Gen Running Brand Thinking, in Systems Design, beyond generation. Editing that knowswhat matters. Results that carry your signature, every time. Refine the copy,keep the composition. Design references, curated for you. Design with Lovart Design visual assets for a running shoe product page, including a hero image, product close-ups, and athlete-on-foot shots that highlight performance and materials. Design decisions don't happen in isolation. Lovart unifies color, layout, and voice into a cohesive brand world, built to scale. AI output is just the starting point. You direct what comes next. Make targeted changes exactly where you need them. Lovart preserves what's working, so every edit is precise and intentional. Replace the boy's hat with this one and have him hold this book. Results that carry your signature, every time. Lovart understands your style and keeps it consistent across iterations, formats, and projects. As contexts change, your voice remains unmistakably yours. Text shouldn't be baked in. Lovart separates typography into editable layers, allowing you to move or rewrite words without disturbing the composition around them. HomePricingNewsGet startedGet startedHomePricingNewsThemeAutoYour AI Design PartnerDesign a Product Page(1)for a Next-Gen Running BrandDesign nowAthletic Product LaunchAthletic Product LaunchHiking Brand Campaign VideoCoffee Shop Brand SystemVideo800 x 1440New ChatDesign visual assets for a running shoe product page, including a hero image, product close-ups, and athlete-on-foot shots that highlight performance and materials.Analyzing user intentAnalyzed user intentSearching for high-quality referencesExplored visual trendsResearching brand informationCollected referencesI've generated a visual asset set for a next-gen running shoe product detail page, focused on clarity and performance impact.The set includes a speed-driven hero image, material-focused close-ups, and controlled on-foot shots, all unified by consistent lighting and perspective to support PDP flow.Agentic IntelligenceThinking, in SystemsDesign decisions don't happen in isolation. Lovart unifies color, layout, and voice into a cohesive brand world, built to scale.Image720 x 960EyewearCreate a set of e-commerce campaign posters for this eyewear brand.Image720 x 960Image720 x 960Image720 x 960Image720 x 960FeaturesDesign, beyond generation.AI output is just the starting point. You direct what comes next.Touch EditEditing that knowswhat matters.Make targeted changes exactly where you need them. Lovart preserves what's working, so every edit is precise and intentional.Try Touch EditImage1440 x 800Remove the Flag and Cargraphics and apply this Lovart LogoImage960 x 720Replace the boy's hat with this one and have him hold this book.Style ConsistencyResults that carry your signature, every time.Lovart understands your style and keeps it consistent across iterations, formats, and projects. As contexts change, your voice remains unmistakably yours.Explore Style ConsistencyText EditRefine the copy,keep the composition.Text shouldn't be baked in. Lovart separates typography into editable layers, allowing you to move or rewrite words without disturbing the composition around them.Try Text EditImage960 x 720Pros DeL'internetPros DeL'internetText EditModern office interiorModern office interiorVisual InsightsDesign references, curated for you.Lovart searches the web in real time, turning top-quality design references into clear creative direction, tailored to your preferences.Explore Visual InsightsDesign with LovartCreate with momentum. Bring your vision to life.Get started for freeCompanyPricingBlogChangelogDocsNewsTerms of UsePrivacy PolicySocialXYouTubeLinkedInInstagramTikTok© 2026 All Rights Reserved, LovartAutoEnglishAutoEnglish Lovart AI Pricing Plans 2026 | Free & Pro AI Design Agent Explore Lovart AI's transparent pricing. Start with a free AI design agent plan or upgrade to Pro for advanced features, higher volume, and commercial projects. No hidden fees. Scale your ideas. Choose your plan. Frequently Asked Questions Design with Lovart ⚡️  Last Chance:  Lock in 50% OFF Unlimited Gens Credits are used to process your request and generate the final output, with usage depending on what you choose and how complex the task is.\n\nFor agent-based generation, credit consumption varies based on the tool or model selected and the level of detail in your request. For canvas generation, credits are determined by your settings, including image size and quality, desired style and detail, and any advanced parameters enabled.\n\nIn general, more complex tasks and more sophisticated settings require more credits. Monthly Plan Credits from your monthly subscription are valid for the duration of your current billing cycle and will automatically reset on your next billing date. Unused credits do not roll over to the next month.\n\nAnnual Plan Credits for annual subscriptions are distributed on a monthly basis. Each month's credits are valid only within that month's cycle and will automatically reset at the start of the next monthly cycle. Unused credits from the previous month will not carry over.\n\nTop-up Credits These credits never expire and will remain in your account until used. If you need additional credits, you can upgrade your plan to increase your monthly limit or purchase credit packs to generate more content without changing your current subscription. Purchased credits are added instantly and can be used across all supported models. Yes. Your subscription renews automatically at the end of each billing cycle to maintain continuous access. You may cancel at any time in your account settings, and your plan will remain active through the end of the current billing period. 365 Unlimited gives you one year of Unlimited Relax Generations on the models in your plan. Access continues while your subscription is active. If you cancel or downgrade, unlimited access ends when your current plan expires. Upgrades keep your access active for the full 12 months.\n\nReactivating your subscription does not extend the original 365-day period.\n\nAutomation or non-human activity may trigger a temporary suspension of access for review to ensure fair and reliable use. Fast Generation\n\nIn Fast Generation mode, each generation consumes credits from your balance. The fast credits included in your subscription reset at the start of each billing cycle and do not carry over to the next month. To maximize your subscription value, we recommend utilizing your full balance before the month ends.\n\nPlease note that while subscription credits reset periodically, any credit packs purchased separately are not affected by the billing cycle and will not expire.\n\nYou can monitor your usage and view your remaining fast credit details on the manage subscription page.\n\nUnlimited Relax Generation\n\nUnlimited Relax Generation mode is available exclusively to subscribers of specific plans, allowing for Unlimited Relax Generations without consuming your fast credits. In this mode, your requests are placed in a queue and processed as system GPU resources become available. Consequently, wait times are typically longer than in Fast Generation mode. Your specific wait time depends on your usage frequency relative to other users—those who use relax mode less frequently will generally experience shorter wait times.\n\nYou can turn off Unlimited Relax Generation at any time to switch back to Fast Generation for immediate results. Please note that queue priority varies by tier: Basic, Pro, and Ultimate users are assigned to different waiting queues.\n\nThis feature is for personal use only. Cheating, account sharing, or resale is strictly prohibited. Access may be temporarily suspended if any abnormal activity is detected. Lovart accounts are for individual use only. To prevent account sharing or abusive behavior that may excessively consume resources and affect platform stability, tasks can run simultaneously on up to 2 desktop Web, 1 mobile Web. For team or multi-user usage, please purchase the Team Plan. ⚡️ Last Chance: Lock in 50% OFF Unlimited Gens00:00:00:00HomePricingNewsGet startedGet startedHomePricingNewsThemeAutoScale your ideas. Choose your plan.monthlyannualLock in 50% OFF Unlimited GensTeam PlanFrequently Asked QuestionsHow do credits work?Credits are used to process your request and generate the final output, with usage depending on what you choose and how complex the task is. For agent-based generation, credit consumption varies based on the tool or model selected and the level of detail in your request. For canvas generation, credits are determined by your settings, including image size and quality, desired style and detail, and any advanced parameters enabled. In general, more complex tasks and more sophisticated settings require more credits.Will credits expire?Monthly Plan Credits from your monthly subscription are valid for the duration of your current billing cycle and will automatically reset on your next billing date. Unused credits do not roll over to the next month. Annual Plan Credits for annual subscriptions are distributed on a monthly basis. Each month's credits are valid only within that month's cycle and will automatically reset at the start of the next monthly cycle. Unused credits from the previous month will not carry over. Top-up Credits These credits never expire and will remain in your account until used.Can I purchase extra credits?If you need additional credits, you can upgrade your plan to increase your monthly limit or purchase credit packs to generate more content without changing your current subscription. Purchased credits are added instantly and can be used across all supported models.Is my subscription automatically renewed?Yes. Your subscription renews automatically at the end of each billing cycle to maintain continuous access. You may cancel at any time in your account settings, and your plan will remain active through the end of the current billing period.How does 365 Unlimited promotion work?365 Unlimited gives you one year of Unlimited Relax Generations on the models in your plan. Access continues while your subscription is active. If you cancel or downgrade, unlimited access ends when your current plan expires. Upgrades keep your access active for the full 12 months. Reactivating your subscription does not extend the original 365-day period. Automation or non-human activity may trigger a temporary suspension of access for review to ensure fair and reliable use.How do Fast Generation and Unlimited Relax Generation work?Fast Generation In Fast Generation mode, each generation consumes credits from your balance. The fast credits included in your subscription reset at the start of each billing cycle and do not carry over to the next month. To maximize your subscription value, we recommend utilizing your full balance before the month ends. Please note that while subscription credits reset periodically, any credit packs purchased separately are not affected by the billing cycle and will not expire. You can monitor your usage and view your remaining fast credit details on the manage subscription page. Unlimited Relax Generation Unlimited Relax Generation mode is available exclusively to subscribers of specific plans, allowing for Unlimited Relax Generations without consuming your fast credits. In this mode, your requests are placed in a queue and processed as system GPU resources become available. Consequently, wait times are typically longer than in Fast Generation mode. Your specific wait time depends on your usage frequency relative to other users—those who use relax mode less frequently will generally expe"
+    },
+    "toolify-ai": {
+      "siteUrl": "https://www.toolify.ai/",
+      "siteName": "toolify.ai",
+      "pages": [
+        {
+          "url": "https://www.toolify.ai/",
+          "pageType": "home",
+          "title": "Best AI Tools Directory & AI Tools List - Toolify",
+          "description": "Toolify is the largest AI tools directory & GPT Store Apps. Over 28500+ AI Websites and AI Tools. AI Tools list and GPTs Store Apps list are auto updated by ChatGPT.",
+          "headings": [
+            "Discover The Best AI Websites & Tools",
+            "Master Midjourney Prompts",
+            "--sref 4215135847",
+            "Ghada Amer's painting depicting …",
+            "Knolling",
+            "--sref 3210822185"
+          ],
+          "ctas": [],
+          "excerpt": "AIs with the highest website traffic (monthly visits)"
+        },
+        {
+          "url": "https://www.toolify.ai/",
+          "pageType": "features",
+          "title": "Best AI Tools Directory & AI Tools List - Toolify",
+          "description": "Toolify is the largest AI tools directory & GPT Store Apps. Over 28500+ AI Websites and AI Tools. AI Tools list and GPTs Store Apps list are auto updated by ChatGPT.",
+          "headings": [
+            "Discover The Best AI Websites & Tools",
+            "Master Midjourney Prompts",
+            "--sref 4215135847",
+            "Ghada Amer's painting depicting …",
+            "Knolling",
+            "--sref 3210822185"
+          ],
+          "ctas": [],
+          "excerpt": "AIs with the highest website traffic (monthly visits)"
+        }
+      ],
+      "combinedText": "Best AI Tools Directory & AI Tools List - Toolify Toolify is the largest AI tools directory & GPT Store Apps. Over 28500+ AI Websites and AI Tools. AI Tools list and GPTs Store Apps list are auto updated by ChatGPT. Discover The Best AI Websites & Tools Master Midjourney Prompts --sref 4215135847 Ghada Amer's painting depicting … Knolling --sref 3210822185 --sref 2776475560 --sref 371907735 Free AI Tools by Category Featured* AIs with the highest website traffic (monthly visits) Top AI lists by month and monthly visits. Top AI lists by category and monthly visits. Top AI lists by region and monthly visits. Top AI lists by source and monthly visits. Top AI lists by revenue and real traffic. 28558 AIs and 459 categories\n    in the best AI tools directory. AI tools list & GPTs store are updated daily by ChatGPT. Copyright ©2026 Toolify. All Rights Reserved. Sponsored by ThumbnailCreator.com - AI tool for creating stunning YouTube thumbnails quickly. Toolify Free Tools Products New AIs The Latest AIs, every day Most Saved AIs AIs with the most favorites on Toolify Most Used AIs AIs with the highest website traffic (monthly visits) AI Apps AI Tools by Apps Discord of AI Discover the Discord of AI AI Chrome Extensions AI Tools by browser extensions GPTs GPTs from GPT Store AI Models Discover The Best Model For AI Category Ranking Top AI By Monthly Top AI lists by month and monthly visits. Top AI By Categories Top AI lists by category and monthly visits. Top AI By Regions Top AI lists by region and monthly visits. Top AI By Source Top AI lists by source and monthly visits. Top AI by Revenue Top AI lists by revenue and real traffic. Prompts n8n Workflows Midjourney Prompts Openclaw Skills Jobs Research Website Insights Social Listening Research Report Submit Submit Advertise Guest Posts / Link Insert Update AI Submit GPT More Business AI Ad Library Login en Sponsored by i10X Discover The Best AI Websites & Tools 28558 AIs and 459 categories in the best AI tools directory. AI tools list & GPTs store are updated daily by ChatGPT. Search ThumbnailCreator.com AI tool for creating stunning YouTube thumbnails quickly. Verdent Your AI-native partner for the new way to build software. Diagrimo AI-powered tool to turn ideas/text into clear diagrams & infographics. Miro AI innovation Workspace Van Gogh Free Video Generator AI video generator for artistic videos from text/images. Mailmodo AI Complete Email Marketing Automation With AI Agents Rekam AI-Your One-Stop Voice Creation Platform All-in-one AI voice creation platform for text-to-speech, voice clone, and speech-to-text. ace.me Your new website, email address & cloud storage. Simple. Fast. Secure. Teammates.ai AI-powered customer service, sales, and lead generation solutions. Gobii Hire AI employees that automate your web workflows — built on a production-grade platform that runs 24/7 without the maintenance headaches. CrePal All-in-one AI video agent that helps you create viral AI videos Runable Runable is a general AI agent that can execute any task, from building web apps, slides, reports, and documents to generating images, videos, and podcasts, all in one place. It doesn’t just create it connects. Runable integrates with thousands of your favorite apps so you can simply ask it to do the work for you. Tripo AI AI-powered 3D model generator from images and text. Kumoo Professional AI Portrait Retouching WUI.AI AI Director that creates character-consistent long-form videos from your ideas. Mexty AI-powered tool for creating personalized, interactive e-learning content. Write About AI's Future Your Predictions, Delivered to the Future. TodayNewMost SavedMost UsedBrowser ExtensionAppsDiscord of AI i10X Sponsor All-in-one AI platform with 500+ AI tools and top models under one subscription. #AI Agent #AI Tools Directory #AI Models Apex Apex is a personal AI agent that runs 24/7 on a dedicated server — handling email, automations, and business operations without you having to ask. Not a chatbot. Infrastructure. #AI Agent #AI Assistant #AI Productivity Tools #AI Email Assistant #AI Task Management Carly AI AI assistant for email, scheduling, and CRM automation reachable via email and SMS. #AI Agent #AI Assistant #AI Email Assistant #AI Scheduling #AI Workflow #AI CRM Raccoon AI Sponsor Free The AI Coworker for Apps, Research, Docs & Everything Else. Raccoon AI is a collaborative AI agent and workspace for getting real work done. You describe what you need and build it together with an AI agent that has its own computer, terminal, browser, and internet. You see every thought, every file it creates, every decision it makes. You steer when it drifts. You ship when it's right. Deploy web apps. Run deep research. Analyze data. Create pitch decks, videos, images, documents and more. #AI Agent #AI Assistant #AI Workflow #AI Email Writer #AI Creative Writing #AI Research Papers #AI Papers #AI For Data Analytics #AI Data Mining #Excel AI #AI Spreadsheet #AI Report Generator #AI Productivity Tools #AI Presentation Generator #AI PPT Maker #AI PDF #AI Excel Formula Generator #AI Email Assistant #AI Website Designer #AI Research Tool #AI Landing Page Builder #AI Youtube Summary #AI App Builder #AI Code Assistant #AI Developer Tools #AI Github #AI Website Builder #AI Book Writing #AI Animated Video #Image to Video #Text to Video #Video to Video #AI Video Generator #AI Documents Generator #AI Design Generator #AI Image Generator MAI-Image-2 Frontier AI image generator specializing in photorealism, legible text, and professional marketing layouts. #AI Image Generator #Text to Image #AI Realistic Image Generator #AI Infographic Generator #AI API MeetAssist Real-time AI interview assistant with phone sync for discrete suggestions and coding help. #AI Interview Assistant #AI Meeting Assistant #AI Response Generator #AI Code Assistant #AI Transcription CodingPlanX A unified AI gateway providing access to 600+ models with one API key. #AI API #AI Models #AI Developer Tools #Large Language Models (LLMs) Free AI Image Generator Free Best Free AI Image Generator — No Sign-up, Unlimited Text to Image AI #AI Image Generator #AI Avatar Generator #AI Headshot Generator #AI Image Upscaler #AI Photo Editor #Text to Image #AI Art Generator Avocado AI All-in-one AI creative workspace for generating ad-ready videos, images, music, and voiceovers. #AI Ad Generator #AI UGC Video Generator #AI Video Generator #AI Advertising #AI Image Generator #AI Music Generator #AI Voice Generator Kling AI Motion Control AI tool generating cinematic character animations from reference images and motion videos. #AI Video Generator #AI Animation Generator #Image to Video #AI Character #AI Poster Generator #Text to Image Claude Code API (code0.ai) Stable domestic direct-connect proxy for Claude API with CNY payment and low latency. #AI API #AI Developer Tools #Large Language Models (LLMs) Face ID Search Reverse face search engine for social media, dating apps, and public records. #AI Face Recognition #AI Search Engine EverMemOS Sponsor Free Infinite memory. Persistent identity. Evolving intelligence. EverMemOS, powered by EverMind, is entering beta on the new cloud platform. The Memory Genesis Competition 2026 officially launches alongside it. #AI Developer Tools #AI Agent #Open Source AI Models #AI Models AI Fruit AI-powered generator for viral talking fruit videos and expressive vegetable character animations. #AI Video Generator #AI Image Generator #AI Tiktok Video Generator #AI Story Generator #AI Character Decksy AI presentation maker that creates researched, professional slides from topics, text, or uploaded documents. #AI Presentation Generator #AI PPT Maker #AI Productivity Tools Uni-1 AI Image Generator A reasoning-powered AI generator for high-resolution images with legible text and spatial accuracy. #AI Image Generator #AI Art Generator #Text to Image #Image to Image #AI Sketch Generator #AI Anime Generator #AI Manga Generator Springbase Free Springbase.ai is a unified AI workspace that replaces multiple subscriptions by consolidating top-tier models like GPT-5.4, Claude Opus, and Gemini into one platform. It functions as an autonomous command center featuring intelligent agents with 1,000+ app integrations, RAG-powered knowledge bases, and meeting transcribing. By combining the power of ChatGPT, Claude, Zapier, and Otter.ai into a single ecosystem, Springbase provides a high-performance solution for the price of a single subscription. #AI Productivity Tools #AI Agent #AI Assistant #AI Meeting Assistant kinovi - Seedance 2.0 - Real Man AI Video Kinovi is a free AI video generator powered by Seedance 2.0. Supports real man, text to video, image to video. No watermark, commercial use allowed. #AI Video Generator #AI Image Generator #Image to Image #Text to Image #AI Animated Video #AI Animation Generator #AI Cartoon Video Generator #AI Commercial Generator #AI Movie Generator #AI Stock Video Generator #Image to Video #Text to Video #Video to Video HowToPose.ai AI tool for adjusting poses, swapping outfits, and editing professional portrait photos and videos. #AI Photo Editor #AI Image Generator #AI Clothing Generator #AI Image Upscaler #AI Watermark Remover #AI Sketch Generator #AI Outpainting AnySpeech Free AnySpeech is an AI voice platform that helps you turn text into natural-sounding speech and create voiceovers faster. It is built for creators, marketers, educators, and teams who need audio for videos, podcasts, courses, product demos, and other digital content without spending hours recording and editing manually. AnySpeech also supports AI voice cloning, making it easier to keep a consistent voice across different projects and content formats. With a simple online workflow, users can generate audio quickly, update scripts anytime, and produce professional voice content for both personal and business use. #AI Text-to-Speech #AI Audio Editing #AI Audio Enhancer #AI Noise Cancellation #AI Podcast #AI Speech-to-Text #AI Transcriber #AI Transcription #AI Voice Cloning #AI Voice Generator #Audio To Text AI #Tiktok AI Voice Generator Nana Banana Pro AI AI image and video generator for consistent, high-quality marketing and e-commerce visuals. #AI Image Generator #AI Video Generator #Text to Image #Text to Video #Image to Video #Image to Image #AI Ad Creative #AI Marketing #AI Short Video Generator #AI Thumbnail Maker Claw Buff Managed hosting platform to deploy and manage OpenClaw AI agents in 30 seconds. #AI Agent #AI Chatbot #AI Customer Service #AI Assistant #AI API Hoter AI AI video generator that transforms photos into short videos using 100+ templates and effects. #AI Video Generator #Image to Video #AI Short Video Generator #AI Animation Generator Wan 2.7 AI Video Generator AI video generator transforming photos into high-quality 1080P videos with advanced motion controls. #AI Video Generator #Image to Video #Text to Video #AI Short Video Generator TeachQuill All-in-one AI platform for teachers to generate standards-aligned lesson plans, quizzes, and IEP goals. #AI Teachers #AI Lesson Plan Generator #AI Quiz Generator #AI Productivity Tools #AI Writing Assistants #AI Homework Helper #AI Report Generator #AI Resume Builder #AI Newsletter Generator XCrawl AI-powered web scraping API for extracting structured JSON and Markdown data. #AI Web Scraping #AI API #AI Developer Tools #AI Data Mining #AI Agent #AI SEO Tools Mimir Systems Mimir is an AI-powered Q&A platform for materials science. Ask any question about material properties and get answers with citations from real scientific papers in seconds. #AI Research Papers #AI Research Tool WhatsApp AI Sales AI-powered WhatsApp sales assistant for real-time scripts, translation, and intent detection. #AI Sales #AI Sales Assistant #AI Copilot #AI Chatbot #AI Translate #AI Summarizer #AI Response Generator #AI Message Generator Runner AI Chief of Staff automating founder workflows like meeting prep and follow-through. #AI Assistan"
+    }
+  },
+  "recentAnalysis": [
+    {
+      "id": "freevideogenerator-io",
+      "name": "freevideogenerator.io",
+      "domain": "freevideogenerator.io",
+      "category": "AI 视频生成工具",
+      "summary": "freevideogenerator.io 是一个以\"Van Gogh\"品牌运营的 AI 视频生成平台，用文字或图片就能生成带场景切换和角色一致性的视频，主打 UGC 广告和多分钟连贯视频故事。已有超过 10 万用户，面向需要快速产出视频内容的创作者和营销人群。",
+      "tags": [
+        "按用量收费",
+        "UGC 广告制作",
+        "内容营销 SaaS"
+      ],
+      "analyzedAt": "2026-03-28T14:48:37.289Z",
+      "pageCount": 2,
+      "analysisMode": "llm",
+      "coverageLevel": "medium"
+    },
+    {
+      "id": "runable",
+      "name": "runable.com",
+      "domain": "runable.com",
+      "category": "通用 AI Agent",
+      "summary": "Runable 是一个通用 AI Agent 平台，能够自主思考、规划并端到端执行复杂任务，产出包括 PPT、网站、报告、视频等多种内容形式；主要面向希望用 AI 替代自己动手完成一整套工作流的个人用户和小团队。",
+      "tags": [
+        "订阅制",
+        "内容生成与创作",
+        "生产力自动化"
+      ],
+      "analyzedAt": "2026-03-27T16:24:35.712Z",
+      "pageCount": 1,
+      "analysisMode": "llm",
+      "coverageLevel": "low"
+    },
+    {
+      "id": "toolify-ai",
+      "name": "toolify.ai",
+      "domain": "toolify.ai",
+      "category": "AI 工具目录站",
+      "summary": "Toolify.ai 是一个收录了 2.8 万+ AI 工具的导航目录站，同时聚合了 GPT Store 应用列表，按月访问量排行展示各类 AI 产品。会买单的是想快速找到合适 AI 工具的普通用户，以及想在目录里曝光自家产品的 AI 开发者和创业团队。",
+      "tags": [
+        "按交易 / 支付规模收费",
+        "GPT Store 聚合平台",
+        "流量分发平台"
+      ],
+      "analyzedAt": "2026-03-28T10:23:49.681Z",
+      "pageCount": 2,
+      "analysisMode": "llm",
+      "coverageLevel": "medium"
+    },
+    {
+      "id": "lovart-ai",
+      "name": "lovart.ai",
+      "domain": "lovart.ai",
+      "category": "AI 设计工具",
+      "summary": "Lovart 是一个 AI 设计 Agent 平台，用对话方式自动生成 Logo、社交媒体图、营销活动全套素材，主要卖给不懂设计却需要持续出图的内容创作者、电商卖家和营销团队。",
+      "tags": [
+        "按席位 / 团队定价",
+        "图像生成 SaaS",
+        "营销素材自动化"
+      ],
+      "analyzedAt": "2026-03-28T05:44:25.331Z",
+      "pageCount": 4,
+      "analysisMode": "llm",
+      "coverageLevel": "high"
+    },
+    {
+      "id": "kumoo-ai",
+      "name": "kumoo.ai",
+      "domain": "kumoo.ai",
+      "category": "AI 图像处理",
+      "summary": "kumoo.ai 是美图旗下的 AI 人像修图和抠图平台，主打批量处理商业人像、电商产品图和背景替换，支持网页版和桌面客户端。摄影师、电商卖家、广告公司等需要批量出图的专业用户是核心买家。",
+      "tags": [
+        "按用量收费",
+        "电商视觉工具",
+        "批量修图 SaaS"
+      ],
+      "analyzedAt": "2026-03-28T04:15:31.948Z",
+      "pageCount": 3,
+      "analysisMode": "llm",
+      "coverageLevel": "medium"
+    },
+    {
+      "id": "stripe-com",
+      "name": "stripe.com",
+      "domain": "stripe.com",
+      "category": "金融科技",
+      "summary": "这是一个面向商家或企业的支付与金融基础设施产品，核心是在收款、计费、资金流转或金融能力集成上替代复杂人工流程。",
+      "tags": [
+        "按交易 / 支付规模收费",
+        "B2B",
+        "AI"
+      ],
+      "analyzedAt": "2026-03-27T14:47:43.749Z",
+      "pageCount": 4,
+      "analysisMode": "rules",
+      "coverageLevel": "high"
+    },
+    {
+      "id": "cal",
+      "name": "cal.com",
+      "domain": "cal.com",
+      "category": "生产力",
+      "summary": "开源日程管理基础设施，旨在简化全球范围内的预订操作。",
+      "tags": [
+        "PLG 模型",
+        "SaaS"
+      ]
+    },
+    {
+      "id": "framer",
+      "name": "framer.com",
+      "domain": "framer.com",
+      "category": "设计工具",
+      "summary": "专业的网站构建工具，专注于高保真动画和极致速度。",
+      "tags": [
+        "订阅制",
+        "创意类"
+      ]
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": "runable",
+      "name": "runable.com",
+      "domain": "www.runable.com",
+      "label": "中高，有细分切口",
+      "oneLiner": "这是一个给开发团队用的临时环境平台，帮他们不用反复折腾预发布环境，就能快速测试和协作。",
+      "pricingModel": "基于用量的 SaaS / $49",
+      "targetUsers": "DevOps 工程师、后端开发人员、CTO 与创始人",
+      "opportunityLevel": "中高，有细分切口",
+      "note": "不要直接和大盘工具正面打，先把某个更具体的用户群和工作流吃透。"
+    },
+    {
+      "id": "nexusflow",
+      "name": "NexusFlow AI",
+      "domain": "nexusflow.io",
+      "label": "高潜力",
+      "oneLiner": "AI 驱动的企业采购自动化 SaaS",
+      "pricingModel": "订阅制 (199$/mo 起)",
+      "targetUsers": "中大型企业采购部门负责人",
+      "opportunityLevel": "A+ (刚需)",
+      "note": "场景刚需，但竞争不小，适合做垂直行业版（如针对制造业）。"
+    }
+  ]
+}

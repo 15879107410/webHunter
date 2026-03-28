@@ -1,0 +1,20 @@
+{
+  "name": "webhunter",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace @webhunter/web",
+    "build:web": "npm run build --workspace @webhunter/web",
+    "lint:web": "npm run lint --workspace @webhunter/web",
+    "typecheck:web": "npm run typecheck --workspace @webhunter/web",
+    "dev:api": "npm run dev --workspace @webhunter/api",
+    "build:api": "npm run build --workspace @webhunter/api",
+    "typecheck:api": "npm run typecheck --workspace @webhunter/api",
+    "smoke:api": "node scripts/smoke-test.mjs",
+    "verify": "npm run lint:web && npm run typecheck:web && npm run build:web && npm run typecheck:api && npm run build:api"
+  }
+}
