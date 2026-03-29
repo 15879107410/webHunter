@@ -93,6 +93,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
     : data.pricing.billingCycle !== "页面未明确"
       ? `起步价 / ${data.pricing.billingCycle}`
       : "起步价";
+  const hasPricingPage = data.meta?.pageTypes.includes("pricing") ?? false;
   const compactTargetUsers = data.targetUsers.slice(0, 3).map(compactTargetUserLabel);
   const targetUserIcons = [
     <CodeIcon key="code" className="h-5 w-5" />,
@@ -276,7 +277,7 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
               <span className="pb-1 text-sm font-medium text-textMuted">{priceSuffix}</span>
             </div>
             <p className="mb-6 text-xs italic text-zinc-500">{data.pricing.whyPricingWorks}</p>
-            <PricingBreakdown pricing={data.pricing} />
+            <PricingBreakdown pricing={data.pricing} hasPricingPage={hasPricingPage} />
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-zinc-100 py-3">
                 <span className="text-sm text-textMuted">商业模式</span>
@@ -395,19 +396,6 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
           </div>
         </section>
 
-        <section>
-          <SectionTitle title="证据快照" description="已分析 3 个数据源" />
-          <div className="grid gap-6 md:grid-cols-3">
-            {data.evidenceSnapshots.map((item) => (
-              <div key={item.title} className="aspect-video rounded-2xl bg-zinc-200 p-5 text-white shadow-soft">
-                <div className="flex h-full flex-col justify-end rounded-xl bg-gradient-to-t from-zinc-900 to-zinc-800 p-4">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">{item.title}</p>
-                  <p className="mt-2 text-sm font-medium">{item.detail}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
     </PageShell>
   );

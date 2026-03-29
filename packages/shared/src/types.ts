@@ -14,6 +14,10 @@ export interface InsightItem {
 export interface PricingPlan {
   label: string;
   price: string;
+  description?: string;
+  features?: string[];
+  cta?: string;
+  highlighted?: boolean;
 }
 
 export interface EvidenceItem {

@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import type { AnyNode } from "domhandler";
 import type {
   AnalysisInputSnapshot,
   AnalysisResult,
@@ -254,6 +255,50 @@ function normalizePlanLabel(label: string) {
     .trim();
 }
 
+const PRICING_NOISE_PATTERNS = [
+  /\b(?:best value|recommended|most popular|featured|hot|popular)\b/gi,
+  /\b(?:get started|sign up free|start free|buy now|join now|try now|contact sales)\b/gi,
+  /\b(?:all ai generation features|all plans include|all plans|free on sign up|free with)\b/gi,
+  /\b\d{1,2}:\d{2}:\d{2}\b/g,
+  /\b\d+(?:\.\d+)?%?\s*off\b/gi
+];
+
+function stripPricingNoise(text: string) {
+  return PRICING_NOISE_PATTERNS.reduce(
+    (output, pattern) => output.replace(pattern, " "),
+    normalizeDisplayText(text)
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function compactPricingText(text: string, maxLength = 120) {
+  const stripped = stripPricingNoise(text);
+  if (!stripped) return "";
+
+  const sentence = stripped
+    .split(/[.!?。！？]/)
+    .map((item) => item.trim())
+    .find((item) => item.length >= 12) ?? stripped;
+
+  if (sentence.length <= maxLength) {
+    return sentence;
+  }
+
+  return `${sentence.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
+function compactPricingFeature(text: string, maxLength = 72) {
+  const stripped = stripPricingNoise(text)
+    .replace(/\b(?:plus|and|with|includes?|include)\b/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!stripped) return "";
+  if (stripped.length <= maxLength) return stripped;
+  return `${stripped.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
 function extractPricePoints(pricingText: string) {
   const matches = Array.from(pricingText.matchAll(PRICE_TOKEN_REGEX));
   const scored = new Map<string, { token: string; score: number; index: number }>();
@@ -305,30 +350,235 @@ function extractPricePoints(pricingText: string) {
     .slice(0, 12);
 }
 
-function extractPricingPlans(pricingText: string) {
+function extractPricingPlans(pricingPage: CrawlPage | null, pricingText: string) {
   const plans: PricingPlan[] = [];
-  const regex = /"(monthly_membership_package|annual_membership_package_[a-z])":"([^"]+)".{0,420}?(\$\d+(?:\.\d+)?(?:\/(?:month|year|mo|yr|月|年))?)/gi;
+  const seen = new Set<string>();
 
-  for (const match of pricingText.matchAll(regex)) {
-    const rawKey = match[1] ?? "";
-    const rawLabel = match[2] ?? "";
-    const rawPrice = match[3] ?? "";
-    const label = normalizePlanLabel(rawLabel || rawKey);
-    const price = cleanPriceToken(rawPrice);
+  const pushPlan = (plan: PricingPlan, index: number) => {
+    const label = normalizePlanLabel(plan.label);
+    const price = cleanPriceToken(plan.price) ?? plan.price;
+    if (!label || !price) {
+      return;
+    }
 
-    if (!label || !price) continue;
+    const key = `${label.toLowerCase()}::${price.toLowerCase()}`;
+    if (seen.has(key)) {
+      return;
+    }
 
-    const existingIndex = plans.findIndex((item) => item.label === label);
-    const nextPlan = { label, price };
+    seen.add(key);
+    plans.push({
+      ...plan,
+      label,
+      price,
+      description: plan.description ? compactPricingText(plan.description, 110) : undefined,
+      features: plan.features?.map((feature) => compactPricingFeature(feature, 80)).filter(Boolean),
+      cta: plan.cta ? (compactPricingFeature(plan.cta, 48) || undefined) : undefined,
+      highlighted: plan.highlighted
+    });
+  };
 
-    if (existingIndex >= 0) {
-      plans[existingIndex] = nextPlan;
-    } else {
-      plans.push(nextPlan);
+  if (pricingPage?.bodyText) {
+    const bodyText = normalizeDisplayText(pricingPage.bodyText);
+    const headingCandidates = unique(
+      pricingPage.headings
+        .map(normalizeDisplayText)
+        .filter((text) => {
+          if (!text || text.length < 3 || text.length > 28) {
+            return false;
+          }
+
+          if (/(pricing|plans that|scale with|start free|trusted by|features|overview|faq|contact|how it works)/i.test(text)) {
+            return false;
+          }
+
+          return /(free|pack|plan|starter|pro|basic|standard|enterprise|team|xl|plus|bundle)/i.test(text);
+        })
+    );
+
+    const orderedCandidates = headingCandidates
+      .map((label) => ({ label, index: bodyText.toLowerCase().indexOf(label.toLowerCase()) }))
+      .filter((item) => item.index >= 0)
+      .sort((a, b) => a.index - b.index);
+
+    for (let i = 0; i < orderedCandidates.length; i += 1) {
+      const current = orderedCandidates[i];
+      const next = orderedCandidates[i + 1];
+      const segment = bodyText.slice(current.index, next?.index ?? bodyText.length);
+      const label = normalizePlanLabel(current.label);
+      const priceTokens = extractPricePoints(segment);
+      const isFree = /\bfree\b|免费/i.test(segment);
+      const price = /^free$/i.test(label) ? "Free" : (priceTokens[0] ?? (isFree ? "Free" : ""));
+
+      if (!label || !price) {
+        continue;
+      }
+
+      const priceIndex = priceTokens[0] ? segment.indexOf(priceTokens[0]) : -1;
+      const descriptionSource = (priceIndex >= 0 ? segment.slice(current.label.length, priceIndex) : segment.slice(current.label.length))
+        .replace(/\d[\d,.\s]*Credits?/gi, " ")
+        .replace(/\b(?:Get started|Best value for power users|For regular creators|Best value|Sign Up Free|Buy Now|free credits?)\b/gi, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      const features = Array.from(segment.matchAll(/~[^~]+/g))
+        .map((match) => compactPricingFeature(match[0].replace(/^~/, ""), 80))
+        .filter((item) => item && item !== descriptionSource)
+        .slice(0, 6);
+      const cta = /(buy now|sign up free|get started|start free|join now|try now|contact sales)/i.test(segment)
+        ? (segment.match(/(Buy Now|Sign Up Free|Get started|Start free|Join now|Try now|Contact sales)/i)?.[0] ?? undefined)
+        : undefined;
+      const highlighted = /best value|featured|popular|best|推荐|最受欢迎|热销|性价比最高/i.test(segment);
+
+      pushPlan(
+        {
+          label,
+          price,
+          description: descriptionSource || undefined,
+          features: features.length > 0 ? features : undefined,
+          cta,
+          highlighted
+        },
+        plans.length
+      );
+    }
+  }
+
+  const parsePlanNode = ($: cheerio.CheerioAPI, el: AnyNode, order: number): PricingPlan | null => {
+    const node = $(el);
+    const text = normalizeDisplayText(node.text().trim());
+    if (!text || text.length < 20 || text.length > 2400) {
+      return null;
+    }
+
+    const priceTokens = extractPricePoints(text);
+    const isFree = /\bfree\b|免费|free trial|free plan/i.test(text);
+    if (priceTokens.length === 0 && !isFree) {
+      return null;
+    }
+
+    const heading = node.find("h1, h2, h3, h4").first().text().trim();
+    const strongText = node.find("strong, b").first().text().trim();
+    const titleCandidate = heading || strongText || node.children().first().text().trim();
+    const label = normalizePlanLabel(titleCandidate || (isFree ? "Free" : `方案 ${order + 1}`));
+    const price = priceTokens[0] ?? (isFree ? "Free" : "");
+    if (!label || !price) {
+      return null;
+    }
+
+    const paragraphs = node
+      .find("p")
+      .map((_, item) => normalizeDisplayText($(item).text().trim()))
+      .get()
+      .filter(Boolean);
+    const listItems = node
+      .find("li")
+      .map((_, item) => normalizeDisplayText($(item).text().trim()))
+      .get()
+      .filter(Boolean);
+    const cta = node
+      .find("a, button, [role='button']")
+      .map((_, item) => normalizeDisplayText($(item).text().trim()))
+      .get()
+      .find(isActionableCta);
+
+    const description =
+      paragraphs.find((item) => item !== label && !/^\$\d/i.test(item) && item.length > 16 && !item.includes(price)) ??
+      listItems[0];
+    const features = listItems
+      .filter((item) => item !== description)
+      .map((item) => compactPricingFeature(item, 80))
+      .filter(Boolean)
+      .slice(0, 6);
+    const highlighted = /featured|popular|best|推荐|最受欢迎|热销|性价比最高/i.test(text);
+
+    return {
+      label,
+      price,
+      description,
+      features: features.length > 0 ? features : undefined,
+      cta,
+      highlighted
+    };
+  };
+
+  if (plans.length === 0 && pricingPage?.rawHtml) {
+    const $ = cheerio.load(pricingPage.rawHtml);
+
+    const containerCandidates = $("section, article, div")
+      .toArray()
+      .map((el, index) => ({ el, index }))
+      .map(({ el, index }) => {
+        const node = $(el);
+        const directChildren = node
+          .children()
+          .toArray()
+          .filter((child) => normalizeDisplayText($(child).text().trim()).length > 0);
+        const childPlans = directChildren
+          .map((child, childIndex) => parsePlanNode($, child, index * 10 + childIndex))
+          .filter((plan): plan is PricingPlan => Boolean(plan));
+        const totalPriceTokens = directChildren.reduce(
+          (count, child) => count + extractPricePoints(normalizeDisplayText($(child).text().trim())).length,
+          0
+        );
+        const score = childPlans.length * 10 + totalPriceTokens * 2 + directChildren.length;
+        return { el, index, childPlans, score };
+      })
+      .filter((candidate) => candidate.childPlans.length >= 2)
+      .sort((a, b) => b.score - a.score || a.index - b.index);
+
+    const bestContainer = containerCandidates[0];
+    if (bestContainer) {
+      for (const plan of bestContainer.childPlans) {
+        pushPlan(plan, bestContainer.index);
+      }
+    }
+
+    if (plans.length === 0) {
+      const candidates = $("section, article, li, div")
+        .toArray()
+        .map((el, index) => ({ el, index }))
+        .filter(({ el }) => {
+          const text = normalizeDisplayText($(el).text().trim());
+          return text.length >= 20 && text.length <= 2200 && (extractPricePoints(text).length > 0 || /\bfree\b|免费|free trial|free plan/i.test(text));
+        });
+
+      for (const candidate of candidates) {
+        const plan = parsePlanNode($, candidate.el, candidate.index);
+        if (plan) {
+          pushPlan(plan, candidate.index);
+        }
+      }
+    }
+  }
+
+  if (plans.length === 0) {
+    const regex = /"(monthly_membership_package|annual_membership_package_[a-z])":"([^"]+)".{0,420}?(\$\d+(?:\.\d+)?(?:\/(?:month|year|mo|yr|月|年))?)/gi;
+
+    for (const match of pricingText.matchAll(regex)) {
+      const rawKey = match[1] ?? "";
+      const rawLabel = match[2] ?? "";
+      const rawPrice = match[3] ?? "";
+      const label = normalizePlanLabel(rawLabel || rawKey);
+      const price = cleanPriceToken(rawPrice);
+
+      if (!label || !price) continue;
+
+      pushPlan({ label, price }, plans.length);
     }
   }
 
   return plans.slice(0, 8);
+}
+
+function scoreCrawlPage(page: CrawlPage) {
+  return (
+    page.bodyText.length * 0.08
+    + page.headings.length * 12
+    + page.paragraphs.length * 4
+    + page.ctas.length * 6
+    + page.signals.length * 2
+  );
 }
 
 function countMatches(text: string, keywords: readonly string[]) {
@@ -860,7 +1110,8 @@ function detectTargetUsers(text: string, pages: CrawlPage[]) {
 }
 
 function detectPricing(pages: CrawlPage[], ctas: string[]) {
-  const pricingPage = pages.find((page) => page.pageType === "pricing");
+  const pricingCandidates = pages.filter((page) => page.pageType === "pricing");
+  const pricingPage = pricingCandidates.sort((a, b) => scoreCrawlPage(b) - scoreCrawlPage(a))[0] ?? null;
   const pricingSignals = (pricingPage ? [pricingPage] : pages).flatMap((page) => [
     page.title,
     page.description,
@@ -872,8 +1123,9 @@ function detectPricing(pages: CrawlPage[], ctas: string[]) {
   const pricingText = pricingSignals.join(" ");
   const allTexts = `${pricingText} ${ctas.join(" ")}`;
   const priceMatches = extractPricePoints(pricingText);
-  const pricingPlans = extractPricingPlans(pricingText);
-  const priceMatch = priceMatches[0];
+  const pricingPlans = extractPricingPlans(pricingPage ?? null, pricingText);
+  const mainPlan = pricingPlans[0];
+  const priceMatch = mainPlan?.price ?? priceMatches[0];
   const billingCycle = /(annual|yearly|monthly|month|year|per month|per year|月付|年付)/i.test(pricingText)
     ? "月付 / 年付"
     : "页面未明确";
@@ -997,6 +1249,26 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
   let secondaryPages = await discoverKeyPages(homePage);
   let crawlMode: "fast" | "deep" = "fast";
 
+  const explicitPricingTargets = unique(
+    homePage.links
+      .map((link) => ({ ...link, resolved: resolveLink(homePage.url, link.href) }))
+      .filter(({ resolved, href, text }) => {
+        if (!resolved) return false;
+        if (/\/pricing(?:-[^/]+)?(?:[/?#]|$)/i.test(resolved)) return true;
+        if (/pricing/i.test(href)) return true;
+        return /pricing/i.test(text);
+      })
+      .map((item) => item.resolved as string)
+  );
+
+  if (explicitPricingTargets.length > 0 && !secondaryPages.some((page) => page.pageType === "pricing")) {
+    const explicitPricingPages = (await Promise.all(
+      explicitPricingTargets.map(async (url) => loadRenderedPage(url, "pricing"))
+    )).filter((page): page is CrawlPage => Boolean(page));
+
+    secondaryPages = mergeCrawlPages(...secondaryPages, ...explicitPricingPages);
+  }
+
   if (needsDeepCrawl(homePage, secondaryPages)) {
     const browserHomePage = await loadRenderedPage(normalizedUrl, "home");
     if (browserHomePage) {
@@ -1004,6 +1276,15 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
       homePage = browserHomePage;
       secondaryPages = mergeCrawlPages(...secondaryPages, ...browserSecondaryPages);
       crawlMode = "deep";
+    }
+  } else {
+    const pricingPages = secondaryPages.filter((page) => page.pageType === "pricing");
+    if (pricingPages.length > 0) {
+      const renderedPricingPages = (await Promise.all(
+        pricingPages.map(async (page) => loadRenderedPage(page.url, page.pageType))
+      )).filter((page): page is CrawlPage => Boolean(page));
+
+      secondaryPages = mergeCrawlPages(...secondaryPages, ...renderedPricingPages);
     }
   }
 
