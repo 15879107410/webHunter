@@ -393,11 +393,14 @@ function buildPrompt(input: AnalysisInputSnapshot, fallback: AnalysisResult) {
   const compactInput = {
     siteUrl: input.siteUrl,
     siteName: input.siteName,
+    crawlMode: input.crawlMode,
     pages: input.pages.map((page) => ({
       pageType: page.pageType,
       title: page.title,
       description: page.description,
-      excerpt: page.excerpt
+      excerpt: page.excerpt,
+      ctas: page.ctas,
+      signals: page.signals?.map((signal) => `${signal.kind}: ${signal.label}`)
     }))
   };
 

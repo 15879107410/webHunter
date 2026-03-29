@@ -42,6 +42,7 @@ export interface AnalysisMeta {
   pageTypes: string[];
   missingPageTypes?: string[];
   coverageLevel?: "low" | "medium" | "high";
+  crawlMode?: "fast" | "deep";
   analysisMode: "rules" | "llm";
 }
 
@@ -129,12 +130,17 @@ export interface CrawledPageSummary {
   description: string;
   headings: string[];
   ctas: string[];
+  signals?: {
+    kind: "link" | "button" | "tab" | "dropdown" | "form" | "summary";
+    label: string;
+  }[];
   excerpt: string;
 }
 
 export interface AnalysisInputSnapshot {
   siteUrl: string;
   siteName: string;
+  crawlMode?: "fast" | "deep";
   pages: CrawledPageSummary[];
   combinedText: string;
 }

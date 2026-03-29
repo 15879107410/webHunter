@@ -7,6 +7,7 @@ import type {
   PricingPlan,
   ResearchCard
 } from "@webhunter/shared";
+import { loadRenderedPage } from "./browser-crawl.js";
 import { analyzeWithLlm } from "./llm-analyzer.js";
 
 type CrawlPage = {
@@ -18,6 +19,10 @@ type CrawlPage = {
   paragraphs: string[];
   links: { href: string; text: string }[];
   ctas: string[];
+  signals: {
+    kind: "link" | "button" | "tab" | "dropdown" | "form" | "summary";
+    label: string;
+  }[];
   bodyText: string;
   rawHtml: string;
 };
@@ -399,9 +404,86 @@ function extractCoreFeatures(pages: CrawlPage[]) {
   ).slice(0, 3);
 }
 
+function normalizeSignalLabel(text: string) {
+  return normalizeDisplayText(text)
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function extractSignalsFromHtml(html: string) {
+  const $ = cheerio.load(html);
+  const signals = new Map<string, { kind: "link" | "button" | "tab" | "dropdown" | "form" | "summary"; label: string }>();
+
+  const addSignal = (kind: "link" | "button" | "tab" | "dropdown" | "form" | "summary", label: string) => {
+    const cleaned = normalizeSignalLabel(label);
+    if (!cleaned || cleaned.length > 80) {
+      return;
+    }
+
+    const key = `${kind}:${cleaned.toLowerCase()}`;
+    if (!signals.has(key)) {
+      signals.set(key, { kind, label: cleaned });
+    }
+  };
+
+  $("a[href]").each((_, el) => {
+    const text = $(el).text().trim();
+    if (text) {
+      addSignal("link", text);
+    }
+  });
+
+  $("button,[role='button'],input[type='button'],input[type='submit'],summary").each((_, el) => {
+    const node = $(el);
+    const text = node.text().trim() || node.attr("aria-label")?.trim() || node.attr("value")?.trim() || "";
+    if (!text) return;
+
+    const role = (node.attr("role") ?? "").toLowerCase();
+    const tag = (node[0]?.tagName ?? "").toLowerCase();
+    const ariaHasPopup = (node.attr("aria-haspopup") ?? "").toLowerCase();
+    const isTab = role === "tab" || node.attr("aria-controls") || node.attr("data-state") === "active" || node.attr("data-tab");
+    const isDropdown = ariaHasPopup === "menu" || ariaHasPopup === "listbox" || /more|更多|menu|dropdown|filter/i.test(text);
+    const isForm = tag === "input";
+
+    if (isTab) {
+      addSignal("tab", text);
+    } else if (isDropdown) {
+      addSignal("dropdown", text);
+    } else if (isForm) {
+      addSignal("form", text);
+    } else if (tag === "summary") {
+      addSignal("summary", text);
+    } else {
+      addSignal("button", text);
+    }
+  });
+
+  return Array.from(signals.values()).slice(0, 40);
+}
+
+function extractCtasFromSignals(signals: CrawlPage["signals"]) {
+  return unique(
+    (signals ?? [])
+      .map((signal) => signal.label)
+      .map(normalizeDisplayText)
+      .filter(Boolean)
+      .filter(isActionableCta)
+      .filter((text) => !isNoisyCta(text))
+      .filter((text) => text.length <= 80)
+  ).slice(0, 8);
+}
+
 function buildAnalysisText(pages: CrawlPage[]) {
   return pages
-    .flatMap((page) => [page.title, page.description, ...page.headings, ...page.paragraphs.slice(0, 8), page.bodyText])
+    .flatMap((page) => [
+      page.title,
+      page.description,
+      ...page.headings,
+      ...page.ctas,
+      ...page.signals.map((signal) => `${signal.kind}: ${signal.label}`),
+      ...page.paragraphs.slice(0, 8),
+      page.bodyText
+    ])
     .map((item) => item.trim())
     .filter(Boolean)
     .join(" ");
@@ -585,15 +667,9 @@ async function fetchPage(url: string, pageType: string, options?: { strict?: boo
       })
       .get()
       .filter((item) => item.href);
-    const ctas = links
-      .map((item) => normalizeDisplayText(item.text))
-      .filter(Boolean)
-      .filter(isActionableCta)
-      .filter((text) => !isNoisyCta(text))
-      .filter((text) => text.length <= 80)
-      .filter((text, index, items) => items.indexOf(text) === index)
-      .slice(0, 8);
     const bodyText = $("body").text().replace(/\s+/g, " ").trim();
+    const signals = extractSignalsFromHtml(html);
+    const ctas = extractCtasFromSignals(signals);
 
     return {
       url,
@@ -604,6 +680,7 @@ async function fetchPage(url: string, pageType: string, options?: { strict?: boo
       paragraphs,
       links,
       ctas,
+      signals,
       bodyText,
       rawHtml: html
     };
@@ -621,6 +698,41 @@ function resolveLink(baseUrl: string, href: string) {
 }
 
 async function discoverKeyPages(homePage: CrawlPage): Promise<CrawlPage[]> {
+  return discoverKeyPagesWithLoader(homePage, fetchPage);
+}
+
+function mergeCrawlPages(...pages: CrawlPage[]) {
+  const seen = new Set<string>();
+  const merged: CrawlPage[] = [];
+
+  for (const page of pages) {
+    const fingerprint = pageFingerprint(page);
+    if (seen.has(fingerprint)) {
+      continue;
+    }
+    seen.add(fingerprint);
+    merged.push(page);
+  }
+
+  return merged;
+}
+
+function needsDeepCrawl(homePage: CrawlPage, secondaryPages: CrawlPage[]) {
+  const discoveredTypes = new Set([homePage.pageType, ...secondaryPages.map((page) => page.pageType)]);
+  const missingCount = KEY_PAGE_PATTERNS.filter((item) => !discoveredTypes.has(item.type)).length;
+  const hasVeryFewSignals = homePage.ctas.length <= 1 && homePage.signals.length <= 4;
+  const isLikelySPA =
+    /__NEXT_DATA__|data-reactroot|window\.__NUXT__|id=["']root["']|id=["']app["']|vite/i.test(homePage.rawHtml)
+    || /javascript|required to enable javascript|please enable javascript/i.test(homePage.bodyText)
+    || homePage.bodyText.length < 500;
+
+  return missingCount >= 2 || (hasVeryFewSignals && isLikelySPA) || (secondaryPages.length <= 1 && homePage.signals.length <= 6);
+}
+
+async function discoverKeyPagesWithLoader(
+  homePage: CrawlPage,
+  loader: (url: string, pageType: string, options?: { strict?: boolean }) => Promise<CrawlPage | null>
+): Promise<CrawlPage[]> {
   const discovered = new Map<string, { url: string; score: number }>();
 
   for (const link of homePage.links) {
@@ -663,7 +775,7 @@ async function discoverKeyPages(homePage: CrawlPage): Promise<CrawlPage[]> {
   }
 
   const pages = await Promise.all(
-    Array.from(discovered.entries()).map(([type, item]) => fetchPage(item.url, type))
+    Array.from(discovered.entries()).map(([type, item]) => loader(item.url, type))
   );
 
   const homeFingerprint = pageFingerprint(homePage);
@@ -864,6 +976,7 @@ function toSnapshotPage(page: CrawlPage): CrawledPageSummary {
     description: page.description,
     headings: page.headings.slice(0, 6),
     ctas: page.ctas.slice(0, 5),
+    signals: page.signals.slice(0, 10),
     excerpt: textSample(page.paragraphs, page.description || page.title || page.url)
   };
 }
@@ -874,14 +987,27 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
   recentItem: ResearchCard;
 }> {
   const normalizedUrl = normalizeUrl(inputUrl);
-  const homePage = await fetchPage(normalizedUrl, "home", { strict: true });
+  const fastHomePage = await fetchPage(normalizedUrl, "home", { strict: true });
 
-  if (!homePage) {
+  if (!fastHomePage) {
     throw new Error("目标网站当前无法抓取，可能启用了反爬、防护挑战或登录限制");
   }
 
-  const secondaryPages = await discoverKeyPages(homePage);
-  const allPages = [homePage, ...secondaryPages];
+  let homePage = fastHomePage;
+  let secondaryPages = await discoverKeyPages(homePage);
+  let crawlMode: "fast" | "deep" = "fast";
+
+  if (needsDeepCrawl(homePage, secondaryPages)) {
+    const browserHomePage = await loadRenderedPage(normalizedUrl, "home");
+    if (browserHomePage) {
+      const browserSecondaryPages = await discoverKeyPagesWithLoader(browserHomePage, loadRenderedPage);
+      homePage = browserHomePage;
+      secondaryPages = mergeCrawlPages(...secondaryPages, ...browserSecondaryPages);
+      crawlMode = "deep";
+    }
+  }
+
+  const allPages = mergeCrawlPages(homePage, ...secondaryPages);
   const allText = buildAnalysisText(allPages);
   const allCtas = allPages.flatMap((page) => page.ctas);
 
@@ -895,6 +1021,7 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
   const snapshot: AnalysisInputSnapshot = {
     siteUrl: normalizedUrl,
     siteName,
+    crawlMode,
     pages: allPages.map(toSnapshotPage),
     combinedText: allText.slice(0, 12000)
   };
@@ -907,6 +1034,7 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
     pageTypes: discoveredPageTypes,
     missingPageTypes: KEY_PAGE_PATTERNS.map((item) => item.type).filter((type) => !discoveredPageTypes.includes(type)),
     coverageLevel: getCoverageLevel(discoveredPageTypes),
+    crawlMode,
     analysisMode: "rules" as const
   };
 
