@@ -6,16 +6,25 @@ import type {
   AnalysisResult,
   BookmarkListResponse,
   BookmarkRecord,
+  AuthUser,
   RecentAnalysisResponse,
   ResearchCard
 } from "@webhunter/shared";
+import { cookies } from "next/headers";
 
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:3001";
 
 async function safeFetch<T>(path: string): Promise<T | null> {
   try {
+    const cookieStore = await cookies();
+    const cookieHeader = cookieStore
+      .getAll()
+      .map((cookie) => `${encodeURIComponent(cookie.name)}=${encodeURIComponent(cookie.value)}`)
+      .join("; ");
+
     const response = await fetch(`${apiBaseUrl}${path}`, {
-      cache: "no-store"
+      cache: "no-store",
+      headers: cookieHeader ? { cookie: cookieHeader } : undefined
     });
 
     if (!response.ok) {
@@ -51,4 +60,9 @@ export async function getAllResearch(): Promise<ResearchCard[]> {
 export async function getBookmarks(): Promise<BookmarkRecord[]> {
   const payload = await safeFetch<BookmarkListResponse>("/api/bookmarks");
   return payload?.items ?? [];
+}
+
+export async function getCurrentUser(): Promise<AuthUser | null> {
+  const payload = await safeFetch<{ user: AuthUser | null }>("/api/auth/me");
+  return payload?.user ?? null;
 }

@@ -52,6 +52,7 @@ export interface AnalysisMeta {
 
 export interface AnalysisResult {
   id: string;
+  ownerId?: string;
   siteName: string;
   siteUrl: string;
   statusLabel: string;
@@ -67,6 +68,8 @@ export interface AnalysisResult {
     startingPrice: string;
     pricePoints?: string[];
     plans?: PricingPlan[];
+    pricingPageUrl?: string;
+    presentationMode?: "static" | "calculator" | "unknown";
     billingCycle: string;
     trial: string;
     model: string;
@@ -84,6 +87,7 @@ export interface AnalysisResult {
 
 export interface ResearchCard {
   id: string;
+  ownerId?: string;
   name: string;
   domain: string;
   category: string;
@@ -112,9 +116,11 @@ export interface WorkspaceStat {
 
 export interface BookmarkRecord {
   id: string;
+  ownerId?: string;
   name: string;
   domain: string;
   label: string;
+  manualLabel?: string | null;
   oneLiner: string;
   pricingModel: string;
   targetUsers: string;
@@ -144,7 +150,15 @@ export interface CrawledPageSummary {
 export interface AnalysisInputSnapshot {
   siteUrl: string;
   siteName: string;
+  ownerId?: string;
   crawlMode?: "fast" | "deep";
   pages: CrawledPageSummary[];
   combinedText: string;
+}
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  displayName: string;
+  createdAt: string;
 }

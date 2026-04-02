@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { BookmarksBrowser } from "@/src/components/bookmarks-browser";
-import { Card, PageShell, Pill } from "@/src/components/ui";
+import { PageShell, Pill } from "@/src/components/ui";
 import { filterOptions } from "@/src/data/mock-data";
 import { getBookmarks } from "@/src/lib/api";
+import { getEffectiveBookmarkClassification, getClassificationTone } from "@/src/lib/bookmark-classification";
 
 export default async function InspirationPage() {
   const workspaceRecords = await getBookmarks();
+  const effectiveClassifications = workspaceRecords.map((item) => getEffectiveBookmarkClassification(item));
   const workspaceStats = [
     { label: `已收藏 ${workspaceRecords.length}`, tone: "default" as const },
-    { label: `高潜力 ${workspaceRecords.filter((item) => /高|爆发|建议/i.test(item.opportunityLevel)).length}`, tone: "positive" as const },
+    { label: `高潜力 ${effectiveClassifications.filter((label) => getClassificationTone(label) === "positive").length}`, tone: "positive" as const },
     { label: `待补备注 ${workspaceRecords.filter((item) => !item.note || /待补充/.test(item.note)).length}`, tone: "warning" as const }
   ];
 
@@ -47,9 +49,9 @@ export default async function InspirationPage() {
           <div>
             <p className="mb-4 text-[10px] font-extrabold uppercase tracking-[0.24em] text-zinc-400">研究状态</p>
             <div className="space-y-1 text-sm">
-              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">高潜力 {workspaceRecords.filter((item) => /高|爆发|建议/i.test(item.opportunityLevel)).length}</div>
-              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">待复盘 {workspaceRecords.filter((item) => item.note?.trim().length > 0).length}</div>
-              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">已放弃 0</div>
+              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">高潜力 {effectiveClassifications.filter((label) => getClassificationTone(label) === "positive").length}</div>
+              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">待复盘 {effectiveClassifications.filter((label) => getClassificationTone(label) === "warning").length}</div>
+              <div className="rounded-xl px-4 py-3 font-medium text-textMuted">已放弃 {effectiveClassifications.filter((label) => getClassificationTone(label) === "danger").length}</div>
             </div>
           </div>
         </aside>
