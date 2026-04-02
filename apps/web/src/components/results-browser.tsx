@@ -78,10 +78,10 @@ export function ResultsBrowser({ items }: { items: ResearchCard[] }) {
             <Card key={item.id} className="flex h-full flex-col rounded-[1.75rem] p-8">
               <div className="mb-4 flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="font-display text-2xl font-bold">{item.name}</h2>
+                  <h2 className="font-display text-xl font-bold leading-tight">{item.name}</h2>
                   <p className="mt-1 text-sm text-zinc-500">{item.domain}</p>
                 </div>
-                <Pill>{item.category}</Pill>
+                <Pill className="max-w-[7.5rem] truncate px-2.5">{item.category}</Pill>
               </div>
 
               <p className="flex-1 text-sm leading-relaxed text-textMuted">{item.summary}</p>

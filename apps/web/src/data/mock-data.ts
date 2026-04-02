@@ -11,7 +11,7 @@ import type {
 export const navItems = [
   { label: "探索", href: "/" },
   { label: "结果", href: "/results" },
-  { label: "灵感库", href: "/inspiration" },
+  { label: "灵感", href: "/inspiration" },
   { label: "定价", href: "/pricing" }
 ];
 

@@ -255,6 +255,10 @@ function normalizePlanLabel(label: string) {
     .trim();
 }
 
+function isNavigableHref(href: string) {
+  return !/^(mailto:|tel:|javascript:|#)/i.test(href);
+}
+
 const PRICING_NOISE_PATTERNS = [
   /\b(?:best value|recommended|most popular|featured|hot|popular)\b/gi,
   /\b(?:get started|sign up free|start free|buy now|join now|try now|contact sales)\b/gi,
@@ -1109,9 +1113,15 @@ function detectTargetUsers(text: string, pages: CrawlPage[]) {
   return users.size > 0 ? Array.from(users).slice(0, 3) : ["潜在购买者需要进一步判断"];
 }
 
-function detectPricing(pages: CrawlPage[], ctas: string[]) {
+function detectPricing(pages: CrawlPage[], ctas: string[], preferredPricingUrl?: string) {
   const pricingCandidates = pages.filter((page) => page.pageType === "pricing");
   const pricingPage = pricingCandidates.sort((a, b) => scoreCrawlPage(b) - scoreCrawlPage(a))[0] ?? null;
+  const preferredUrl = preferredPricingUrl && /\/(pricing(?:-[^/]+)?|plans?|fees?)(\/|[?#]|$)/i.test(preferredPricingUrl)
+    ? preferredPricingUrl
+    : undefined;
+  const pricingPageUrl = preferredUrl ?? (pricingPage?.url && /\/(pricing(?:-[^/]+)?|plans?|fees?)(\/|[?#]|$)/i.test(pricingPage.url)
+    ? pricingPage.url
+    : undefined);
   const pricingSignals = (pricingPage ? [pricingPage] : pages).flatMap((page) => [
     page.title,
     page.description,
@@ -1134,20 +1144,33 @@ function detectPricing(pages: CrawlPage[], ctas: string[]) {
       ? "存在免费额度 / 试用入口"
       : "存在免费试用"
     : "未明确看到试用";
-  const model = /(transaction|payment processing|payout|per transaction|platform fee)/i.test(pricingText)
-    ? "按交易 / 支付规模收费"
-    : /(per user|per seat|seat-based|workspace members|members included|up to \d+ members)/i.test(pricingText)
-    ? "按席位 / 团队定价"
-    : /(credit|usage|token|request|volume|transaction|pay as you go)/i.test(pricingText)
-      ? "按用量收费"
-      : /(contact sales|enterprise|custom pricing|talk to sales)/i.test(pricingText)
-        ? "企业定制定价"
-      : "订阅制";
+  const hasAudienceVariable = /(contact(s)?|user(s)?|member(s)?|seat(s)?|people|headcount|workspace size|team size|company size|volume|license(s)?)/i.test(pricingText);
+  const hasInteractivePricing = /(pricing calculator|calculator|estimate(?:d)?|calculate(?:d)?|estimate your price|slider|drag|adjust|range|select your|choose your|monthly\/yearly|yearly\/monthly|toggle)/i.test(pricingText);
+  const hasQuoteFlow = /(contact sales|talk to sales|request a quote|custom quote|get a quote)/i.test(pricingText);
+  const model = hasAudienceVariable && (hasInteractivePricing || pricingPage)
+    ? "按人数 / 配置收费"
+    : /(transaction|payment processing|payout|per transaction|platform fee)/i.test(pricingText)
+      ? "按交易 / 支付规模收费"
+      : /(per user|per seat|seat-based|workspace members|members included|up to \d+ members)/i.test(pricingText)
+        ? "按席位 / 团队定价"
+        : /(credit|usage|token|request|volume|transaction|pay as you go)/i.test(pricingText)
+          ? "按用量收费"
+          : /(contact sales|enterprise|custom pricing|talk to sales)/i.test(pricingText)
+            ? "企业定制定价"
+            : "订阅制";
+  const presentationMode: "static" | "calculator" | "unknown" =
+    pricingPage && (hasQuoteFlow || (hasAudienceVariable && hasInteractivePricing))
+      ? "calculator"
+      : pricingPlans.length > 0
+        ? "static"
+        : "unknown";
 
   return {
     startingPrice: priceMatch && priceMatch.length > 1 ? priceMatch : "未明确",
     pricePoints: priceMatches,
     plans: pricingPlans,
+    pricingPageUrl,
+    presentationMode,
     billingCycle,
     trial,
     model
@@ -1253,7 +1276,7 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
     homePage.links
       .map((link) => ({ ...link, resolved: resolveLink(homePage.url, link.href) }))
       .filter(({ resolved, href, text }) => {
-        if (!resolved) return false;
+        if (!resolved || !isNavigableHref(href)) return false;
         if (/\/pricing(?:-[^/]+)?(?:[/?#]|$)/i.test(resolved)) return true;
         if (/pricing/i.test(href)) return true;
         return /pricing/i.test(text);
@@ -1297,7 +1320,7 @@ export async function analyzeWebsite(inputUrl: string): Promise<{
   const archetype = detectArchetype(allText);
   const categories = detectCategories(allText);
   const targetUsers = detectTargetUsers(allText, allPages);
-  const pricing = detectPricing(allPages, allCtas);
+  const pricing = detectPricing(allPages, allCtas, normalizedUrl);
   const id = slugFromUrl(normalizedUrl);
   const snapshot: AnalysisInputSnapshot = {
     siteUrl: normalizedUrl,

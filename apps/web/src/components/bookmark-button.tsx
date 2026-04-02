@@ -31,11 +31,13 @@ export function BookmarkButton({ result }: { result: AnalysisResult }) {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify(payload)
       });
 
       if (!response.ok) {
-        throw new Error("bookmark failed");
+        const payload = (await response.json().catch(() => null)) as { message?: string } | null;
+        throw new Error(payload?.message ?? "收藏失败，请稍后再试");
       }
 
       startTransition(() => {
@@ -66,4 +68,3 @@ export function BookmarkButton({ result }: { result: AnalysisResult }) {
     </div>
   );
 }
-

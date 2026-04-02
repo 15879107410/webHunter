@@ -88,11 +88,13 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
         item.tags.some((tag) => data.categories.includes(tag) || tag === data.pricing.model)
     )
     .slice(0, 4);
-  const priceSuffix = data.pricing.model.includes("按用量")
-    ? "起步价 / 检测到的主要价格点"
-    : data.pricing.billingCycle !== "页面未明确"
-      ? `起步价 / ${data.pricing.billingCycle}`
-      : "起步价";
+  const priceSuffix = data.pricing.presentationMode === "calculator"
+    ? "起步价 / 价格会随人数或配置变化"
+    : data.pricing.model.includes("按用量")
+      ? "起步价 / 检测到的主要价格点"
+      : data.pricing.billingCycle !== "页面未明确"
+        ? `起步价 / ${data.pricing.billingCycle}`
+        : "起步价";
   const hasPricingPage = data.meta?.pageTypes.includes("pricing") ?? false;
   const compactTargetUsers = data.targetUsers.slice(0, 3).map(compactTargetUserLabel);
   const targetUserIcons = [
@@ -298,28 +300,25 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
         <section className="grid gap-12 lg:grid-cols-2">
           <div>
             <SectionTitle title="核心增长逻辑" />
-            <div className="space-y-6">
+            <div className="space-y-4">
               {data.growthInsights.map((item) => (
-                <div key={item.title}>
-                  <h4 className="mb-2 font-bold">{item.title}</h4>
-                  <p className="border-l-2 border-zinc-200 pl-4 leading-relaxed text-textMuted">{item.content}</p>
+                <div key={item.title} className="rounded-2xl bg-surfaceAlt p-5">
+                  <p className="leading-relaxed text-textMuted">{item.content}</p>
                 </div>
               ))}
             </div>
           </div>
-          <Card className="relative border-primary/20 bg-white p-8 shadow-soft">
-            <div className="absolute left-0 top-10 h-24 w-1 rounded-r-full bg-gradient-to-b from-primary to-primaryContainer" />
-            <h3 className="mb-6 font-display text-xl font-bold text-primary">创业切入建议</h3>
-            <div className="space-y-5">
+          <div>
+            <SectionTitle title="创业切入建议" />
+            <div className="space-y-4">
               {data.buildAdvice.map((item) => (
-                <div key={item.title} className="rounded-2xl bg-zinc-50 p-5">
-                  <h4 className="text-sm font-bold">{item.title}</h4>
-                  <p className="mt-1 text-sm leading-relaxed text-textMuted">{item.content}</p>
+                <div key={item.title} className="rounded-2xl bg-surfaceAlt p-5">
+                  <p className="leading-relaxed text-textMuted">{item.content}</p>
                 </div>
               ))}
               <p className="text-xs italic text-zinc-500">AI 建议主要基于当前抓到的页面文案和公开定位信息生成，覆盖较低时请把它当成方向参考，不要当成绝对结论。</p>
             </div>
-          </Card>
+          </div>
         </section>
 
         <section>

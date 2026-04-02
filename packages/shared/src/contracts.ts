@@ -1,4 +1,4 @@
-import type { AnalysisInputSnapshot, AnalysisResult, BookmarkRecord, ResearchCard } from "./types";
+import type { AnalysisInputSnapshot, AnalysisResult, AuthUser, BookmarkRecord, ResearchCard } from "./types";
 
 export interface AnalyzeRequest {
   url: string;
@@ -29,4 +29,12 @@ export interface AnalysisDetailResponse {
 
 export interface AnalysisInputResponse {
   item: AnalysisInputSnapshot;
+}
+
+export interface AuthResponse {
+  user: AuthUser;
+}
+
+export interface MeResponse {
+  user: AuthUser | null;
 }

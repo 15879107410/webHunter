@@ -9,18 +9,28 @@ import type {
   AnalysisListResponse,
   AnalysisDetailResponse,
   AnalyzeResponse,
+  AuthResponse,
   BookmarkListResponse,
+  MeResponse,
   RecentAnalysisResponse,
   SimilarProduct
 } from "@webhunter/shared";
 import { analyzeWebsite } from "./analyze-site.js";
 import {
-  findAnalysisBySiteUrl,
-  getAnalysisInput,
+  createSession,
+  createUser,
+  deleteSession,
+  findAnalysisBySiteUrlForUser,
+  findUserByEmail,
+  getAnalysisInputForUser,
+  getAnalysisResultsForUser,
   addBookmark,
-  getAnalysisResults,
   getBookmarks,
-  getRecentAnalysis,
+  getBookmarksForUser,
+  getRecentAnalysisForUser,
+  getUserById,
+  getUserBySessionToken,
+  verifyPassword,
   pushRecentAnalysis,
   removeBookmark,
   updateBookmark,
@@ -43,6 +53,10 @@ if (envPath) {
 
 const app = express();
 const port = Number(process.env.PORT ?? 3001);
+const sessionCookieName = "webhunter_session";
+const cookieDomain = process.env.COOKIE_DOMAIN?.trim();
+const cookieSecure = process.env.NODE_ENV === "production";
+const frontendOrigin = process.env.FRONTEND_ORIGIN ?? "http://localhost:3000";
 
 function normalizeUrl(input: string) {
   const withProtocol = /^https?:\/\//i.test(input) ? input : `https://${input}`;
@@ -64,9 +78,54 @@ function canonicalizeUrl(input: string) {
   return url.toString().replace(/\/$/, "");
 }
 
+function parseCookieHeader(cookieHeader: string | undefined) {
+  if (!cookieHeader) {
+    return new Map<string, string>();
+  }
+
+  return new Map(
+    cookieHeader.split(";").map((part) => {
+      const [rawKey, ...rest] = part.trim().split("=");
+      return [decodeURIComponent(rawKey ?? ""), decodeURIComponent(rest.join("=") ?? "")] as const;
+    })
+  );
+}
+
+function serializeCookie(name: string, value: string, maxAgeSeconds?: number) {
+  const parts = [`${encodeURIComponent(name)}=${encodeURIComponent(value)}`, "Path=/", "SameSite=Lax"];
+  if (typeof maxAgeSeconds === "number") {
+    parts.push(`Max-Age=${Math.floor(maxAgeSeconds)}`);
+  }
+  if (cookieDomain) {
+    parts.push(`Domain=${cookieDomain}`);
+  }
+  if (cookieSecure) {
+    parts.push("Secure");
+  }
+  return parts.join("; ");
+}
+
+function setSessionCookie(res: Response, token: string) {
+  res.setHeader("Set-Cookie", serializeCookie(sessionCookieName, token, 60 * 60 * 24 * 30));
+}
+
+function clearSessionCookie(res: Response) {
+  res.setHeader("Set-Cookie", serializeCookie(sessionCookieName, "", 0));
+}
+
+async function getCurrentUser(req: Request) {
+  const cookieToken = parseCookieHeader(req.headers.cookie).get(sessionCookieName);
+  if (!cookieToken) {
+    return null;
+  }
+
+  return getUserBySessionToken(cookieToken);
+}
+
 function toResearchCard(item: AnalysisDetailResponse["item"]) {
   return {
     id: item.id,
+    ownerId: item.ownerId,
     name: item.siteName,
     domain: new URL(item.siteUrl).hostname.replace(/^www\./, ""),
     category: item.categories[0] ?? "工具型产品",
@@ -205,7 +264,12 @@ function buildMarkdownReport(item: AnalysisDetailResponse["item"]) {
   return lines.join("\n").trim();
 }
 
-app.use(cors());
+app.use(
+  cors({
+    origin: frontendOrigin,
+    credentials: true
+  })
+);
 app.use(express.json());
 
 app.get("/health", (_req: Request, res: Response) => {
@@ -216,14 +280,102 @@ app.get("/health", (_req: Request, res: Response) => {
   });
 });
 
-app.get("/api/analysis/recent", async (_req: Request, res: Response) => {
-  const payload: RecentAnalysisResponse = { items: dedupeResearchCards(await getRecentAnalysis()) };
+app.get("/api/auth/me", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  const payload: MeResponse = { user };
   res.json(payload);
 });
 
-app.get("/api/analysis", async (_req: Request, res: Response) => {
-  const analysisResults = await getAnalysisResults();
-  const recent = await getRecentAnalysis();
+app.post("/api/auth/register", async (req: Request, res: Response) => {
+  const schema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8).max(128)
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ message: "请输入有效邮箱和至少 8 位密码" });
+    return;
+  }
+
+  const existing = await findUserByEmail(parsed.data.email);
+  if (existing) {
+    res.status(409).json({ message: "这个邮箱已经注册过了" });
+    return;
+  }
+
+  const user = await createUser(parsed.data.email, parsed.data.password);
+  if (!user) {
+    res.status(409).json({ message: "这个邮箱已经注册过了" });
+    return;
+  }
+
+  const session = await createSession(user.id);
+  setSessionCookie(res, session.token);
+
+  const payload: AuthResponse = { user };
+  res.status(201).json(payload);
+});
+
+app.post("/api/auth/login", async (req: Request, res: Response) => {
+  const schema = z.object({
+    email: z.string().email(),
+    password: z.string().min(1).max(128)
+  });
+  const parsed = schema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ message: "请输入有效邮箱和密码" });
+    return;
+  }
+
+  const userRecord = await findUserByEmail(parsed.data.email);
+  if (!userRecord || !verifyPassword(parsed.data.password, userRecord.passwordSalt, userRecord.passwordHash)) {
+    res.status(401).json({ message: "邮箱或密码不正确" });
+    return;
+  }
+
+  const user = await getUserById(userRecord.id);
+  if (!user) {
+    res.status(401).json({ message: "邮箱或密码不正确" });
+    return;
+  }
+
+  const session = await createSession(user.id);
+  setSessionCookie(res, session.token);
+
+  const payload: AuthResponse = { user: { id: user.id, email: user.email, displayName: user.displayName, createdAt: user.createdAt } };
+  res.json(payload);
+});
+
+app.post("/api/auth/logout", async (req: Request, res: Response) => {
+  const token = parseCookieHeader(req.headers.cookie).get(sessionCookieName);
+  if (token) {
+    await deleteSession(token);
+  }
+
+  clearSessionCookie(res);
+  res.status(204).send();
+});
+
+app.get("/api/analysis/recent", async (_req: Request, res: Response) => {
+  const user = await getCurrentUser(_req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
+  const payload: RecentAnalysisResponse = { items: dedupeResearchCards(await getRecentAnalysisForUser(user.id)) };
+  res.json(payload);
+});
+
+app.get("/api/analysis", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
+  const analysisResults = await getAnalysisResultsForUser(user.id);
+  const recent = await getRecentAnalysisForUser(user.id);
   const recentMap = new Map(recent.map((item, index) => [item.id, index]));
 
   const items = dedupeResearchCards(
@@ -248,8 +400,14 @@ app.get("/api/analysis", async (_req: Request, res: Response) => {
 });
 
 app.get("/api/analysis/:id", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const analysisId = String(req.params.id);
-  const analysisResults = await getAnalysisResults();
+  const analysisResults = await getAnalysisResultsForUser(user.id);
   const item = analysisResults[analysisId];
 
   if (!item) {
@@ -267,8 +425,14 @@ app.get("/api/analysis/:id", async (req: Request, res: Response) => {
 });
 
 app.get("/api/analysis/:id/export.md", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const analysisId = String(req.params.id);
-  const analysisResults = await getAnalysisResults();
+  const analysisResults = await getAnalysisResultsForUser(user.id);
   const item = analysisResults[analysisId];
 
   if (!item) {
@@ -282,8 +446,14 @@ app.get("/api/analysis/:id/export.md", async (req: Request, res: Response) => {
 });
 
 app.get("/api/analysis/:id/input", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const analysisId = String(req.params.id);
-  const item = await getAnalysisInput(analysisId);
+  const item = await getAnalysisInputForUser(user.id, analysisId);
 
   if (!item) {
     res.status(404).json({ message: "Analysis input not found" });
@@ -294,17 +464,30 @@ app.get("/api/analysis/:id/input", async (req: Request, res: Response) => {
   res.json(payload);
 });
 
-app.get("/api/bookmarks", async (_req: Request, res: Response) => {
-  const payload: BookmarkListResponse = { items: await getBookmarks() };
+app.get("/api/bookmarks", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
+  const payload: BookmarkListResponse = { items: await getBookmarksForUser(user.id) };
   res.json(payload);
 });
 
 app.post("/api/bookmarks", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const schema = z.object({
     id: z.string(),
     name: z.string(),
     domain: z.string(),
     label: z.string(),
+    manualLabel: z.string().nullable().optional(),
     oneLiner: z.string(),
     pricingModel: z.string(),
     targetUsers: z.string(),
@@ -318,12 +501,24 @@ app.post("/api/bookmarks", async (req: Request, res: Response) => {
     return;
   }
 
-  await addBookmark(parsed.data);
+  await addBookmark({ ...parsed.data, ownerId: user.id });
   res.status(201).json({ ok: true });
 });
 
 app.delete("/api/bookmarks/:id", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const bookmarkId = String(req.params.id);
+  const bookmarkItems = await getBookmarksForUser(user.id);
+  if (!bookmarkItems.some((item) => item.id === bookmarkId)) {
+    res.status(404).json({ message: "Bookmark not found" });
+    return;
+  }
+
   const removed = await removeBookmark(bookmarkId);
   if (!removed) {
     res.status(404).json({ message: "Bookmark not found" });
@@ -334,9 +529,16 @@ app.delete("/api/bookmarks/:id", async (req: Request, res: Response) => {
 });
 
 app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const bookmarkId = String(req.params.id);
   const schema = z.object({
     label: z.string().optional(),
+    manualLabel: z.string().nullable().optional(),
     opportunityLevel: z.string().optional(),
     note: z.string().min(1).max(1000).optional()
   });
@@ -344,6 +546,12 @@ app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
   const parsed = schema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ message: "Invalid bookmark update payload" });
+    return;
+  }
+
+  const bookmarkItems = await getBookmarksForUser(user.id);
+  if (!bookmarkItems.some((item) => item.id === bookmarkId)) {
+    res.status(404).json({ message: "Bookmark not found" });
     return;
   }
 
@@ -357,6 +565,12 @@ app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
 });
 
 app.post("/api/analyze", async (req: Request, res: Response) => {
+  const user = await getCurrentUser(req);
+  if (!user) {
+    res.status(401).json({ message: "请先登录" });
+    return;
+  }
+
   const schema = z.object({
     url: z.string().min(1),
     force: z.boolean().optional()
@@ -370,10 +584,10 @@ app.post("/api/analyze", async (req: Request, res: Response) => {
 
   try {
     const normalizedUrl = normalizeUrl(parsed.data.url);
-    const existing = await findAnalysisBySiteUrl(normalizedUrl);
+    const existing = await findAnalysisBySiteUrlForUser(user.id, normalizedUrl);
 
     if (existing && !parsed.data.force) {
-      await pushRecentAnalysis(toResearchCard(existing));
+      await pushRecentAnalysis({ ...toResearchCard(existing), ownerId: user.id });
       const payload: AnalyzeResponse = {
         id: existing.id,
         status: "completed",
@@ -384,10 +598,11 @@ app.post("/api/analyze", async (req: Request, res: Response) => {
     }
 
     const { snapshot, result, recentItem } = await analyzeWebsite(normalizedUrl);
-    const storedResult = existing ? { ...result, id: existing.id } : result;
-    const storedRecentItem = existing ? toResearchCard(storedResult) : recentItem;
+    const storedResult = existing ? { ...result, id: existing.id, ownerId: user.id } : { ...result, ownerId: user.id };
+    const storedRecentItem = existing ? { ...toResearchCard(storedResult), ownerId: user.id } : { ...recentItem, ownerId: user.id };
+    const storedSnapshot = { ...snapshot, ownerId: user.id };
 
-    await upsertAnalysisInput(storedResult.id, snapshot);
+    await upsertAnalysisInput(storedResult.id, storedSnapshot);
     await upsertAnalysis(storedResult);
     await pushRecentAnalysis(storedRecentItem);
 

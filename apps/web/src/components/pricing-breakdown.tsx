@@ -17,8 +17,13 @@ export function PricingBreakdown({ pricing, hasPricingPage }: PricingBreakdownPr
     label: plan.label.replace(/月度 计划/g, "月度计划").replace(/年度 计划/g, "年度计划")
   }));
   const structuredPricing = pricingPlans.length > 0;
-  const previewPlans = structuredPricing ? pricingPlans.slice(0, 2) : [];
-  const previewPoints = structuredPricing
+  const pricingMode = pricing.presentationMode ?? (structuredPricing ? "static" : "unknown");
+  const pricingPageUrl = pricing.pricingPageUrl?.trim();
+  const useExternalPricingPage = pricingMode === "calculator" && Boolean(pricingPageUrl);
+  const canOpenModal = structuredPricing && !useExternalPricingPage;
+  const hasDetailsAction = canOpenModal || useExternalPricingPage || pricePoints.length > 2;
+  const previewPlans = structuredPricing && !useExternalPricingPage ? pricingPlans.slice(0, 2) : [];
+  const previewPoints = structuredPricing || useExternalPricingPage
     ? []
     : ([
         pricing.startingPrice && pricing.startingPrice !== "未明确" ? pricing.startingPrice : null,
@@ -29,6 +34,10 @@ export function PricingBreakdown({ pricing, hasPricingPage }: PricingBreakdownPr
   function explainPricing() {
     if (!hasPricingPage) {
       return "没有抓到价格页，所以这里展示的是基于首页和其它页面推断出来的收费判断，可能不完整。";
+    }
+
+    if (useExternalPricingPage) {
+      return "这是一个可配置价格页，价格会随着人数、额度或套餐配置变化。结果页只展示两个常用价格，完整价格建议直接去原站查看。";
     }
 
     if (structuredPricing) {
@@ -80,10 +89,23 @@ export function PricingBreakdown({ pricing, hasPricingPage }: PricingBreakdownPr
         </div>
       ) : null}
 
-      {(structuredPricing && previewPlans.length > 0) || previewPoints.length > 0 ? (
+      {(useExternalPricingPage && pricingPageUrl) || (structuredPricing && previewPlans.length > 0) || previewPoints.length > 0 ? (
         <div className="mb-6">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">价格预览</p>
-          {structuredPricing ? (
+          {useExternalPricingPage ? (
+            <div className="grid gap-3 md:grid-cols-2">
+              <Card className="rounded-3xl border border-primary/15 bg-primary/5 p-4">
+                <p className="text-sm font-bold text-textPrimary">起步价格</p>
+                <p className="mt-2 text-2xl font-extrabold text-primary">
+                  {pricing.startingPrice && pricing.startingPrice !== "未明确" ? pricing.startingPrice : "未明确"}
+                </p>
+              </Card>
+              <Card className="rounded-3xl border border-primary/15 bg-primary/5 p-4">
+                <p className="text-sm font-bold text-textPrimary">价格模式</p>
+                <p className="mt-2 text-sm font-bold leading-relaxed text-textMuted">按人数 / 配置变化，建议直接查看原站完整价格页</p>
+              </Card>
+            </div>
+          ) : structuredPricing ? (
             <div className="grid gap-3 md:grid-cols-2">
               {previewPlans.map((plan) => (
                 <Card key={`${plan.label}-${plan.price}`} className="rounded-3xl border border-primary/15 bg-primary/5 p-4">
@@ -107,19 +129,30 @@ export function PricingBreakdown({ pricing, hasPricingPage }: PricingBreakdownPr
               ))}
             </div>
           )}
-          {pricePoints.length > 2 || structuredPricing ? (
-            <button
-              type="button"
-              onClick={() => setOpen(true)}
-              className="mt-4 text-sm font-bold text-primary underline underline-offset-4"
-            >
-              查看完整价格详情
-            </button>
+          {hasDetailsAction ? (
+            useExternalPricingPage && pricingPageUrl ? (
+              <a
+                href={pricingPageUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex text-sm font-bold text-primary underline underline-offset-4"
+              >
+                去原站查看完整价格页
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setOpen(true)}
+                className="mt-4 text-sm font-bold text-primary underline underline-offset-4"
+              >
+                查看完整价格详情
+              </button>
+            )
           ) : null}
         </div>
       ) : null}
 
-      {open ? (
+      {canOpenModal && open ? (
         <div className="fixed inset-0 z-[90] flex items-start justify-center overflow-y-auto bg-black/45 px-4 py-4 md:items-center md:py-8" onClick={() => setOpen(false)}>
           <div
             className="flex max-h-[calc(100vh-2rem)] w-full max-w-3xl flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl"

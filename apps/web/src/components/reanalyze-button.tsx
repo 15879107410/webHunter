@@ -51,11 +51,13 @@ export function ReanalyzeButton({ siteUrl }: { siteUrl: string }) {
         headers: {
           "Content-Type": "application/json"
         },
+        credentials: "include",
         body: JSON.stringify({ url: siteUrl, force: true })
       });
 
       if (!response.ok) {
-        throw new Error("reanalyze failed");
+        const payload = (await response.json().catch(() => null)) as { message?: string } | null;
+        throw new Error(payload?.message ?? "重新分析失败，请稍后再试");
       }
 
       const data = (await response.json()) as { id: string };

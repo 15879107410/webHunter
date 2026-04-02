@@ -6,7 +6,7 @@ export function TopNav({ currentPath }: { currentPath: string }) {
   const items = [
     { label: "探索", href: "/" },
     { label: "结果", href: "/results" },
-    { label: "灵感库", href: "/inspiration" },
+    { label: "灵感", href: "/inspiration" },
     { label: "定价", href: "/pricing" }
   ];
 
@@ -38,10 +38,12 @@ export function TopNav({ currentPath }: { currentPath: string }) {
             <button className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-primary shadow-sm">中</button>
             <button className="rounded-full px-3 py-1 text-[10px] font-bold text-zinc-500">EN</button>
           </div>
-          <button className="hidden text-sm font-medium text-textMuted hover:text-primary sm:block">登录</button>
-          <button className="rounded-xl bg-gradient-to-r from-primary to-primaryContainer px-5 py-2.5 text-sm font-bold text-white shadow-soft">
+          <Link href="/login" className="hidden text-sm font-medium text-textMuted hover:text-primary sm:block">
+            登录
+          </Link>
+          <Link href="/login" className="rounded-xl bg-gradient-to-r from-primary to-primaryContainer px-5 py-2.5 text-sm font-bold text-white shadow-soft">
             开始使用
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
@@ -95,8 +97,9 @@ export function Card({
 
 export function Pill({
   children,
-  tone = "default"
-}: PropsWithChildren<{ tone?: "default" | "positive" | "warning" | "danger" }>) {
+  tone = "default",
+  className
+}: PropsWithChildren<{ tone?: "default" | "positive" | "warning" | "danger"; className?: string }>) {
   const tones = {
     default: "bg-zinc-100 text-zinc-700",
     positive: "bg-primary/10 text-primary",
@@ -104,7 +107,7 @@ export function Pill({
     danger: "bg-rose-100 text-rose-700"
   };
 
-  return <span className={clsx("rounded-full px-3 py-1 text-xs font-bold", tones[tone])}>{children}</span>;
+  return <span className={clsx("inline-flex items-center justify-center whitespace-nowrap rounded-full px-3 py-1 text-xs font-bold", tones[tone], className)}>{children}</span>;
 }
 
 export function MetaRow({ label, value }: { label: string; value: string }) {

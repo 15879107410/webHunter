@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AnalyzeUrlForm } from "@/src/components/analyze-url-form";
+import { ExpandableValue } from "@/src/components/expandable-value";
 import { PageShell, Card, SectionTitle, Pill } from "@/src/components/ui";
 import { searchSuggestions } from "@/src/data/mock-data";
 import { getBookmarks, getRecentResearch } from "@/src/lib/api";
@@ -123,11 +124,11 @@ export default async function HomePage() {
                     <div className="mt-5 space-y-3 border-t border-zinc-100 pt-5 text-xs">
                       <div className="flex items-center justify-between">
                         <span className="text-zinc-400">机会等级</span>
-                        <Pill tone="positive">{item.opportunityLevel}</Pill>
+                        <ExpandableValue label="机会等级" value={item.opportunityLevel} align="right" className="max-w-[11rem]" />
                       </div>
                       <div className="flex items-center justify-between gap-4">
                         <span className="text-zinc-400">收费模式</span>
-                        <span className="font-medium text-textPrimary">{item.pricingModel}</span>
+                        <ExpandableValue label="收费模式" value={item.pricingModel} align="right" className="max-w-[11rem]" />
                       </div>
                     </div>
                     <p className="mt-4 text-right text-[11px] text-zinc-400">域名 {item.domain}</p>

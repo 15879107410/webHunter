@@ -5,11 +5,20 @@ import type { BookmarkRecord, FilterOption } from "@webhunter/shared";
 import { BookmarkCard } from "@/src/components/bookmark-card";
 import { Card } from "@/src/components/ui";
 import Link from "next/link";
+import { getEffectiveBookmarkClassification } from "@/src/lib/bookmark-classification";
 
 function matchesFilter(item: BookmarkRecord, filter: string) {
   if (filter === "全部") return true;
 
-  const haystack = [item.label, item.oneLiner, item.pricingModel, item.targetUsers, item.opportunityLevel, item.note].join(" ");
+  const haystack = [
+    getEffectiveBookmarkClassification(item),
+    item.label,
+    item.oneLiner,
+    item.pricingModel,
+    item.targetUsers,
+    item.opportunityLevel,
+    item.note
+  ].join(" ");
   return haystack.includes(filter);
 }
 
@@ -29,7 +38,16 @@ export function BookmarksBrowser({
       items.filter((item) => {
         const matchesQuery =
           normalizedQuery.length === 0 ||
-          [item.name, item.domain, item.oneLiner, item.pricingModel, item.targetUsers, item.opportunityLevel, item.note]
+          [
+            item.name,
+            item.domain,
+            getEffectiveBookmarkClassification(item),
+            item.oneLiner,
+            item.pricingModel,
+            item.targetUsers,
+            item.opportunityLevel,
+            item.note
+          ]
             .join(" ")
             .toLowerCase()
             .includes(normalizedQuery);
