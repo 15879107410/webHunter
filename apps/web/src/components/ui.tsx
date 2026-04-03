@@ -38,11 +38,8 @@ export function TopNav({ currentPath }: { currentPath: string }) {
             <button className="rounded-full bg-white px-3 py-1 text-[10px] font-bold text-primary shadow-sm">中</button>
             <button className="rounded-full px-3 py-1 text-[10px] font-bold text-zinc-500">EN</button>
           </div>
-          <Link href="/login" className="hidden text-sm font-medium text-textMuted hover:text-primary sm:block">
-            登录
-          </Link>
-          <Link href="/login" className="rounded-xl bg-gradient-to-r from-primary to-primaryContainer px-5 py-2.5 text-sm font-bold text-white shadow-soft">
-            开始使用
+          <Link href="/" className="rounded-xl bg-gradient-to-r from-primary to-primaryContainer px-5 py-2.5 text-sm font-bold text-white shadow-soft">
+            开始分析
           </Link>
         </div>
       </div>

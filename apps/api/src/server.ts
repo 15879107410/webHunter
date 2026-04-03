@@ -20,13 +20,17 @@ import {
   createSession,
   createUser,
   deleteSession,
+  findAnalysisBySiteUrl,
   findAnalysisBySiteUrlForUser,
   findUserByEmail,
+  getAnalysisInput,
   getAnalysisInputForUser,
+  getAnalysisResults,
   getAnalysisResultsForUser,
   addBookmark,
   getBookmarks,
   getBookmarksForUser,
+  getRecentAnalysis,
   getRecentAnalysisForUser,
   getUserById,
   getUserBySessionToken,
@@ -57,6 +61,7 @@ const sessionCookieName = "webhunter_session";
 const cookieDomain = process.env.COOKIE_DOMAIN?.trim();
 const cookieSecure = process.env.NODE_ENV === "production";
 const frontendOrigin = process.env.FRONTEND_ORIGIN ?? "http://localhost:3000";
+const publicOwnerId = "";
 
 function normalizeUrl(input: string) {
   const withProtocol = /^https?:\/\//i.test(input) ? input : `https://${input}`;
@@ -359,24 +364,15 @@ app.post("/api/auth/logout", async (req: Request, res: Response) => {
 
 app.get("/api/analysis/recent", async (_req: Request, res: Response) => {
   const user = await getCurrentUser(_req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
-  const payload: RecentAnalysisResponse = { items: dedupeResearchCards(await getRecentAnalysisForUser(user.id)) };
+  const items = user ? await getRecentAnalysisForUser(user.id) : await getRecentAnalysis();
+  const payload: RecentAnalysisResponse = { items: dedupeResearchCards(items) };
   res.json(payload);
 });
 
 app.get("/api/analysis", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
-  const analysisResults = await getAnalysisResultsForUser(user.id);
-  const recent = await getRecentAnalysisForUser(user.id);
+  const analysisResults = user ? await getAnalysisResultsForUser(user.id) : await getAnalysisResults();
+  const recent = user ? await getRecentAnalysisForUser(user.id) : await getRecentAnalysis();
   const recentMap = new Map(recent.map((item, index) => [item.id, index]));
 
   const items = dedupeResearchCards(
@@ -402,13 +398,8 @@ app.get("/api/analysis", async (req: Request, res: Response) => {
 
 app.get("/api/analysis/:id", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const analysisId = String(req.params.id);
-  const analysisResults = await getAnalysisResultsForUser(user.id);
+  const analysisResults = user ? await getAnalysisResultsForUser(user.id) : await getAnalysisResults();
   const item = analysisResults[analysisId];
 
   if (!item) {
@@ -427,13 +418,8 @@ app.get("/api/analysis/:id", async (req: Request, res: Response) => {
 
 app.get("/api/analysis/:id/export.md", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const analysisId = String(req.params.id);
-  const analysisResults = await getAnalysisResultsForUser(user.id);
+  const analysisResults = user ? await getAnalysisResultsForUser(user.id) : await getAnalysisResults();
   const item = analysisResults[analysisId];
 
   if (!item) {
@@ -448,13 +434,8 @@ app.get("/api/analysis/:id/export.md", async (req: Request, res: Response) => {
 
 app.get("/api/analysis/:id/input", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const analysisId = String(req.params.id);
-  const item = await getAnalysisInputForUser(user.id, analysisId);
+  const item = user ? await getAnalysisInputForUser(user.id, analysisId) : await getAnalysisInput(analysisId);
 
   if (!item) {
     res.status(404).json({ message: "Analysis input not found" });
@@ -467,22 +448,12 @@ app.get("/api/analysis/:id/input", async (req: Request, res: Response) => {
 
 app.get("/api/bookmarks", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
-  const payload: BookmarkListResponse = { items: await getBookmarksForUser(user.id) };
+  const payload: BookmarkListResponse = { items: user ? await getBookmarksForUser(user.id) : await getBookmarks() };
   res.json(payload);
 });
 
 app.post("/api/bookmarks", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const schema = z.object({
     id: z.string(),
     name: z.string(),
@@ -502,19 +473,14 @@ app.post("/api/bookmarks", async (req: Request, res: Response) => {
     return;
   }
 
-  await addBookmark({ ...parsed.data, ownerId: user.id });
+  await addBookmark({ ...parsed.data, ownerId: user?.id ?? publicOwnerId });
   res.status(201).json({ ok: true });
 });
 
 app.delete("/api/bookmarks/:id", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const bookmarkId = String(req.params.id);
-  const bookmarkItems = await getBookmarksForUser(user.id);
+  const bookmarkItems = user ? await getBookmarksForUser(user.id) : await getBookmarks();
   if (!bookmarkItems.some((item) => item.id === bookmarkId)) {
     res.status(404).json({ message: "Bookmark not found" });
     return;
@@ -531,11 +497,6 @@ app.delete("/api/bookmarks/:id", async (req: Request, res: Response) => {
 
 app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const bookmarkId = String(req.params.id);
   const schema = z.object({
     label: z.string().optional(),
@@ -550,7 +511,7 @@ app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
     return;
   }
 
-  const bookmarkItems = await getBookmarksForUser(user.id);
+  const bookmarkItems = user ? await getBookmarksForUser(user.id) : await getBookmarks();
   if (!bookmarkItems.some((item) => item.id === bookmarkId)) {
     res.status(404).json({ message: "Bookmark not found" });
     return;
@@ -567,11 +528,6 @@ app.patch("/api/bookmarks/:id", async (req: Request, res: Response) => {
 
 app.post("/api/analyze", async (req: Request, res: Response) => {
   const user = await getCurrentUser(req);
-  if (!user) {
-    res.status(401).json({ message: "请先登录" });
-    return;
-  }
-
   const schema = z.object({
     url: z.string().min(1),
     force: z.boolean().optional()
@@ -585,10 +541,13 @@ app.post("/api/analyze", async (req: Request, res: Response) => {
 
   try {
     const normalizedUrl = normalizeUrl(parsed.data.url);
-    const existing = await findAnalysisBySiteUrlForUser(user.id, normalizedUrl);
+    const ownerId = user?.id ?? publicOwnerId;
+    const existing = user
+      ? await findAnalysisBySiteUrlForUser(user.id, normalizedUrl)
+      : await findAnalysisBySiteUrl(normalizedUrl);
 
     if (existing && !parsed.data.force) {
-      await pushRecentAnalysis({ ...toResearchCard(existing), ownerId: user.id });
+      await pushRecentAnalysis({ ...toResearchCard(existing), ownerId });
       const payload: AnalyzeResponse = {
         id: existing.id,
         status: "completed",
@@ -599,9 +558,9 @@ app.post("/api/analyze", async (req: Request, res: Response) => {
     }
 
     const { snapshot, result, recentItem } = await analyzeWebsite(normalizedUrl);
-    const storedResult = existing ? { ...result, id: existing.id, ownerId: user.id } : { ...result, ownerId: user.id };
-    const storedRecentItem = existing ? { ...toResearchCard(storedResult), ownerId: user.id } : { ...recentItem, ownerId: user.id };
-    const storedSnapshot = { ...snapshot, ownerId: user.id };
+    const storedResult = existing ? { ...result, id: existing.id, ownerId } : { ...result, ownerId };
+    const storedRecentItem = existing ? { ...toResearchCard(storedResult), ownerId } : { ...recentItem, ownerId };
+    const storedSnapshot = { ...snapshot, ownerId };
 
     await upsertAnalysisInput(storedResult.id, storedSnapshot);
     await upsertAnalysis(storedResult);
