@@ -92,7 +92,8 @@ function parseCookieHeader(cookieHeader: string | undefined) {
 }
 
 function serializeCookie(name: string, value: string, maxAgeSeconds?: number) {
-  const parts = [`${encodeURIComponent(name)}=${encodeURIComponent(value)}`, "Path=/", "SameSite=Lax"];
+  const sameSite = cookieSecure ? "None" : "Lax";
+  const parts = [`${encodeURIComponent(name)}=${encodeURIComponent(value)}`, "Path=/", `SameSite=${sameSite}`];
   if (typeof maxAgeSeconds === "number") {
     parts.push(`Max-Age=${Math.floor(maxAgeSeconds)}`);
   }
