@@ -6,8 +6,8 @@ export function TopNav({ currentPath }: { currentPath: string }) {
   const items = [
     { label: "探索", href: "/" },
     { label: "结果", href: "/results" },
-    { label: "灵感", href: "/inspiration" },
-    { label: "定价", href: "/pricing" }
+    { label: "灵感", href: "/inspiration" }
+    // { label: "定价", href: "/pricing" }
   ];
 
   return (
