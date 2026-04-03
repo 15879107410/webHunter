@@ -164,15 +164,6 @@ export default async function ResultPage({ params }: { params: Promise<{ id: str
       </header>
 
       <div className="section-shell space-y-12 py-10">
-        <Card className="border-primary/10 bg-primary/5 p-5">
-          <p className="text-sm font-bold text-primary">试用阶段提示</p>
-          <p className="mt-2 text-sm leading-relaxed text-textMuted">
-            {data.meta?.analysisMode === "llm"
-              ? "本次结果使用平台内置模型生成。后续正式收费后，将按平台统一模型能力提供深度分析。"
-              : "本次结果已回退为规则分析，说明当前平台内置模型没有参与本次生成。"}
-          </p>
-        </Card>
-
         {lowCoverage ? (
           <Card className="border-amber-200 bg-amber-50 p-6">
             <p className="text-sm font-bold text-amber-800">当前只抓到首页，结论偏保守</p>
